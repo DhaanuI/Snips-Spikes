@@ -41,3 +41,8 @@
 
 # additional 
 - we can give home services
+
+
+
+![snips spikes drawio (1)](https://user-images.githubusercontent.com/87657007/228304975-dc21afa6-a2bb-407a-bcd0-fbd1d1baa52c.png)
+
