@@ -6,7 +6,7 @@
   
 <br>
 
-# What are the requirements
+# What are the requirements ?
 
 - User can login and sign up
     - OTP will be sent by nodmailer
