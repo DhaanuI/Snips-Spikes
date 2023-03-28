@@ -1,9 +1,13 @@
-# military-waste-5460
-# snips&Spikes
+## Project Code :  
+   > military-waste-5460
 
+## Project Name : 
+   > Snips & Spikes
+  
+<br>
+<br>
 
-# what are the requirements
-
+# What are the requirements
 
 - user can login and sign up
     - OTP will be sent by nodmailer
