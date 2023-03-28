@@ -8,22 +8,22 @@
 
 # What are the requirements
 
-- user can login and sign up
+- User can login and sign up
     - OTP will be sent by nodmailer
-- user can login with google account
-- user can visit pages 
-- user can see services 
-- user can book services / appointments and pay
-    - user can view appointment 
-    - user rescheduled apointments
-    - user can cancel appointment
-    - user can book the appointment for someone else.
-    - user can give feedback on appointment
-    - user can see account details / update them / get previous appointment  
-    - user will be notified confirmationi email 
-- real time chat support
-- feedback 
-- logout 
+- User can login with google account
+- User can visit pages 
+- User can see services 
+- User can book services / appointments and pay
+    - User can view appointment 
+    - User rescheduled apointments
+    - User can cancel appointment
+    - User can book the appointment for someone else.
+    - User can give feedback on appointment
+    - User can see account details / update them / get previous appointment  
+    - User will be notified confirmationi email 
+- Real time chat support
+- Feedback 
+- Logout 
 
 
 
