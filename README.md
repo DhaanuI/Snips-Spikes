@@ -24,22 +24,23 @@
 
 
 
-# tech stack 
+# Tech stack 
 
 
-### frontend 
+### Frontend 
 
-- bootstrap / html / css / javascript / sweeperJS  
+- Bootstrap / HTML / CSS / JavaScript / SweeperJS 
 
-### backend 
+### Backend 
  
-- node 
-- express 
-- db : MongoDB, Mysql 
+- NodeJS 
+- ExpressJS
+
+- Database : MongoDB, MySQL 
 
 
 
-# additional 
+# Additional 
 - we can give home services
 
 
