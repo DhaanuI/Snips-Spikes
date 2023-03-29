@@ -20,7 +20,7 @@ const LoginBox = document.querySelector('.login-box');
 
 Moon.addEventListener("click", (e) => {
   if (Moon.className == "bx bx-moon") {
-    e.target.className = "bx bx-sun";
+    e.target.className = "bx bxs-sun";
     HTML.style.background="white";
     LoginBox.id = "lg";
   } else {

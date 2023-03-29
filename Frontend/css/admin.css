@@ -26,6 +26,10 @@ body {
   background:linear-gradient(rgb(0 0 0 / 50%),#c64343);
 }
 
+#moon{
+  font-size: 1.9rem;
+}
+
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
