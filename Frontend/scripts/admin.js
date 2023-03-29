@@ -1,20 +1,54 @@
+// ------------------- API's ----------------------
+
+const BaseUrl = 'http://localhost:7005';
+const Default = `${BaseUrl}/admin`
+const PostDataCheck = `${Default}/check`
+
 // ------------------- Login Part ----------------------
 
 const SubmitButton = document.querySelector(".submit");
 
-const UserName = document.querySelector("#username");
-const Password = document.querySelector("#password");
+const UserNames = document.querySelector("#username");
+const Passwords = document.querySelector("#password");
 
 SubmitButton.addEventListener("click", () => {
-  UserName.value == "admin" && Password.value == "hairsalon"
-    ? (
-        alert("Welcome Admin"), 
-        (UserName.value = ""), 
-        (Password.value = "") ,
-        (window.open = "../html/adminDashboard.html")
-      )
-    : alert("Wrong Credentials");
+
+  const Credentials = {
+    UserName:UserNames.value,
+    Password:Passwords.value
+  }
+
+  UserNames.value == "" && Passwords.value == "" ? alert('Fill Credentials') :  AdminDataPost(Credentials);
 });
+
+
+
+// -------- Posting The Data To Backend For Checking --------
+
+const AdminDataPost = async (Credentials) =>{
+  try {
+    const res = await fetch(PostDataCheck,{
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(Credentials)
+    })
+
+    const data = await res.json();
+    
+    res.status==202 ? 
+        (alert(data.Message),
+        (UserNames.value = ""), 
+        (Passwords.value = ""),
+        (window.location.href = `${data.Location}`)) 
+    : alert(data.Message);
+
+  } catch (error) {
+      alert("Bad Request");
+  }
+}
+
 
 
 // ------------------- DarkMode Part ----------------------
