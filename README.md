@@ -79,7 +79,7 @@
 
 
 
-- Slotes 
+- Slots 
      - id
      - start time
      - end time
