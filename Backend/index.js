@@ -17,6 +17,7 @@ const app = express();
 const server = http.createServer(app);
 
 
+
 // // --------------->>>>>>>> Default End Point <<<<<<<<-------------------
 
 app.get("/", (req, res) => res.send("Snips & Spikes API"));
@@ -33,8 +34,8 @@ app.use(express.json());
 
 // --------------->>>>>>>> Oauth <<<<<<<<-------------------
 
-// app.use("/", githublogin);
-// app.use("/", googlelogin);
+app.use("/", githublogin);
+app.use("/", googlelogin);
 
 
 
@@ -45,7 +46,6 @@ app.use("/admin", AdminRouter)
 app.use(authenticate);        //  will validate login status
 app.use("/newtoken", GntRouter);
 app.use("/logout", LogoutRouter);
-
 
 
 // --------------->>>>>>>> Server Running <<<<<<<<-------------------

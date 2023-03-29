@@ -1,3 +1,4 @@
+const path = require("path");
 require("dotenv").config();
 
 const AdminData = async (req, res) => {
