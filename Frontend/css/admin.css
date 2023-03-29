@@ -24,9 +24,9 @@ body {
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
-  color: #cce207;
+  color: #d5e733;
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .login-box .user-box {
