@@ -7,7 +7,12 @@ const Password = document.querySelector("#password");
 
 SubmitButton.addEventListener("click", () => {
   UserName.value == "admin" && Password.value == "hairsalon"
-    ? (alert("Welcome Admin"), ((UserName.value = ""), (Password.value = "")))
+    ? (
+        alert("Welcome Admin"), 
+        (UserName.value = ""), 
+        (Password.value = "") ,
+        (window.open = "../html/adminDashboard.html")
+      )
     : alert("Wrong Credentials");
 });
 
