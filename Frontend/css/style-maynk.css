@@ -1,0 +1,215 @@
+:root{
+  --second-color-alt : rgba(0, 17, 255, 0.192);
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  /* border: 2px solid purple; */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.slide-1{
+  background-image: url("https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.logo {
+  width: 5%;
+  margin: 0 20px;
+}
+
+.mcontainer {
+  width: 100%;
+  /* margin-bottom: 100px; */
+  border: 1px solid red;
+
+}
+
+.sidebar-con {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  border: 1px solid red;
+
+}
+
+
+.slideContent{
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.animateddiv{
+  width: 40%;
+}
+.textcontent{
+  width: 30%;
+  margin: auto;
+  text-align: left
+
+}
+.heading{
+  
+  font-size: 3.5rem;
+
+  text-align: left;
+}
+.description{
+  margin: 20px auto;;
+  font-size: 1.2rem;
+
+}
+a{
+  text-decoration: none;
+}
+.greycolor{
+  color: grey;
+  font-weight: lighter;
+}
+.social-icons{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 20px;
+}
+.social-icons>div{
+  width: 50%;
+  cursor: pointer;
+  padding: 20px;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+/* Footer */
+.footer{
+  /* border:  2px solid red; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content:space-around;
+  background-color: #29355b;
+}
+.footer1{/* border: 2px solid purple; *//* height: 35%; */width: 80%;margin: auto;display: grid;grid-template-columns: repeat(5,1fr);gap: 40px;}
+.footer-sections{
+  /* border: 2px solid blue; */
+  width: 13%;
+  /* display: flex; */
+}
+.logos{
+  
+  justify-content: center;
+
+  text-align: center;
+  /* align-items: center; */
+  /* border: 2px solid blue;   */
+  width: 220px;
+}
+.logos>div{
+  display: flex;
+  /* border: 2px solid white; */
+  margin-top: 12px;
+  justify-content: space-around;
+}
+.footer-sections>h6{
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  color: white;
+}
+.footer-sections img{
+  /* align-items: center;
+  text-align: center; */
+  /* margin-left: rem; */
+  width: 100%;
+  
+}
+.footer-sections>p{
+  color: #ffffff80;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* mayankraj */
+
+
+#homelogo{
+  cursor: pointer;
+}
+.navicons{
+  margin: 10px ;
+  font-size: 1.3rem;
+  transition: 0.3s;
+}
+.navicons:hover ,a:hover {
+  background-color:var(--second-color-alt);
+  border-radius: 10px;
+  
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px ;
+
+}
+.app-icons{
+  border-radius: 10px;
+  border: 1px solid rgba(0, 17, 255, 0.192); 
+  display: flex;
+  width: 250px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+
+}
+.app-icons:hover{
+  background-color: var(--second-color-alt);
+}
+
+.navicons-cards{
+  font-size: 2.5rem;
+  color: rgb(0, 104, 173);
+}
+
+.navicons-cards hover{
+  color: var(--second-color-alt);
+}
+#ct{
+  font-size: 1.3rem;
+  color: #29355b;
+}
+.timediv{
+  background-color: var(--second-color-alt);
+}
