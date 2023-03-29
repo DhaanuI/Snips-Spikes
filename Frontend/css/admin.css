@@ -27,7 +27,14 @@ body {
 }
 
 #moon{
-  font-size: 1.9rem;
+  font-size: 1.7rem;
+  color: white;
+  margin-left: 5px;
+}
+
+#moon:hover{
+  cursor: pointer;
+  color: #8eb36f;
 }
 
 .login-box h2 {
