@@ -2,7 +2,21 @@
 const { FemaleModel } = require("../model/FemaleServicemodel");
 
 
+// --------->>>> GET <<<<<---------
+const FemaleGetData = async (req, res) => {
+    try {
+        const data = await FemaleModel.find()
+        res.status(202).send(data);
 
+    } catch (error) {
+        res.status(404).send({
+            Message: "Bad request 404",
+        });
+    }
+}
+
+
+// --------->>>> POST <<<<<---------
 const FemalePostData = async () => {
     const payload = req.body;
     try {
@@ -21,18 +35,7 @@ const FemalePostData = async () => {
     }
 }
 
-const FemaleGetData = async (req, res) => {
-    try {
-        const data = await FemaleModel.find()
-        res.status(202).send(data);
-
-    } catch (error) {
-        res.status(404).send({
-            Message: "Bad request 404",
-        });
-    }
-}
-
+// --------->>>> PATCH <<<<<---------
 const FemalePatchData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body
@@ -49,6 +52,7 @@ const FemalePatchData = async (req, res) => {
     }
 }
 
+// --------->>>> DELETE <<<<<---------
 const FemaleDeleteData = async (req, res) => {
     const ID = req.params.id;
     try {
