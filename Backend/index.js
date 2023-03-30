@@ -18,10 +18,10 @@ const server = http.createServer(app);
 
 
 
-// // --------------->>>>>>>> Default End Point <<<<<<<<-------------------
+// --------------->>>>>>>> Default End Point <<<<<<<<-------------------
+
 
 app.get("/", (req, res) => res.send("Snips & Spikes API"));
-
 
 
 // --------------->>>>>>>> Middlewares <<<<<<<<-------------------
@@ -30,7 +30,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-
+ 
 
 // --------------->>>>>>>> Oauth <<<<<<<<-------------------
 
@@ -50,7 +50,7 @@ app.use("/logout", LogoutRouter);
 
 // --------------->>>>>>>> Server Running <<<<<<<<-------------------
 
-app.listen(process.env.port, async () => {
+app.listen(process.env.port, async () => { 
   try {
     dbconnetion;
     console.log(`Connected to Database`);
