@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
         // hash password form UserData(db.users)
         const hashPassword = UserData?.password;
         
-        // compare
+        // compare  
         
         bcrypt.compare(password, hashPassword, (err, result) => {
             if (result) {
@@ -72,7 +72,6 @@ exports.login = async (req, res) => {
 }
 
 exports.getalluser = async (req, res) => {
-    console.log(req.body);
     try {
         if (req.body.access_key === process.env.access_key ) {
 

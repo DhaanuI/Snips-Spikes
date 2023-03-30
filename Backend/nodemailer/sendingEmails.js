@@ -5,7 +5,7 @@ require("dotenv").config()
 
 
 async function sendEmail(data) {
-     console.log( "data " ,data);
+    //  console.log( "data " ,data);
    //   transpoter to send/transport email
 
   const transporter = nodemailer.createTransport({
