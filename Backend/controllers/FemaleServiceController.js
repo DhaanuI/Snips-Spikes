@@ -3,7 +3,7 @@ const { FemaleModel } = require("../model/FemaleServicemodel");
 
 
 
-const FemaleData = async () => {
+const FemalePostData = async () => {
     const payload = req.body;
     try {
         const data = new FemaleModel(payload);
@@ -64,4 +64,4 @@ const FemaleDeleteData = async (req, res) => {
     }
 }
 
-module.exports = { FemaleData, FemaleGetData, FemalePatchData, FemaleDeleteData }
+module.exports = { FemaleGetData , FemalePostData , FemalePatchData, FemaleDeleteData }
