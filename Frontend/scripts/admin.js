@@ -18,7 +18,15 @@ SubmitButton.addEventListener("click", () => {
     Password:Passwords.value
   }
 
-  UserNames.value == "" && Passwords.value == "" ? alert('Fill Credentials') :  AdminDataPost(Credentials);
+  UserNames.value == "" && Passwords.value == "" ? 
+    (
+      Swal.fire({
+        icon: 'Empty Fields',
+        title: 'Oops...',
+        text: 'Fill Credentials',
+        width:"25%",
+      })
+    ) :  AdminDataPost(Credentials);
 });
 
 
@@ -37,15 +45,46 @@ const AdminDataPost = async (Credentials) =>{
 
     const data = await res.json();
     
-    res.status==202 ? 
-        (alert(data.Message),
+    if(res.status==202){ 
         (UserNames.value = ""), 
         (Passwords.value = ""),
-        (window.location.href = `${data.Location}`)) 
-    : alert(data.Message);
+
+        Swal.fire({
+          title: 'Please Confirm ',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirm',
+          confirmButton:true,
+          width:"24%"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Logged in ! Successfully',
+              window.location.href = `${data.Location}`
+            )
+          }
+        })
+      }else{
+
+        Swal.fire({
+          title: 'Wrong Credentials',
+          width:"25%",
+          background:"#243b55",
+          color:"red"
+        })
+
+        UserNames.value = "" ;
+        Passwords.value = "" ;
+      }
 
   } catch (error) {
-      alert("Bad Request");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Bad Request 404',
+        width:"25%",
+      })
   }
 }
 
