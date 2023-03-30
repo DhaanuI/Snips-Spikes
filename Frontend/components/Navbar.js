@@ -4,7 +4,7 @@ let Navbar = () => {
     <div class="container">
       <div class="logo">
         <a href="./index.html"
-          ><img width="100%" height="100%" src="./images/logo.jpeg" alt=""
+          ><img width="100%" height="100%" src="./images/logo.png" alt=""
         /></a>
       </div>
       <div id="mainListDiv" class="main_list">
@@ -23,7 +23,6 @@ let Navbar = () => {
     </div>
   </nav>
   <div id="visible1"></div>
-
     `;
 };
 

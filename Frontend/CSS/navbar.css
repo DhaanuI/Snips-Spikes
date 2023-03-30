@@ -7,12 +7,12 @@
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(0, 0, 0, 0.597)
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #000000;
   }
   
   /* Handle on hover */
@@ -29,7 +29,6 @@
     line-height: 65px;
     text-align: center;
     z-index: 99999;
-    /* scroll-snap-align: start; */
   }
   .container{
     height: 100%;
@@ -52,6 +51,9 @@
     height: 100%;
     color: #fff;
     font-size: 1.5rem;
+  }
+  .nav div.logo a img{
+    background-color: #000000e9;
   }
   
   .nav div.logo a:hover {
