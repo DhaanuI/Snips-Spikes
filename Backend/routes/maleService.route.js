@@ -1,7 +1,7 @@
 const express = require('express');
 
 // --------------->>>>>>>> Male Service Router <<<<<<<<-------------------
-const { MaleData } = require('../controllers/maleService.controller');
+const { MaleData } = require('../controllers/MaleServiceController');
 
 const MaleRouter = express.Router();
 
