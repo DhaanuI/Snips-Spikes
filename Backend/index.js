@@ -34,7 +34,7 @@ app.use(express.json());
 
 // --------------->>>>>>>> Oauth <<<<<<<<-------------------
 
-app.use("/", githublogin);
+// app.use("/", githublogin);
 app.use("/", googlelogin);
 
 
