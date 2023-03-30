@@ -18,7 +18,7 @@ const server = http.createServer(app);
 
 
 
-// // --------------->>>>>>>> Default End Point <<<<<<<<-------------------
+// --------------->>>>>>>> Default End Point <<<<<<<<-------------------
 
 app.get("/", (req, res) => res.send("Snips & Spikes API"));
 
