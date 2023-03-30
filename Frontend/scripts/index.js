@@ -1,6 +1,7 @@
 //copy this to get navbar vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 import { Navbar } from "../components/Navbar.js";
+import Footer from "../components/Footer.js";
 
 let nav = document.getElementById("NAVBAR");
 nav.innerHTML = Navbar();
@@ -11,14 +12,29 @@ nav.innerHTML = Navbar();
 // Function used to shrink nav bar removing paddings and adding black background
 
 window.addEventListener("scroll", function () {
-  var nav = document.querySelector(".nav");
+  var navBar = document.querySelector(".nav");
   if (document.documentElement.scrollTop > 50) {
-    nav.classList.add("affix");
+    navBar.classList.add("affix");
     console.log("Working");
   } else {
-    nav.classList.remove("affix");
+    navBar.classList.remove("affix");
   }
 });
+
+const myElement = document.getElementById("visible1");
+var navBar = document.querySelector(".nav");
+
+const observer = new IntersectionObserver((entries) => {
+  const isVisible = entries[0].isIntersecting;
+  if (!isVisible) {
+    navBar.classList.add("affix");
+    console.log("Working");
+  } else {
+    navBar.classList.remove("affix");
+  }
+});
+
+observer.observe(myElement);
 
 // Function to show and hide hamburger content
 
@@ -31,8 +47,14 @@ navTrigger.addEventListener("click", function () {
   mainListDiv.style.display = "block";
 });
 
-//copy this to get navbar ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//-------------------------Footer----------------------------
 
+let footer= document.getElementById("footer-main")
+footer.innerHTML= Footer()
+
+
+
+//copy this to get navbar ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // section-two slider//
 

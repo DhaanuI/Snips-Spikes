@@ -3,7 +3,7 @@ let Navbar = () => {
     <nav class="nav">
     <div class="container">
       <div class="logo">
-        <a href="#"
+        <a href="./index.html"
           ><img width="100%" height="100%" src="./images/logo.jpeg" alt=""
         /></a>
       </div>
@@ -22,6 +22,7 @@ let Navbar = () => {
       </span>
     </div>
   </nav>
+  <div id="visible1"></div>
 
     `;
 };
