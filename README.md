@@ -4,7 +4,9 @@
 ## Project Name : 
    > Snips & Spikes
 
-# warning :  useCamelCase  
+<br>
+
+## Warning :  useCamelCase  
 
 
 
@@ -77,7 +79,7 @@
 
 
 
-- Slotes 
+- Slots 
      - id
      - start time
      - end time
@@ -91,7 +93,6 @@
     - stylistId
     - userID
     - serviceId
-
 
 
 ## 
