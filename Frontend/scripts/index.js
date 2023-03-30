@@ -1,6 +1,7 @@
 //copy this to get navbar vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 import { Navbar } from "../components/Navbar.js";
+import Footer from "../components/Footer.js";
 
 let nav = document.getElementById("NAVBAR");
 nav.innerHTML = Navbar();
@@ -27,14 +28,13 @@ const observer = new IntersectionObserver((entries) => {
   const isVisible = entries[0].isIntersecting;
   if (!isVisible) {
     navBar.classList.add("affix");
-    console.log("Working")
+    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
 });
 
 observer.observe(myElement);
-
 
 // Function to show and hide hamburger content
 
@@ -46,6 +46,13 @@ navTrigger.addEventListener("click", function () {
   mainListDiv.classList.toggle("show_list");
   mainListDiv.style.display = "block";
 });
+
+//-------------------------Footer----------------------------
+
+let footer= document.getElementById("footer-main")
+footer.innerHTML= Footer()
+
+
 
 //copy this to get navbar ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
