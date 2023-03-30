@@ -9,9 +9,9 @@ const { LogoutRouter } = require("./routes/logout.route");
 const { dbconnetion } = require("./configs/db");
 const { GntRouter } = require("./routes/generateNewToken.route");
 const http = require("http");
-// const { githublogin } = require("./routes/github.oauth.route");
-// const passport = require("passport");
-// const { googlelogin } = require("./routes/google.oauth.route");
+const { githublogin } = require("./routes/github.oauth.route");
+const passport = require("passport");
+const { googlelogin } = require("./routes/google.oauth.route");
 const { AdminRouter } = require("./routes/admin.router");
 const { MaleRouter } = require("./routes/maleService.route");
 const { FemaleRouter } = require("./routes/femaleService.route");
@@ -36,8 +36,8 @@ app.use(express.json());
 
 // --------------->>>>>>>> Oauth <<<<<<<<-------------------
 
-// app.use("/", githublogin);
-// app.use("/", googlelogin);
+app.use("/", githublogin);
+app.use("/", googlelogin);
 
 
 

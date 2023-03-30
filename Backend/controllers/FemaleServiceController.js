@@ -1,4 +1,4 @@
-// --------------->>>>>>>> Male Service Model Location <<<<<<<<-------------------
+// --------------->>>>>>>> Female Service Model Location <<<<<<<<-------------------
 const { FemaleModel } = require("../model/FemaleServicemodel");
 
 
