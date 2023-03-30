@@ -1,5 +1,5 @@
 
-const baseurl = "https://defiant-lime-kangaroo.cyclic.app/"
+const baseurl = "http://localhost:8080/"
 import loading from "../components/loading.components.js";
 import hideLoading from "../components/hideLoading.components.js";
 
