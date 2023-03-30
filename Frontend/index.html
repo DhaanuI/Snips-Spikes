@@ -12,7 +12,7 @@
     <nav class="nav">
       <div class="container">
         <div class="logo">
-          <a href="#">Your Logo</a>
+          <a href="#"><img width="100%" height="100%" src="./images/logo.jpeg" alt=""></a>
         </div>
         <div id="mainListDiv" class="main_list">
           <ul class="navlinks">
@@ -30,7 +30,7 @@
       </div>
     </nav>
 
-    <div>
+    <div style="margin-bottom: -7px; padding: 0;">
       <video
         width="100%"
         height="auto"
@@ -41,6 +41,74 @@
       ></video>
     </div>
 
+    <!-- ----------------Section2--slider--------------------- -->
+
+    <div class="css-slider-wrapper">
+      <input
+        type="radio"
+        name="slider"
+        class="slide-radio1"
+        checked
+        id="slider_1"
+      />
+      <input type="radio" name="slider" class="slide-radio2" id="slider_2" />
+
+      <!-- Slider Pagination -->
+      <div class="slider-pagination">
+        <label for="slider_1" class="page1"></label>
+        <label for="slider_2" class="page2"></label>
+      </div>
+
+      <!-- Slider #1 -->
+      <div class="slider slide-1">
+        <img
+          src="https://www.mygreentrends.in/wp-content/uploads/2020/09/in1.jpg"
+          alt=""
+        />
+        <div class="slider-content">
+          <h2>Join the growth story: Own a Saoln</h2>
+          <h4>
+            Professional salon experience delivered by certified skin & hair
+            experts with world-class products.
+          </h4>
+          <button type="button" class="buy-now-btn" name="button">
+            Know More
+          </button>
+        </div>
+        <div class="number-pagination">
+          <span>1</span>
+        </div>
+      </div>
+
+      <!-- Slider #2 -->
+      <div class="slider slide-2">
+        <img
+          src="https://www.mygreentrends.in/wp-content/uploads/2020/09/in2.jpg"
+          alt=""
+        />
+        <div class="slider-content">
+          <h2>Award-winning Salon chain</h2>
+          <h4>
+            Tap into the salon industry's growth with our 'SIX STEPS TO SUCCESS
+            that ensures swift and sustainable success
+          </h4>
+          <button type="button" class="buy-now-btn" name="button">
+            Join Now
+          </button>
+        </div>
+        <div class="number-pagination">
+          <span>2</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ----------------Section3----------------------- -->
+
+    <div>
+      <img width="100%" src="./images/Section_3.png" alt="">
+    </div>
+    
     <!-- Jquery needed -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
