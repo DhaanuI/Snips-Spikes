@@ -1,6 +1,6 @@
 const express = require('express');
 
-// --------------->>>>>>>> Male Service Router <<<<<<<<-------------------
+// --------------->>>>>>>> Female Service Router <<<<<<<<-------------------
 const { FemaleData } = require('../controllers/FemaleServiceController');
 
 
