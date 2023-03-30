@@ -22,12 +22,32 @@ body {
   border-radius: 10px;
 }
 
+#lg{
+  background:linear-gradient(rgb(0 0 0 / 50%),#c64343);
+}
+
+#moon{
+  font-size: 1.7rem;
+  color: white;
+  margin-right: 20px;
+  padding-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#moon:hover{
+  cursor: pointer;
+  color: #8eb36f;
+}
+
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
   color: #d5e733;
   text-align: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: block;
 }
 
 .login-box .user-box {
