@@ -67,8 +67,9 @@ exports.login = async (req, res) => {
 }
 
 exports.getalluser = async (req, res) => {
+    console.log(req.body);
     try {
-        if (req.body.accesskey === process.env.access_key ) {
+        if (req.body.access_key === process.env.access_key ) {
 
             const UserData = await UserModel.find();
             res.status(200).json({ UserData })
@@ -86,7 +87,7 @@ exports.getalluser = async (req, res) => {
 exports.getUser = async (req, res) => {
         const _id = req.params.id;
         try {
-            if (req.body.accesskey === process.env.access_key ) {
+            if (req.body.access_key === process.env.access_key ) {
                 const UserData = await UserModel.findOne({_id});
                 res.status(200).json({ UserData })
             }
