@@ -1,30 +1,47 @@
+//copy this to get navbar vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+import { Navbar } from "../components/Navbar.js";
+
+let nav = document.getElementById("NAVBAR");
+nav.innerHTML = Navbar();
+
+// copy nav container from index.html line 12 only
+// In html file write like this "<script  type="module" src="./scripts/index.js"></script>" must include type=module
+
 // Function used to shrink nav bar removing paddings and adding black background
 
-$(window).scroll(function () {
-  if ($(document).scrollTop() > 700) {
-    $(".nav").addClass("affix");
-    console.log("OK");
+window.addEventListener("scroll", function () {
+  var nav = document.querySelector(".nav");
+  if (document.documentElement.scrollTop > 50) {
+    nav.classList.add("affix");
+    console.log("Working");
   } else {
-    $(".nav").removeClass("affix");
+    nav.classList.remove("affix");
   }
 });
 
 // Function to show and hide hamburger content
-$(".navTrigger").click(function () {
-  $(this).toggleClass("active");
-  //   console.log("Clicked menu");
-  $("#mainListDiv").toggleClass("show_list");
-  $("#mainListDiv").fadeIn();
+
+var navTrigger = document.querySelector(".navTrigger");
+var mainListDiv = document.querySelector("#mainListDiv");
+
+navTrigger.addEventListener("click", function () {
+  navTrigger.classList.toggle("active");
+  mainListDiv.classList.toggle("show_list");
+  mainListDiv.style.display = "block";
 });
+
+//copy this to get navbar ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 // section-two slider//
 
-const TIMEOUT = 6000;
+const TIMEOUT = 4000;
 
 let $radios, $activeRadio, currentIndex, radiosLength;
 
 const handleNext = () => {
-  debugger;
+  // debugger;
   $radios = $('input[class*="slide-radio"]');
   $activeRadio = $('input[class*="slide-radio"]:checked');
 
@@ -47,7 +64,7 @@ const myStopFunction = () => {
 };
 
 $(".slider").hover(() => {
-  debugger;
+  // debugger;
   myStopFunction();
 });
 
