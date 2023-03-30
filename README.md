@@ -96,6 +96,29 @@
 
 
 ## 
+<br>
+
+# API Endpoints 
+----
+<br>
+
+## `Services`
+<br>   
+
+- Male Services
+                
+        GET -    /services/male 
+        POST -   /services/male/addMaleService
+        PATCH -  /services/male/update/:id
+        DELETE - /services/male/delete/:id
+
+- Female Services
+
+        GET -    /services/female 
+        POST -   /services/female/addFemaleService
+        PATCH -  /services/female/update/:id
+        DELETE - /services/female/delete/:id
+
 
 
 
