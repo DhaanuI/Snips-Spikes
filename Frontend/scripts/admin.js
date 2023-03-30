@@ -18,7 +18,7 @@ SubmitButton.addEventListener("click", () => {
     Password:Passwords.value
   }
 
-  UserNames.value == "" && Passwords.value == "" ? 
+  UserNames.value == "" || Passwords.value == "" ? 
     (
       Swal.fire({
         icon: 'Empty Fields',
