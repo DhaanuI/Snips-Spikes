@@ -2,6 +2,7 @@ require("dotenv").config();
 const { UserModel } = require("../model/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { sendEmail } = require("../nodemailer/sendingEmails");
 
 exports.signup = async (req, res) => {
     try {
@@ -34,17 +35,21 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const UserData = await UserModel.findOne({ email });
-
+        
         if (!UserData) {
             res.status(404).json({ message: "user not found" });
         }
         // hash password form UserData(db.users)
         const hashPassword = UserData?.password;
-
+        
         // compare
-
+        
         bcrypt.compare(password, hashPassword, (err, result) => {
             if (result) {
+                // send otp
+                const otp = Math.round((Math.random() * 9999))
+                sendEmail({email: email,subject:"Login OTP",body:` OTP is ${otp}` })
+                
                 // generate tokens 
                 const Normal_Token = jwt.sign({ userId: UserData._id }, process.env.Normal_Token_key, { expiresIn: "7d" })
                 const Refresh_Token = jwt.sign({ userId: UserData._id }, process.env.Refresh_Token_key, { expiresIn: "7d" })
@@ -52,7 +57,7 @@ exports.login = async (req, res) => {
                 // send token in cookies
                 res.cookie("Normal_Token", Normal_Token, { httpOnly: true })
                 res.cookie("Refresh_Token", Refresh_Token, { httpOnly: true })
-                res.status(200).json({ "message": "Login successfully", Normal_Token, Refresh_Token,name:UserData["name"],email,userid:UserData["_id"]})
+                res.status(200).json({ "message": "Login successfully", Normal_Token, Refresh_Token,name:UserData["name"],email,userid:UserData["_id"],otp: otp})
             }
             else {
                 res.status(401).json({ "message": "error while login" });
@@ -63,7 +68,7 @@ exports.login = async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
-
+ 
 }
 
 exports.getalluser = async (req, res) => {
