@@ -17,7 +17,7 @@ const FemaleGetData = async (req, res) => {
 
 
 // --------->>>> POST <<<<<---------
-const FemalePostData = async () => {
+const FemalePostData = async (req,res) => {
     const payload = req.body;
     try {
         const data = new FemaleModel(payload);

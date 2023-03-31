@@ -31,7 +31,7 @@ async function sendEmail(data) {
 module.exports = {sendEmail,}
 
 
-// ! -----must have data in while calling sendEmail() -----
+// ! -----must have data while calling sendEmail() -----
 
 // data = {
 //     email : "fsociety430@gmail.com",
