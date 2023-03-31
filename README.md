@@ -1,3 +1,7 @@
+<div style="display: block; margin: auto; text-align: center; border-radius: 50%; width: 30%; margin-top: 20px; margin-bottom: 20px;">
+    <img src="https://user-images.githubusercontent.com/106810850/229245859-a25d1ba5-34ac-4aff-8897-01edf9c7d41f.jpg" style="border-radius: 50%; width: 100%;" alt="">
+</div>
+
 ## Project Code :  
    > military-waste-5460
 
