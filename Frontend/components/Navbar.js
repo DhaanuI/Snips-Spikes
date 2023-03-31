@@ -1,18 +1,18 @@
 let Navbar = () => {
   return `
-    <nav class="nav">
-    <div class="container">
+    <nav id="nav" class="nav">
+    <div class="container" id="container">
       <div class="logo">
-        <a href="./index.html"
-          ><img width="100%" height="100%" src="./images/logo.png" alt=""
+        <a id="logo-href" href="#"
+          ><img style="heigth:65px; width:65px" id="nav-logo"  src="..." alt=""
         /></a>
       </div>
       <div id="mainListDiv" class="main_list">
         <ul class="navlinks">
-          <li><a href="#">Book Appointment</a></li>
-          <li><a href="#"> View Appointment</a></li>
-          <li><a href="#">Contact US</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a id="bookhref" href="#">Book Appointment</a></li>
+          <li><a id="viewhref" href="#"> View Appointment</a></li>
+          <li><a id="contacthref" href="#">Contact US</a></li>
+          <li><a id="loginhref" href="#">Login</a></li>
         </ul>
       </div>
       <span class="navTrigger">
