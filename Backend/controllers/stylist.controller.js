@@ -1,5 +1,5 @@
 
-// --------------->>>>>>>> Male Service Model Location <<<<<<<<-------------------
+// --------------->>>>>>>> Stylist Model Location <<<<<<<<-------------------
 const { StylistModel } = require("../model/stylist.model");
 
 
