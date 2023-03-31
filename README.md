@@ -3,6 +3,13 @@
 
 ## Project Name : 
    > Snips & Spikes
+
+<br>
+
+## Warning :  useCamelCase  
+
+
+
   
 <br>
 
@@ -29,7 +36,6 @@
 
 # Tech stack 
 
-
 ### Frontend 
 
 - Bootstrap / HTML / CSS / JavaScript / SweeperJS 
@@ -40,6 +46,79 @@
 - ExpressJS
 
 - Database : MongoDB, MySQL 
+
+
+
+# Schema : 
+
+- user 
+     - name
+     - email
+     - image
+     - password
+     - gender 
+     - appointments = [];
+
+- stylist 
+     - name 
+     - email 
+     - salary
+     - image 
+     - available : true/false / default : true;
+     - occupied_timeSlot : sloteId 
+
+
+- services 
+
+    - service_name 
+    - service_image
+    - service_price
+    - service_description
+    - service_category 
+    - service_by_gender
+
+
+
+- Slots 
+     - id
+     - start time
+     - end time
+     - stylistId
+     - available
+     - slotId  
+
+
+- appointments 
+    - id 
+    - stylistId
+    - userID
+    - serviceId
+
+
+## 
+<br>
+
+# API Endpoints 
+----
+<br>
+
+## `Services`
+<br>   
+
+- Male Services
+                
+        GET -    /services/male 
+        POST -   /services/male/addMaleService
+        PATCH -  /services/male/update/:id
+        DELETE - /services/male/delete/:id
+
+- Female Services
+
+        GET -    /services/female 
+        POST -   /services/female/addFemaleService
+        PATCH -  /services/female/update/:id
+        DELETE - /services/female/delete/:id
+
 
 
 
