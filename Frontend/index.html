@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/index.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/navbar.css" />
+    <link rel="stylesheet" href="./CSS/footer.css" />
+    <link rel="shortcut icon" href="./images/logo.jpeg" type="image/x-icon" />
+    <title>Snips&Spikes-Home</title>
   </head>
   <body>
+
     <!----------- NAVBAR ---------------->
     <nav class="nav">
       <div class="container">
@@ -30,7 +34,19 @@
       </div>
     </nav>
 
-    <div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                 NAVBAR                                  -->
+    <!-- ----------------------------------------------------------------------- -->
+    <header id="NAVBAR"></header>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                 NAVBAR                                  -->
+    <!-- ----------------------------------------------------------------------- -->
+
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-1                                -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div style="margin-bottom: -7px; padding: 0; scroll-snap-align: start">
       <video
         width="100%"
         height="auto"
@@ -40,11 +56,97 @@
         src="https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video.mp4"
       ></video>
     </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-1                                -->
+    <!-- ----------------------------------------------------------------------- -->
 
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-2                                -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div class="css-slider-wrapper">
+      <input
+        type="radio"
+        name="slider"
+        class="slide-radio1"
+        checked
+        id="slider_1"
+      />
+      <input type="radio" name="slider" class="slide-radio2" id="slider_2" />
+
+      <!-- Slider Pagination -->
+      <div class="slider-pagination">
+        <label for="slider_1" class="page1"></label>
+        <label for="slider_2" class="page2"></label>
+      </div>
+
+      <!-- Slider #1 -->
+      <div class="slider slide-1">
+        <img
+          src="https://www.mygreentrends.in/wp-content/uploads/2020/09/in1.jpg"
+          alt=""
+        />
+        <div class="slider-content">
+          <h2>Join the growth story: Own a Saoln</h2>
+          <h4>
+            Professional salon experience delivered by certified skin & hair
+            experts with world-class products.
+          </h4>
+          <button type="button" class="buy-now-btn" name="button">
+            Know More
+          </button>
+        </div>
+        <div class="number-pagination">
+          <span>1</span>
+        </div>
+      </div>
+
+      <!-- Slider #2 -->
+      <div class="slider slide-2">
+        <img
+          src="https://www.mygreentrends.in/wp-content/uploads/2020/09/in2.jpg"
+          alt=""
+        />
+        <div class="slider-content">
+          <h2>Award-winning Salon chain</h2>
+          <h4>
+            Tap into the salon industry's growth with our
+            <i>'SIX STEPS TO SUCCESS'</i>
+            that ensures swift and sustainable success
+          </h4>
+          <button type="button" class="buy-now-btn" name="button">
+            Join Now
+          </button>
+        </div>
+        <div class="number-pagination">
+          <span>2</span>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-2                                -->
+    <!-- ----------------------------------------------------------------------- -->
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-3                                -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div id="section3">
+      <img width="100%" src="./images/Section_3.png" alt="" />
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                Section-3                                -->
+    <!-- ----------------------------------------------------------------------- -->
+    
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                 footer                                  -->
+    <!-- ----------------------------------------------------------------------- -->
+    <footer id="footer-main"></footer>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                                 footer                                  -->
+    <!-- ----------------------------------------------------------------------- -->
     <!-- Jquery needed -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <script src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
 

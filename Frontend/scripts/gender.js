@@ -4,16 +4,14 @@
 import { Navbar } from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 
-
 window.onload = () => {
-  document.getElementById("nav-logo").src = "./images/logo.png"
-  document.getElementById("logo-href").href = "index.html"
-  document.getElementById("bookhref").href = "./html/gender.html"
-  document.getElementById("viewhref").href = "../index.html"
-  document.getElementById("contacthref").href = "../index.html"
-  document.getElementById("loginhref").href = "../index.html"
+  document.getElementById("nav-logo").src = "../images/logo.png";
+  document.getElementById("logo-href").href = "../index.html";
+  document.getElementById("bookhref").href = "gender.html";
+  document.getElementById("viewhref").href = "../index.html";
+  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("loginhref").href = "../index.html";
 };
-
 
 let nav = document.getElementById("NAVBAR");
 nav.innerHTML = Navbar();
@@ -60,50 +58,9 @@ navTrigger.addEventListener("click", function () {
 });
 
 /* --------------------------------- Footer --------------------------------- */
-
 let footer = document.getElementById("footer-main");
 footer.innerHTML = Footer();
 
 /* -------------------------------------------------------------------------- */
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
-
-
-/* -------------------------------------------------------------------------- */
-/*                             section-two slider                             */
-/* -------------------------------------------------------------------------- */
-const TIMEOUT = 4000;
-
-let $radios, $activeRadio, currentIndex, radiosLength;
-
-const handleNext = () => {
-  // debugger;
-  $radios = $('input[class*="slide-radio"]');
-  $activeRadio = $('input[class*="slide-radio"]:checked');
-
-  currentIndex = $activeRadio.index();
-  radiosLength = $radios.length;
-
-  $radios.prop("checked", false);
-
-  if (currentIndex >= radiosLength - 1) {
-    $radios.first().click();
-  } else {
-    $activeRadio.next('input[class*="slide-radio"]').click();
-  }
-};
-
-let interval = setInterval(handleNext, TIMEOUT);
-
-const myStopFunction = () => {
-  clearInterval(interval);
-};
-
-$(".slider").hover(() => {
-  // debugger;
-  myStopFunction();
-});
-
-$(".slider").mouseleave(() => {
-  interval = setInterval(handleNext, TIMEOUT);
-});

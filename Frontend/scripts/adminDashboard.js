@@ -76,15 +76,3 @@ jQuery(document).ready(function($){
 //         }
 //     })
 // });
-
-
-document.getElementById('dashboard').addEventListener('click', function(e) {
-   document.getElementById('allData').innerHTML=`
-    aman
-   `
-})
-
-
-document.getElementById('add').addEventListener('click', function(e) {
-  document.getElementById('allData').innerHTML=''
-})
