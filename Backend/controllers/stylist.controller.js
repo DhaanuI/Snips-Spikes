@@ -1,11 +1,12 @@
-// --------------->>>>>>>> Male Service Model Location <<<<<<<<-------------------
-const { MaleModel } = require("../model/MaleServiceModel");
+
+// --------------->>>>>>>> Stylist Model Location <<<<<<<<-------------------
+const { StylistModel } = require("../model/stylist.model");
 
 
 // --------->>>> GET <<<<<---------
-const MaleGetData = async (req, res) => {
+const StylistGetData = async (req, res) => {
     try {
-        const data = await MaleModel.find()
+        const data = await StylistModel.find()
         res.status(202).send(data);
 
     } catch (error) {
@@ -16,10 +17,10 @@ const MaleGetData = async (req, res) => {
 }
 
 // --------->>>> POST <<<<<---------
-const MalePostData = async (req, res) => {
+const StylistPostData = async (req, res) => {
     const payload = req.body;
     try {
-        const data = new MaleModel(payload);
+        const data = new StylistModel(payload);
         await data.save();
         //console.log(data);
 
@@ -35,11 +36,11 @@ const MalePostData = async (req, res) => {
 }
 
 // --------->>>> PATCH <<<<<---------
-const MalePatchData = async (req, res) => {
+const StylistPatchData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body
     try {
-        await MaleModel.findByIdAndUpdate({ _id: ID }, payload)
+        await StylistModel.findByIdAndUpdate({ _id: ID }, payload)
         res.status(202).send({
             Message: "Data successfully modified",
         });
@@ -52,10 +53,10 @@ const MalePatchData = async (req, res) => {
 }
 
 // --------->>>> DELETE <<<<<---------
-const MaleDeleteData = async (req, res) => {
+const StylistDeleteData = async (req, res) => {
     const ID = req.params.id;
     try {
-        await MaleModel.findByIdAndDelete({ _id: ID })
+        await StylistModel.findByIdAndDelete({ _id: ID })
         res.status(202).send({
             Message: "Data successfully deleted",
         });
@@ -67,4 +68,4 @@ const MaleDeleteData = async (req, res) => {
     }
 }
 
-module.exports = {  MaleGetData, MalePostData, MalePatchData, MaleDeleteData }
+module.exports = {  StylistGetData, StylistPostData, StylistPatchData, StylistDeleteData }

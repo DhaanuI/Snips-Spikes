@@ -7,8 +7,6 @@
 
 body {
     background-image: url('../images/styler_background.jpg');
-    background-position: fixed;
-    background-color: #18181b;
     background-size: cover;
     color: #18181b;
 }
@@ -41,7 +39,7 @@ padding-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.644);
 }
 
-#styler_header{
+.styler_header{
     width:100%;
     text-align: center;padding: 20px 0px;
     font-size: 28px;
@@ -59,7 +57,7 @@ padding-bottom: 20px;
 
 .styler_card{
     background-color: aliceblue;
-    padding: 15px;
+    padding:15px;
 }
 .styler_name{
     padding: 5px 0px;
@@ -68,9 +66,48 @@ padding-bottom: 20px;
     height:76%;
 }
 .styler_card button{
-    width: 100px;
+    width: 200px;
     height: 30px;
     border: none;
     background-color: black;
     color: white;
+}
+
+#time_picker{
+    text-align: center;
+    width:92%;
+    background-image: url('../images/time_background.jpg');
+    background-size:cover; 
+    margin: auto;
+    padding-top:25px;
+    padding-bottom: 10px;
+}
+
+#time_picker input{
+    width:30%;
+    height: 30px;
+    margin-bottom: 15px;
+}
+#time_picker i{
+    font-size: 20px;
+}
+#time_btn{
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+
+@media screen and (min-width: 650px) and (max-width:900px) {
+    #styler_grid{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width:649px) {
+    #styler_grid{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: auto;
+    }
 }
