@@ -1,6 +1,4 @@
-<div style="border-radius: 50%; overflow: hidden; width: 50%; height: 100%;">
-  <img src="https://user-images.githubusercontent.com/106810850/229245859-a25d1ba5-34ac-4aff-8897-01edf9c7d41f.jpg" alt="Image" style="border-radius: 50%; width: 100%;">
-</div>
+<img src="https://user-images.githubusercontent.com/106810850/229245859-a25d1ba5-34ac-4aff-8897-01edf9c7d41f.jpg" alt="Image" style="width: 20%; border-radius:50%;">
 
 ## Project Code :  
    > military-waste-5460
