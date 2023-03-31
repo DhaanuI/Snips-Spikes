@@ -120,7 +120,17 @@
         DELETE - /services/female/delete/:id
 
 
+<br>
 
+## `Stylist`
+<br>   
+
+- Stylers 
+                
+        GET -    /stylist/styler 
+        POST -   /stylist/styler/addStylistService
+        PATCH -  /stylist/styler/update/:id
+        DELETE - /stylist/styler/delete/:id
 
 # Additional 
 - we can give home services
