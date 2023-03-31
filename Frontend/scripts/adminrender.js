@@ -1,11 +1,3 @@
-//testing
-// Swal.fire({
-//     title: 'Error!',
-//     text: 'Do you want to continue',
-//     icon: 'error',
-//     confirmButtonText: 'Cool'
-// })
-
 
 document.getElementById('renderMaleservice').style.display = 'none';
 document.getElementById('renderFemaleservice').style.display = 'none';
@@ -28,6 +20,20 @@ async function callMale() {
     document.getElementById('renderMaleservice').style.display = 'block';
     document.getElementById('renderFemaleservice').style.display = 'none';
     document.getElementById('renderStylists').style.display = 'none';
+
+    document.getElementById('threedivs').style.display = 'flex';
+    document.getElementById("threedivs").style.flexDirection = "column";
+    document.getElementById("male").style.width = "auto";
+    document.getElementById("female").style.width = "auto";
+    document.getElementById("stylists").style.width = "auto";
+    document.getElementById("threedivs").style.width = "35%";
+    document.getElementById("threedivs").style.marginLeft = "10px";
+
+
+    maleServices.classList.toggle("active");
+
+    femaleServices.classList.remove("active");
+    stylists.classList.remove("active");
     //  renderMale(data);
 }
 
@@ -37,6 +43,21 @@ async function callFemale() {
     document.getElementById('renderMaleservice').style.display = 'none';
     document.getElementById('renderFemaleservice').style.display = 'block';
     document.getElementById('renderStylists').style.display = 'none';
+    document.getElementById('threedivs').style.display = 'flex';
+    document.getElementById("threedivs").style.flexDirection = "column";
+
+    document.getElementById("threedivs").style.width = "35%";
+
+    document.getElementById("male").style.width = "auto";
+    document.getElementById("female").style.width = "auto";
+    document.getElementById("stylists").style.width = "auto";
+    document.getElementById("threedivs").style.marginLeft = "10px";
+
+    maleServices.classList.remove("active");
+
+    femaleServices.classList.toggle("active");
+
+    stylists.classList.remove("active");
     //  renderFemale(data);
 }
 
@@ -46,6 +67,18 @@ async function callStylists() {
     document.getElementById('renderMaleservice').style.display = 'none';
     document.getElementById('renderFemaleservice').style.display = 'none';
     document.getElementById('renderStylists').style.display = 'block';
+    document.getElementById('threedivs').style.display = 'flex';
+    document.getElementById("threedivs").style.flexDirection = "column";
+    document.getElementById("male").style.width = "auto";
+    document.getElementById("female").style.width = "auto";
+    document.getElementById("stylists").style.width = "auto";
+    document.getElementById("threedivs").style.width = "35%";
+    document.getElementById("threedivs").style.marginLeft = "10px";
+
+    maleServices.classList.remove("active");
+    femaleServices.classList.remove("active");
+
+    stylists.classList.toggle("active");
     // renderStylists(data);
 }
 
@@ -218,35 +251,46 @@ editButtons.forEach(button => {
                 confirmButtonText: 'Yes, Edit it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        'Modified!',
-                        'Service has been modified.',
-                        'success'
-                    )
+                    // send the PATCH request
+                    fetch('/api/{id}', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log(data); // log the response from the server
+                            Swal.fire(
+                                'Modified!',
+                                'Service has been modified.',
+                                'success'
+                            );
+
+                            card.querySelector('h1').textContent = formData.title
+                            card.querySelector('h3').textContent = formData.content
+                            card.querySelector('h5').textContent = formData.price;
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the PATCH request:', error);
+                            Swal.fire(
+                                'Error!',
+                                'There was a problem with the PATCH request.',
+                                'error'
+                            );
+                        });
                 }
-            })
-            card.querySelector('h1').textContent = formData.title
+            });
 
-            card.querySelector('h3').textContent = formData.content
-            card.querySelector('h5').textContent = formData.price;
-
-            //         const cardId = // Get ID of card being edited
-
-            //   const response = await fetch(`/cards/${cardId}`, {
-            //             method: 'PATCH',
-            //             headers: {
-            //                 'Content-Type': 'application/json'
-            //             },
-            //             body: JSON.stringify(formData)
-            //         });
-
-            //         const updatedCard = await response.json();
-
-            //         // Update card on page with new content
 
             modal.remove();
         });
-
         closeButton.addEventListener('click', () => {
             modal.remove();
         });

@@ -21,8 +21,8 @@ SubmitButton.addEventListener("click", () => {
   UserNames.value == "" || Passwords.value == "" ? 
     (
       Swal.fire({
-        icon: 'Empty Fields',
-        title: 'Oops...',
+        icon: 'error',
+        title: 'Oops..',
         text: 'Fill Credentials',
         width:"25%",
       })
@@ -44,12 +44,12 @@ const AdminDataPost = async (Credentials) =>{
     })
 
     const data = await res.json();
-    
+
     if(res.status==202){ 
         (UserNames.value = ""), 
         (Passwords.value = ""),
 
-        Swal.fire({
+         Swal.fire({
           title: 'Please Confirm ',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -59,12 +59,19 @@ const AdminDataPost = async (Credentials) =>{
           width:"24%"
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire(
-              'Logged in ! Successfully',
-              window.location.href = `${data.Location}`
-            )
+            Swal.fire({
+                icon: 'success',
+                title:'Welcome Admin',
+                width:"25%",
+                confirmButton:true,
+            }).then((value)=>{
+              if(value.isConfirmed) {
+                 window.location.href = `${data.Location}`
+              }
+           })            
           }
         })
+            
       }else{
 
         Swal.fire({
@@ -85,6 +92,8 @@ const AdminDataPost = async (Credentials) =>{
         text: 'Bad Request 404',
         width:"25%",
       })
+      UserNames.value = "" ;
+      Passwords.value = "" ;
   }
 }
 

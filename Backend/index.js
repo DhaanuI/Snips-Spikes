@@ -13,12 +13,19 @@ const { githublogin } = require("./routes/github.oauth.route");
 const passport = require("passport");
 const { googlelogin } = require("./routes/google.oauth.route");
 const { AdminRouter } = require("./routes/admin.router");
+const { MaleRouter } = require("./routes/maleService.route");
+const { FemaleRouter } = require("./routes/femaleService.route");
+const { StylistRouter } = require("./routes/stylist.router");
 const app = express();
 const server = http.createServer(app);
 
 
 
+
 // --------------->>>>>>>> Default End Point <<<<<<<<-------------------
+
+
+
 
 
 app.get("/", (req, res) => res.send("Snips & Spikes API"));
@@ -43,7 +50,10 @@ app.use("/", googlelogin);
 
 app.use("/user", userRouter);
 app.use("/admin", AdminRouter)
-app.use(authenticate);        //  will validate login status
+app.use("/services",MaleRouter); 
+app.use("/services",FemaleRouter);
+app.use("/stylist",StylistRouter)
+app.use(authenticate);                 //  will validate login status
 app.use("/newtoken", GntRouter);
 app.use("/logout", LogoutRouter);
 
