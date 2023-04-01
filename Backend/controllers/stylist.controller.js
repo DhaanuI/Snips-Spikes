@@ -1,23 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-
 // --------------->>>>>>>> Stylist Model Location <<<<<<<<-------------------
 const { StylistModel } = require("../model/stylist.model");
 
-
-// --------->>>> Logs of Router <<<<<---------
-function Logs(req) {
-    const logFilePath = path.join(__dirname, '../logs/routes.log');
-    const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    logStream.write(`DateAndTime: [${new Date().toISOString()}] Method: ${req.method} URL: ${req.url} IP: ${req.ip}\n`);
-}
 
 // --------->>>> GET <<<<<---------
 const StylistGetData = async (req, res) => {
     try {
         const data = await StylistModel.find()
         res.status(202).send(data);
-        Logs(req);
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -34,7 +23,6 @@ const StylistPostData = async (req, res) => {
         res.status(202).send({
             Message: "Data saved successfully",
         });
-        Logs(req);
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -51,7 +39,6 @@ const StylistPatchData = async (req, res) => {
         res.status(202).send({
             Message: "Data successfully modified",
         });
-        Logs(req);
     }
     catch (error) {
         res.status(404).send({
@@ -68,7 +55,6 @@ const StylistDeleteData = async (req, res) => {
         res.status(202).send({
             Message: "Data successfully deleted",
         });
-        Logs(req);
     }
     catch (error) {
         res.status(404).send({
