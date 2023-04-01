@@ -108,7 +108,7 @@ $(".slider").mouseleave(() => {
   interval = setInterval(handleNext, TIMEOUT);
 });
 
-/* -------------------------- media query for video ------------------------- */
+/* --------------------- media query for video Section-1 -------------------- */
 
 let x = window.matchMedia("(max-width:760px)")
 let heroVideo = document.getElementById("herovideo")
@@ -134,3 +134,8 @@ window.addEventListener('resize', function() {
 
 // Remove the event listener when it's no longer needed
 window.removeEventListener('resize', videoChange);
+
+
+
+
+

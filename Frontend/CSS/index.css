@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
-html{
+html {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   overflow: hidden;
@@ -16,7 +16,7 @@ body {
   height: 100vh;
 }
 
-#section1 > video{
+#section1 > video {
   object-fit: cover;
   height: 100vh;
 }
@@ -34,7 +34,6 @@ body {
   top: 0;
   bottom: 0;
   scroll-snap-align: start;
-
 }
 
 /* Slider */
@@ -301,14 +300,213 @@ body {
   }
 }
 
-
-#section3{
+#section3 {
   scroll-snap-align: start;
   height: 100vh;
+  background-image: url("../images/Section_3.png");
+  background-size: cover;
+  background-position: right;
 }
-#section3>img{
+/* #section3>img{
   object-fit: cover;
   height: 100vh;
+} */
+
+/* -------------------------------- section-4 ------------------------------- */
+
+#Section4-main {
+  width: 100%;
+  height: auto;
+  margin: 0px auto;
+  font-family: poppins;
+  scroll-snap-align: start;
+  scroll-snap-type: none;
+  padding-bottom: 80px;
+  color: #fff;
+  background-image: url("https://www.mygreentrends.in/wp-content/themes/greentrends/images/bg03.jpg");
+  background-color: #000000c2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
 }
 
+#section4 {
+  margin: auto;
+  width: 80%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  padding-top: 70px;
+}
+#section4 > .title,
+#section4 > .content {
+  flex: 1;
+}
+#section4 > .title > h3 {
+  font-size: 36px;
+}
+#section4 > .content > h5 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+#section4 > .content > p {
+  font-size: 14px;
+}
+#mainS4 {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+  row-gap: 70px;
+  padding: 50px 0px;
+}
+#mainS4 > .profile {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+#mainS4 > .profile >figure {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#mainS4 > .profile >figure >img {
+  filter: grayscale(100%);
+  width: 80%;
+  transition: all 0.41s ease-in-out;
+}
+#mainS4 > .profile >figure >img:hover {
+  filter: grayscale(0);
+  scale: 1.05;
+}
+#mainS4 > .profile >figure >figcaption {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 12px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+#mainS4 > .profile >figure::after {
+  content: attr(data-value);
+  width: 100%;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 12px;
+  right: -92%;
+}
+#mainS4 > .profile:nth-child(2) {
+  margin-top: 70px;
+}
+#mainS4 > .profile:nth-child(4) {
+  margin-top: -70px;
+}
+#mainS4 > .profile:nth-child(6) {
+  margin-top: -70px;
+}
 
+@media screen and (max-width: 1440px) {
+  #Section4-main {
+    width: 100%;
+  }
+  #section4 {
+    width: 80%;
+  }
+  #mainS4 {
+    width: 80%;
+  }
+  #mainS4 {
+    column-gap: 50px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #Section4-main {
+    width: 100%;
+  }
+  #section4 {
+    width: 80%;
+  }
+  #mainS4 {
+    width: 80%;
+  }
+  #mainS4 {
+    column-gap: 35px;
+  }
+  #mainS4 > .profile >figure >img{
+    width: 90%;
+  }
+}
+@media screen and (max-width: 768px) {
+  #Section4-main {
+    width: 100%;
+  }
+  #section4 {
+    width: 80%;
+  }
+  #mainS4 {
+    width: 100%;
+  }
+  #mainS4 {
+    column-gap: 25px;
+  }
+  #mainS4 > .profile >figure >img{
+    width: 90%;
+  }
+  #Section4-main {
+    background-image: url("../images/section4_BG_Img.png");
+    /* background-size: cover; */
+    background-position: top;
+  }
+}
+@media screen and (max-width: 600px) {
+  #Section4-main {
+    width: 100%;
+  }
+  #section4 {
+    width: 80%;
+  }
+  #mainS4 {
+    width: 90%;
+  }
+  #section4 {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+  }
+  #section4 > .title {
+    align-self: flex-start;
+  }
+  #section4 > .title h3 {
+    font-size: 30px;
+  }
+   #mainS4 {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0px;
+    row-gap: 0px;
+  }
+   #mainS4 .profile:nth-child(2),
+  #mainS4 .profile:nth-child(4),
+  #mainS4 .profile:nth-child(6) {
+    margin-top: 50px;
+  }
+   #mainS4 .profile:nth-child(3),
+  #mainS4 .profile:nth-child(5) {
+    margin-top: 0px;
+  }
+  #Section4-main {
+    background-image: url("../images/section4_BG_Img.png");
+    /* background-size: cover; */
+    background-position: center;
+  }
+}
+
+#footer-main {
+  scroll-snap-align: start;
+}
