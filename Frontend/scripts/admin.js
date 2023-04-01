@@ -66,7 +66,8 @@ const AdminDataPost = async (Credentials) =>{
                 confirmButton:true,
             }).then((value)=>{
               if(value.isConfirmed) {
-                 window.location.href = `${data.Location}`
+                //  window.location.href = `${data.Location}`
+                alert(data.Message);
               }
            })            
           }
