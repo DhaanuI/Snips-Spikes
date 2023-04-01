@@ -11,7 +11,7 @@ const { sendEmail } = require("../nodemailer/sendingEmails");
 function Logs(req) {
     const logFilePath = path.join(__dirname, '../logs/routes.log');
     const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    logStream.write(`[${new Date().toISOString()}] ${req.method} ${req.url} ${req.ip}\n`);
+    logStream.write(`DateAndTime: [${new Date().toISOString()}] Method: ${req.method} URL: ${req.url} IP: ${req.ip}\n`);
 }
 
 

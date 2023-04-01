@@ -1,6 +1,13 @@
 const path = require("path");
 require("dotenv").config();
 
+// --------->>>> Logs of Router <<<<<---------
+function Logs(req) {
+  const logFilePath = path.join(__dirname, '../logs/adminroutes.log');
+  const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
+  logStream.write(`DateAndTime: [${new Date().toISOString()}] Method: ${req.method} URL: ${req.url} IP: ${req.ip}\n`);
+}
+
 const AdminData = async (req, res) => {
   try {
     const { UserName, Password } = req.body;
@@ -10,6 +17,7 @@ const AdminData = async (req, res) => {
         Message: "Welcome Admin",
         Location: "../html/adminDashboard.html"
       });
+      Logs(req);
     } else {
       res.status(404).send({
         Message: "You are not Authorized",
