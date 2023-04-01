@@ -1,4 +1,3 @@
-
 // --------------->>>>>>>> Stylist Model Location <<<<<<<<-------------------
 const { StylistModel } = require("../model/stylist.model");
 
@@ -8,7 +7,6 @@ const StylistGetData = async (req, res) => {
     try {
         const data = await StylistModel.find()
         res.status(202).send(data);
-
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -22,12 +20,9 @@ const StylistPostData = async (req, res) => {
     try {
         const data = new StylistModel(payload);
         await data.save();
-        //console.log(data);
-
         res.status(202).send({
             Message: "Data saved successfully",
         });
-
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",

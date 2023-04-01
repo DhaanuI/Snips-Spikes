@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../nodemailer/sendingEmails");
 
+
 exports.signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -57,7 +58,7 @@ exports.login = async (req, res) => {
                 // send token in cookies
                 res.cookie("Normal_Token", Normal_Token, { httpOnly: true })
                 res.cookie("Refresh_Token", Refresh_Token, { httpOnly: true })
-                res.status(200).json({ "message": "Login successfully", Normal_Token, Refresh_Token,name:UserData["name"],email,userid:UserData["_id"],otp: otp})
+                res.status(200).json({ "message": "Login successfully", Normal_Token, Refresh_Token,name:UserData["name"],email,userid:UserData["_id"],otp: otp});
             }
             else {
                 res.status(401).json({ "message": "error while login" });
@@ -76,7 +77,7 @@ exports.getalluser = async (req, res) => {
         if (req.body.access_key === process.env.access_key ) {
 
             const UserData = await UserModel.find();
-            res.status(200).json({ UserData })
+            res.status(200).json({ UserData });
         }
         else {
             res.status(401).json({ message: "Access denied" });
@@ -93,7 +94,7 @@ exports.getUser = async (req, res) => {
         try {
             if (req.body.access_key === process.env.access_key ) {
                 const UserData = await UserModel.findOne({_id});
-                res.status(200).json({ UserData })
+                res.status(200).json({ UserData });
             }
             else {
                 res.status(401).json({ message: "Access denied" });
