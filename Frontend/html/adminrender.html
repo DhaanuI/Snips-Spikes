@@ -8,21 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Snips & Spikes - Admin - Panel</title>
     <link rel="stylesheet" href="../css/adminrender.css">
-
-
+    
+<!-- 
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.min.js"></script>
-    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.all.min.js"></script> -->
 
-    <link rel="stylesheet" href="sweetalert2.min.css">
+
 
 
 </head>
 
 <body>
-
-
-
     <div id="navbar">
         <div>
             <h1>Snips & Spikes</h1>
@@ -36,93 +34,112 @@
     </div>
 
 
+    <div id="postform">
+
+        <div id="addmale">
+            <h1>Add Services - Male</h1>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image"><br>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price"><br>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea><br>
+
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category"><br>
+
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender"><br>
+
+                <input type="submit" value="Submit">
+            </form>
+
+
+        </div>
+
+        <div id="addfemale">
+            <h1>Add Services - Female</h1>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image"><br>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price"><br>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea><br>
+
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category"><br>
+
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender"><br>
+
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+
+        <div id="addstylists">
+            <h1>Add Stylists</h1>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+
+                <label for="salary">Salary:</label>
+                <input type="number" id="salary" name="salary"><br>
+
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image"><br>
+
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+
+    </div>
 
 
 
     <div id="main">
         <div id="threedivs">
             <div id="male">
-                <h1> Get all Services - Male </h1>
+                <h1 id="maleget"> Get all Services - Male </h1>
             </div>
             <div id="female">
-                <h1> Get all Services - Female </h1>
+                <h1 id="femaleget"> Get all Services - Female </h1>
             </div>
             <div id="stylists">
-                <h1>Get all Stylists</h1>
+                <h1 id="stylistsget">Get all Stylists</h1>
             </div>
-
         </div>
+
         <div id="render">
+            <h1 id="men" style="display:none"> Services for Men</h1>
             <div id="renderMaleservice">
-                <h1> Services for Men</h1>
-                <div class="card">
-                    <h1>Male Service 1</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur odio dicta delectus
-                        dignissimos reiciendis harum saepe cumque aut odit. </h3>
-                    <h5>Rs 100</h5>
-                    <button class="edit-button">Edit</button><button class="delete-button">Delete</button>
-                </div>
-
-                <div class="card">
-                    <h1>Male Service 2</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur odio dicta delectus
-                        dignissimos reiciendis harum saepe cumque aut odit. </h3>
-                    <h5>Rs 100</h5> <button class="edit-button">Edit</button><button
-                        class="delete-button">Delete</button>
-                </div>
-
-                <div class="card">
-                    <h1>Male Service 3</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur odio dicta delectus
-                        dignissimos reiciendis harum saepe cumque aut odit. </h3>
-                    <h5>Rs 100</h5>
-                    <button class="edit-button">Edit</button><button class="delete-button">Delete</button>
-                </div>
-
-
+            
             </div>
-
+            <h1 id="women" style="display:none"> Services for Women</h1>
             <div id="renderFemaleservice">
-                <h1> Services for Women</h1>
-                <div class="card">
-                    <h1>Service 1</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur odio dicta delectus
-                        dignissimos reiciendis harum saepe cumque aut odit. </h3>
-                    <h5>Rs 100</h5> <button class="edit-button">Edit</button><button
-                        class="delete-button">Delete</button>
-                </div>
-                <div class="card">
-                    <h1>Service 1</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur odio dicta delectus
-                        dignissimos reiciendis harum saepe cumque aut odit. </h3>
-                    <h5>Rs 100</h5> <button class="edit-button">Edit</button><button
-                        class="delete-button">Delete</button>
-                </div>
-
+                
             </div>
 
             <div id="renderStylists">
-                <div>
-                    <h1>Stylist1</h1>
-                    <h3>123</h3>
 
-                </div>
-                <div>
-                    <h1>Stylist1</h1>
-                    <h4>123</h4>
-                </div>
-                <div>
-                    <h1>Stylist1</h1>
-                    <h4>123</h4>
-                </div>
-                <div>
-                    <h1>Stylist1</h1>
-                    <h4>123</h4>
-                </div>
             </div>
         </div>
-
-
     </div>
 
 

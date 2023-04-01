@@ -2,12 +2,10 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
-   
 }
 
 #navbar {
     display: flex;
-    position: fixed;
     width: 100%;
     justify-content: space-between;
 
@@ -17,74 +15,88 @@ body {
 
 #navbar h1 {
     margin-left: 10px;
-    margin-right: 10px
+    margin-right: 10px;
 }
 
-#main {
 
+#postform {
+    margin-top: -40px;
+    padding: 40px;
     display: flex;
     justify-content: space-between;
-    margin: auto;
-
 }
 
+/* #main {
+    display: flex
+} */
 #render {
-    width: 60%;
+    width: 100%;
     overflow-y: scroll;
     flex: 1;
-    margin-left: 500px;
-
-    margin-top: 100px;
-
+    margin-top: 50px;
+    padding:10px
 }
-
 #threedivs {
-    display: flex;
-    justify-content: space-around;
+    display:flex;
+    justify-content: space-between;
     margin-top: 120px;
-    /* width: 35%; */
-    position: fixed;
-
-    /* border:1px solid black; */
-    width: 100%
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
+
+/* CSS for rendering box */
 #renderMaleservice {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
 }
 
 #renderFemaleservice {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
 }
+
 
 #renderStylists {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
 }
+
+img {
+    width: 200px;
+    height: 200px
+}
+
 
 
 #male {
     border: 1px solid rgb(47, 128, 194);
     margin-bottom: 50px;
-    width: 30%;
+    width:80%;
     text-align: center;
+    margin-right:15px
 }
 
 #female {
     border: 1px solid rgb(47, 128, 194);
     margin-bottom: 50px;
-    width: 30%;
+    width:80%;
+    text-align: center;margin-right:15px
 }
 
 #stylists {
     border: 1px solid rgb(47, 128, 194);
     margin-bottom: 50px;
-    width: 30%;
-    text-align: center;
+    width:80%;
+    text-align: center;margin-right:15px
 }
 
+
+/* CSS at the each get box */
 #male,
 #female,
 #stylists {
@@ -147,33 +159,92 @@ body {
     height: 100%;
 }
 
+
+
 .active {
     background: rgb(237, 241, 247);
 }
 
-.edit-button {
-    background-color: rgb(65, 131, 65);
-    width: 60px;
-    height: 30px;
-    margin-right: 15px;
-    color: white
+.edit-button,
+.delete-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #3e8e41;
 }
 
 .delete-button {
-    background-color: rgb(212, 51, 51);
-    width: 60px;
-    color: white;
-    height: 30px;
+  background-color: #f44336;
+}
+
+.delete-button:hover {
+  background-color: #da190b;
 }
 
 
-@media screen and (max-width: 768px) {
-    #threedivs {
-      align-items: center;
-    }
-
-    #male,#female,#stylists{
-        width:30%;
-        padding:0
-    }
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
+  .modal form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .modal input,
+  .modal textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+  }
+  
+  .modal button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .modal button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .modal button:last-child {
+    background-color: #f44336;
+  }
+  
+  .modal button:last-child:hover {
+    background-color: #da190b;
+  }
+  
