@@ -9,7 +9,7 @@ const { FemaleModel } = require("../model/FemaleServicemodel");
 function Logs(req) {
     const logFilePath = path.join(__dirname, '../logs/routes.log');
     const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    logStream.write(`[${new Date().toISOString()}] ${req.method} ${req.url} ${req.ip}\n`);
+    logStream.write(`DateAndTime: [${new Date().toISOString()}] METHOD: ${req.method} URL: ${req.url} IP: ${req.ip}\n`);
 }
 
 // --------->>>> GET <<<<<---------
