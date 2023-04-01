@@ -16,6 +16,11 @@ body {
   height: 100vh;
 }
 
+#section1 > video{
+  object-fit: cover;
+  height: 100vh;
+}
+
 /* **********************Section2----slider ************************/
 
 .css-slider-wrapper {
@@ -302,6 +307,7 @@ body {
   height: 100vh;
 }
 #section3>img{
+  object-fit: cover;
   height: 100vh;
 }
 

@@ -107,3 +107,30 @@ $(".slider").hover(() => {
 $(".slider").mouseleave(() => {
   interval = setInterval(handleNext, TIMEOUT);
 });
+
+/* -------------------------- media query for video ------------------------- */
+
+let x = window.matchMedia("(max-width:760px)")
+let heroVideo = document.getElementById("herovideo")
+let largeVideo = "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video.mp4"
+let smallVideo = "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video-Mobile.mp4"
+
+function videoChange(){
+  if(x.matches){
+    heroVideo.src = smallVideo
+  }
+  else{
+    heroVideo.src = largeVideo
+  }
+}
+videoChange()
+// window.addEventListener('resize', videoChange);
+
+let timeout;
+window.addEventListener('resize', function() {
+  clearTimeout(timeout);
+  timeout = setTimeout(videoChange, 250);
+});
+
+// Remove the event listener when it's no longer needed
+window.removeEventListener('resize', videoChange);
