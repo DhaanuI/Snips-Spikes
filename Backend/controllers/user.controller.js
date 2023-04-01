@@ -2,17 +2,7 @@ require("dotenv").config();
 const { UserModel } = require("../model/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require('fs');
-const path = require('path');
 const { sendEmail } = require("../nodemailer/sendingEmails");
-
-
-// --------->>>> Logs of Router <<<<<---------
-function Logs(req) {
-    const logFilePath = path.join(__dirname, '../logs/routes.log');
-    const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    logStream.write(`DateAndTime: [${new Date().toISOString()}] Method: ${req.method} URL: ${req.url} IP: ${req.ip}\n`);
-}
 
 
 exports.signup = async (req, res) => {
@@ -32,7 +22,6 @@ exports.signup = async (req, res) => {
                     });
                     await newUser.save();
                     res.status(200).json({ success: "user registered successfully" });
-                    Logs(req);
                 }
             });
         } else {
@@ -70,7 +59,6 @@ exports.login = async (req, res) => {
                 res.cookie("Normal_Token", Normal_Token, { httpOnly: true })
                 res.cookie("Refresh_Token", Refresh_Token, { httpOnly: true })
                 res.status(200).json({ "message": "Login successfully", Normal_Token, Refresh_Token,name:UserData["name"],email,userid:UserData["_id"],otp: otp});
-                Logs(req);
             }
             else {
                 res.status(401).json({ "message": "error while login" });
@@ -90,7 +78,6 @@ exports.getalluser = async (req, res) => {
 
             const UserData = await UserModel.find();
             res.status(200).json({ UserData });
-            Logs(req);
         }
         else {
             res.status(401).json({ message: "Access denied" });
@@ -108,7 +95,6 @@ exports.getUser = async (req, res) => {
             if (req.body.access_key === process.env.access_key ) {
                 const UserData = await UserModel.findOne({_id});
                 res.status(200).json({ UserData });
-                Logs(req);
             }
             else {
                 res.status(401).json({ message: "Access denied" });

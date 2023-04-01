@@ -3,8 +3,10 @@ const redis = require("redis");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
+
 const { userRouter } = require("./routes/user.route");
 const { authenticate } = require("./middlewares/authenticate.middleware");
+const { LogsData } = require("./middlewares/log.middleware");
 const { LogoutRouter } = require("./routes/logout.route");
 const { dbconnetion } = require("./configs/db");
 const { GntRouter } = require("./routes/generateNewToken.route");
@@ -42,7 +44,7 @@ app.use("/", googlelogin);
 
 
 // --------------->>>>>>>> Routers <<<<<<<<-------------------
-
+app.use(LogsData);
 app.use("/user", userRouter);
 app.use("/admin", AdminRouter)
 app.use("/services",MaleRouter); 
