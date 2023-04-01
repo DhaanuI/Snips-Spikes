@@ -1,5 +1,16 @@
+const fs = require('fs');
+const path = require('path');
+
 // --------------->>>>>>>> Male Service Model Location <<<<<<<<-------------------
 const { MaleModel } = require("../model/MaleServiceModel");
+
+
+// --------->>>> Logs of Router <<<<<---------
+function Logs(req) {
+    const logFilePath = path.join(__dirname, '../logs/routes.log');
+    const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
+    logStream.write(`[${new Date().toISOString()}] ${req.method} ${req.url} ${req.ip}\n`);
+}
 
 
 // --------->>>> GET <<<<<---------
@@ -7,7 +18,7 @@ const MaleGetData = async (req, res) => {
     try {
         const data = await MaleModel.find()
         res.status(202).send(data);
-
+        Logs(req);
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -21,11 +32,10 @@ const MalePostData = async (req, res) => {
     try {
         const data = new MaleModel(payload);
         await data.save();
-        //console.log(data);
-
         res.status(202).send({
             Message: "Data saved successfully",
         });
+        Logs(req);
 
     } catch (error) {
         res.status(404).send({
@@ -43,6 +53,7 @@ const MalePatchData = async (req, res) => {
         res.status(202).send({
             Message: "Data successfully modified",
         });
+        Logs(req);
     }
     catch (error) {
         res.status(404).send({
@@ -59,6 +70,7 @@ const MaleDeleteData = async (req, res) => {
         res.status(202).send({
             Message: "Data successfully deleted",
         });
+        Logs(req);
     }
     catch (error) {
         res.status(404).send({
