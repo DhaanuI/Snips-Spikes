@@ -1,13 +1,22 @@
-const fs = require('fs');
-const path = require('path');
+// --------->>>> Logs Model Location <<<<<---------
+const { LogModel } = require('../model/logModel');
 
-// --------->>>> Logs of Router <<<<<---------
 
-const LogsData = (req,res,next) => {
-    const logFilePath = path.join(__dirname, '../logs/routes.log');
-    const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    logStream.write(`DateAndTime: [${new Date().toISOString()}] Method: ${req.method}  URL: ${req.url} IP: ${req.ip}\n`);
-    next();
+const LogsData = async (req,res,next) => {
+    try {
+        const data = new LogModel({
+            DateAndTime :`${new Date().toISOString()}`,
+            Method :`${req.method}`,
+            URL :`${req.url}`,
+            IP : `${req.ip}`
+        })
+        await data.save();
+        next();
+    } catch (error) {
+        res.status(404).send({
+            "Message": "Error in Middleware Logs"
+        })
+    }
 }
 
 module.exports = { LogsData }
