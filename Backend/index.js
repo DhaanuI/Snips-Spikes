@@ -34,7 +34,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// secret key for express sessions
+// --------------->>>>>>>> Secret key for Express sessions <<<<<<<<-------------------
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 
