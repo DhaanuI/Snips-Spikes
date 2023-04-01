@@ -140,3 +140,10 @@ body {
     font-size: 0.8rem;
   }
 }
+
+#insta{
+  fill: white;
+  color: white;
+  width: 25px;
+  /* padding: 10px; */
+}

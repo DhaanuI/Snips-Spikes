@@ -64,3 +64,7 @@ footer.innerHTML = Footer();
 /* -------------------------------------------------------------------------- */
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
+
+// let insta = document.getElementById("insta");
+
+// console.log(insta.src)
