@@ -47,6 +47,19 @@ const FemalePatchData = async (req, res) => {
         });
     }
 }
+const getFemaleSingleData = async (req, res) => {
+    const ID = req.params.id;
+    const payload = req.body
+    try {
+        const data = await FemaleModel.findByIdAndUpdate({ _id: ID }, payload)
+        res.status(202).send({data});
+    }
+    catch (error) {
+        res.status(404).send({
+            Message: "Bad request 404",
+        });
+    }
+}
 
 // --------->>>> DELETE <<<<<---------
 const FemaleDeleteData = async (req, res) => {
@@ -64,4 +77,4 @@ const FemaleDeleteData = async (req, res) => {
     }
 }
 
-module.exports = { FemaleGetData , FemalePostData , FemalePatchData, FemaleDeleteData }
+module.exports = { FemaleGetData ,getFemaleSingleData, FemalePostData , FemalePatchData, FemaleDeleteData }
