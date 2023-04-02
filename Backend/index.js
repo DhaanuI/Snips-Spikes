@@ -18,6 +18,7 @@ const { AdminRouter } = require("./routes/admin.router");
 const { MaleRouter } = require("./routes/maleService.route");
 const { FemaleRouter } = require("./routes/femaleService.route");
 const { StylistRouter } = require("./routes/stylist.router");
+const {appointmentRouter} = require("./routes/appointment.router");
 const app = express();
 const server = http.createServer(app);
 
@@ -54,6 +55,7 @@ app.use("/services", MaleRouter);
 app.use("/services", FemaleRouter);
 app.use("/stylist", StylistRouter)
 
+app.use("/appointments",appointmentRouter);
 app.use(authenticate);                 //  will validate login status
 app.use("/newtoken", GntRouter);
 app.use("/logout", LogoutRouter);
