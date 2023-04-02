@@ -137,6 +137,19 @@
         PATCH  -   /stylist/styler/update/:id
         DELETE -   /stylist/styler/delete/:id
 
+
+<br>
+
+## `Appointment`
+<br>   
+
+- Appointment 
+                
+        GET    -   /appointments/appointment
+        POST   -   /appointments/appointment/add
+        PATCH  -   /appointments/appointment/update/:id
+        DELETE -   /appointments/appointment/delete/:id
+
 # Additional 
 - we can give home services
 
