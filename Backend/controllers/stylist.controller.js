@@ -34,6 +34,7 @@ const StylistPostData = async (req, res) => {
 const StylistPatchData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body
+    console.log(ID,payload)
     try {
         await StylistModel.findByIdAndUpdate({ _id: ID }, payload)
         res.status(202).send({

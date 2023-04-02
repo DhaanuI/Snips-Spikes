@@ -1,5 +1,5 @@
 
-
+const BaseUrl = 'http://localhost:8080';
 
 document.getElementById('renderMaleservice').style.display = 'none';
 document.getElementById('renderFemaleservice').style.display = 'none';
@@ -20,7 +20,7 @@ stylists.addEventListener("click", callStylists);
 async function callMale() {
 
     try {
-        let response = await fetch("http://localhost:4500/services/male")
+        let response = await fetch(`${BaseUrl}/services/male`)
         let data = await response.json()
 
         document.getElementById('renderMaleservice').style.display = 'grid';
@@ -48,7 +48,7 @@ async function callMale() {
 
 async function callFemale() {
     try {
-        let response = await fetch("http://localhost:4500/services/female")
+        let response = await fetch(`${BaseUrl}/services/female`)
         let data = await response.json()
         document.getElementById('renderMaleservice').style.display = 'none';
         document.getElementById('renderFemaleservice').style.display = 'grid';
@@ -73,7 +73,7 @@ async function callFemale() {
 
 async function callStylists() {
     try {
-        let response = await fetch("http://localhost:4500/stylist/styler")
+        let response = await fetch(`${BaseUrl}/stylist/styler`)
         let data = await response.json()
 
         document.getElementById('renderMaleservice').style.display = 'none';
@@ -199,7 +199,7 @@ function renderMale(data) {
                 };
 
                 try {
-                    const response = await fetch(`http://localhost:4500/services/male/update/${id}`, {
+                    const response = await fetch(`${BaseUrl}/services/male/update/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -220,6 +220,8 @@ function renderMale(data) {
                     card.querySelector('h4').textContent = formData.price;
 
                     modal.remove();
+
+                    alert("Service data has been modified successfully")
                 } catch (error) {
                     console.error('There was a problem with the PATCH request:', error);
                 }
@@ -237,7 +239,7 @@ function renderMale(data) {
         del.addEventListener('click', async () => {
 
             try {
-                const response = await fetch(`http://localhost:4500/services/male/delete/${id}`, {
+                const response = await fetch(`${BaseUrl}/services/male/delete/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {
@@ -245,6 +247,7 @@ function renderMale(data) {
                 }
                 const result = await response.json();
                 alert('Data successfully deleted!');
+                div.parentNode.removeChild(div);
                 return result;
             } catch (error) {
                 alert('Error deleting data!');
@@ -363,7 +366,7 @@ function renderFemale(data) {
                 };
 
                 try {
-                    const response = await fetch(`http://localhost:4500/services/female/update/${id}`, {
+                    const response = await fetch(`${BaseUrl}/services/female/update/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -402,7 +405,7 @@ function renderFemale(data) {
         del.addEventListener('click', async () => {
 
             try {
-                const response = await fetch(`http://localhost:4500/services/female/delete/${id}`, {
+                const response = await fetch(`${BaseUrl}/services/female/delete/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {
@@ -456,7 +459,7 @@ function renderStylists(data) {
         edit.addEventListener('click', function () {
             const card = edit.parentNode;
             const cardImage = card.querySelector('img').getAttribute('src');
-            const cardSalary = card.querySelector('h5').textContent;
+            const cardSalary = item.salary;
             const cardEmail = card.querySelector('p').textContent;
             const cardTitle = card.querySelector('h1').textContent;
 
@@ -520,13 +523,13 @@ function renderStylists(data) {
 
                 const formData = {
                     image: imageInput.value,
-                    title: titleInput.value,
+                    name: titleInput.value,
                     salary: salaryInput.value,
                     email: emailInput.value
                 };
 
                 try {
-                    const response = await fetch(`http://localhost:4500/stylist/styler/update/${id}`, {
+                    const response = await fetch(`${BaseUrl}/stylist/styler/update/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -565,7 +568,7 @@ function renderStylists(data) {
         del.addEventListener('click', async () => {
 
             try {
-                const response = await fetch(`http://localhost:4500/stylist/styler/delete/${id}`, {
+                const response = await fetch(`${BaseUrl}/stylist/styler/delete/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {
@@ -614,7 +617,7 @@ addMaleForm.addEventListener('submit', async (e) => {
 
     console.log(obj);
 
-    const response = await fetch('http://localhost:4500/services/male/addMaleService', {
+    const response = await fetch(`${BaseUrl}/services/male/addMaleService`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -650,7 +653,7 @@ addFemaleForm.addEventListener('submit', async (e) => {
     }
     console.log(obj);
 
-    const response = await fetch('http://localhost:4500/services/female/addFemaleService', {
+    const response = await fetch(`${BaseUrl}/services/female/addFemaleService`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -685,7 +688,7 @@ addStylistsForm.addEventListener('submit', async (e) => {
     }
     console.log(obj);
 
-    const response = await fetch('http://localhost:4500/stylist/styler/addStylistService', {
+    const response = await fetch(`${BaseUrl}/stylist/styler/addStylistService`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
