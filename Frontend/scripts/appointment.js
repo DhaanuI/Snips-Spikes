@@ -1,7 +1,7 @@
 let userdata=JSON.parse(localStorage.getItem("userdata"));
-window.onload=fetAllStylerFn(userdata.userid);
+window.onload=fetAllAppointmentFn(userdata.userid);
 
-async function fetAllStylerFn(userid){
+async function fetAllAppointmentFn(userid){
     try {
         let req=await fetch("http://localhost:8080/appointments/appointment",{
             method:"GET",
@@ -33,13 +33,39 @@ async function renderAppointmentFunction(data){
         <div class="service_des">
         ${item.service_des}
         </div>
-        <div class="appointment_styler">Styler Name : ${"Jishnu"}</div>
+        <div class="appointment_styler"></div>
         <div class="appointment_date">Appointment Date : ${item.date}</div>
         <div class="appointment_time">Appointment Time : ${item.time}</div>
         <button class="cancel_btn" data-id=${item._id}>cancel</button>
     </div>`;
     })
     displayContainer.innerHTML=appointmentArr.join("");
+    let all_cancel_btns=document.querySelectorAll(".cancel_btn");
+    for(let cancel_btn of all_cancel_btns){
+        cancel_btn.addEventListener("click",(event)=>{
+            let id=event.target.dataset.id;
+            deleteAppointmentFunction(id);
+        })
+    } 
 }
 
 
+async function deleteAppointmentFunction(id){
+    try {
+        let delete_req=await fetch(`http://localhost:8080/appointments/appointment/delete/${id}`,{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+        if(delete_req.ok){
+            alert("Appointment is successfully canceled");
+            fetAllAppointmentFn(userdata.userid);
+        }else{
+            alert("Unable to cancel the appointment!");
+        }
+    } catch (error) {
+        console.log(error.message);
+        alert("Unable to cancel the appointment!");
+    }
+}
