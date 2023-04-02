@@ -1,6 +1,6 @@
 // ------------------- API's ----------------------
 
-const BaseUrl = 'http://localhost:7005';
+const BaseUrl = 'http://localhost:4500';
 const Default = `${BaseUrl}/admin`
 const PostDataCheck = `${Default}/check`
 
@@ -66,8 +66,7 @@ const AdminDataPost = async (Credentials) =>{
                 confirmButton:true,
             }).then((value)=>{
               if(value.isConfirmed) {
-                //  window.location.href = `${data.Location}`
-                alert(data.Message);
+                window.location.href = "../html/adminrender.html"
               }
            })            
           }
