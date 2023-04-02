@@ -16,7 +16,7 @@ const FemaleGetData = async (req, res) => {
 
 
 // --------->>>> POST <<<<<---------
-const FemalePostData = async () => {
+const FemalePostData = async (req, res) => {
     const payload = req.body;
     try {
         const data = new FemaleModel(payload);
@@ -78,3 +78,4 @@ const FemaleDeleteData = async (req, res) => {
 }
 
 module.exports = { FemaleGetData ,getFemaleSingleData, FemalePostData , FemalePatchData, FemaleDeleteData }
+

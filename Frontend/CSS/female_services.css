@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f0f0;
+  background-image: url('data:image/svg+xml,%3Csvg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z" fill="%239C92AC" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');
+}
+
+#main-services-body {
+  width: 100%;
+  height: auto;
+  padding-top: 120px;
+  padding-bottom: 150px;
+}
+.general-container-service-page {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  width: 80%;
+  margin: auto;
+}
+.card-service-page {
+  width: 100%;
+  position: relative;
+  height: 24rem;
+  background-color: lightGrey;
+  overflow-y: hidden;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+}
+.card-service-page>.card-overlay>.title {
+  margin: 0;
+  display: block;
+  background-color: #fff;
+  padding: 0.7rem;
+  transform: translate3d(0, -100%, 0);
+  transition: transform 300ms;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+.card-overlay>.title>h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.card-overlay>.title>p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.card-service-page>a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.card-service-page a:hover ~ .card-overlay,
+.card-service-page a:focus ~ .card-overlay {
+  transform: translate3d(0, 0, 0);
+}
+.card-service-page a:hover ~ .card-overlay .title,
+.card-service-page a:focus ~ .card-overlay .title {
+  transform: translate3d(0, 0, 0);
+}
+.card-service-page a:hover ~ .card-overlay .card-body,
+.card-service-page a:focus ~ .card-overlay .card-body {
+  opacity: 1;
+}
+.service-card-images {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transition: transform 300ms;
+  background-color: #c1c1c1;
+  transform: translate3d(0, 100%, 0);
+}
+.card-body {
+  flex-grow: 1;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 500ms 100ms;
+}
+.card-body p {
+  margin: 0;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 1200px) {
+  .general-container-service-page {
+    grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
+    gap: 1.7rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .general-container-service-page {
+    grid-template-columns: 1fr repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .general-container-service-page {
+    grid-template-columns: 1fr repeat(1, minmax(0, 1fr));
+    gap: 1.3rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .general-container-service-page {
+    grid-template-columns: 1fr;
+    width: 80%;
+  }
+}

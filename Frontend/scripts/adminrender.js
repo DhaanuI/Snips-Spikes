@@ -1,7 +1,5 @@
 
 
-let url = "http://localhost:7005"
-
 
 document.getElementById('renderMaleservice').style.display = 'none';
 document.getElementById('renderFemaleservice').style.display = 'none';
@@ -18,29 +16,25 @@ let stylists = document.getElementById("stylists");
 stylists.addEventListener("click", callStylists);
 
 
+// fetching logics are here
 async function callMale() {
 
     try {
-        let response = await fetch(`${url / male}`)
+        let response = await fetch("http://localhost:4500/services/male")
         let data = await response.json()
 
-        document.getElementById('renderMaleservice').style.display = 'block';
+        document.getElementById('renderMaleservice').style.display = 'grid';
         document.getElementById('renderFemaleservice').style.display = 'none';
         document.getElementById('renderStylists').style.display = 'none';
-
-        document.getElementById('threedivs').style.display = 'flex';
-        document.getElementById("threedivs").style.flexDirection = "column";
-        document.getElementById("male").style.width = "auto";
-        document.getElementById("female").style.width = "auto";
-        document.getElementById("stylists").style.width = "auto";
-        document.getElementById("threedivs").style.width = "35%";
-        document.getElementById("threedivs").style.marginLeft = "10px";
+        document.getElementById('women').style.display = 'none';
+        document.getElementById('men').style.display = 'block';
 
         maleServices.classList.toggle("active");
 
         femaleServices.classList.remove("active");
         stylists.classList.remove("active");
 
+        console.log(data)
         renderMale(data);
     }
     catch (error) {
@@ -48,32 +42,24 @@ async function callMale() {
 
     }
 
-
-
 }
 
 async function callFemale() {
     try {
-        let response = await fetch(`${url}"/ female"`)
+        let response = await fetch("http://localhost:4500/services/female")
         let data = await response.json()
         document.getElementById('renderMaleservice').style.display = 'none';
-        document.getElementById('renderFemaleservice').style.display = 'block';
+        document.getElementById('renderFemaleservice').style.display = 'grid';
         document.getElementById('renderStylists').style.display = 'none';
-        document.getElementById('threedivs').style.display = 'flex';
-        document.getElementById("threedivs").style.flexDirection = "column";
-
-        document.getElementById("threedivs").style.width = "35%";
-
-        document.getElementById("male").style.width = "auto";
-        document.getElementById("female").style.width = "auto";
-        document.getElementById("stylists").style.width = "auto";
-        document.getElementById("threedivs").style.marginLeft = "10px";
-
+        document.getElementById('women').style.display = 'block';
+        document.getElementById('men').style.display = 'none';
+        document.getElementById('women').style.textAlign = "center"
         maleServices.classList.remove("active");
 
         femaleServices.classList.toggle("active");
 
         stylists.classList.remove("active");
+        console.log(data)
         renderFemale(data);
     }
     catch (error) {
@@ -83,24 +69,17 @@ async function callFemale() {
 
 async function callStylists() {
     try {
-        let response = await fetch(`${url}"/ stylists"`)
+        let response = await fetch("http://localhost:4500/stylists/styler")
         let data = await response.json()
 
         document.getElementById('renderMaleservice').style.display = 'none';
         document.getElementById('renderFemaleservice').style.display = 'none';
-        document.getElementById('renderStylists').style.display = 'block';
-        document.getElementById('threedivs').style.display = 'flex';
-        document.getElementById("threedivs").style.flexDirection = "column";
-        document.getElementById("male").style.width = "auto";
-        document.getElementById("female").style.width = "auto";
-        document.getElementById("stylists").style.width = "auto";
-        document.getElementById("threedivs").style.width = "35%";
-        document.getElementById("threedivs").style.marginLeft = "10px";
-
+        document.getElementById('renderStylists').style.display = 'grid';
         maleServices.classList.remove("active");
         femaleServices.classList.remove("active");
 
         stylists.classList.toggle("active");
+        console.log(data)
         renderStylists(data);
 
     }
@@ -110,6 +89,7 @@ async function callStylists() {
 }
 
 
+//data rendering is done here
 function renderMale(data) {
     data.forEach((item) => {
         let div = document.createElement("div")
@@ -118,26 +98,154 @@ function renderMale(data) {
         let name = document.createElement("h1")
         name.innerText = item.name;
         let image = document.createElement("img");
-        img.src = item.image;
+        image.src = item.image;
         let des = document.createElement("p")
         des.innerText = item.description;
         let category = document.createElement("h5")
-        category.innerText = item.price;
-        let gender = document.createElement("h5")
-        gender.innerText = item.price;
+        category.innerText = "Category:" + " " + item.category;
+        let gender = document.createElement("p")
+        gender.innerText = item.gender;
 
         let cost = document.createElement("h4")
-        cost.innerText = item.price;
+        cost.innerText = "Price:" + " " + item.price;
 
         let edit = document.createElement("button")
         edit.innerText = "Edit";
         edit.setAttribute("class", "edit-button")
 
         let del = document.createElement("button")
+        del.setAttribute("class", "delete-button")
         del.innerText = "Delete";
 
+        let id = item._id
+
+        edit.addEventListener('click', function () {
+            const card = edit.parentNode;
+            const cardImage = card.querySelector('img').getAttribute('src');
+            const cardContent = card.querySelector('p').textContent;
+            const cardPrice = item.price;
+            const cardTitle = card.querySelector('h1').textContent;
+
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            const form = document.createElement('form');
+            form.classList.add('edit-form');
+            modal.appendChild(form);
+
+            const imageLabel = document.createElement('label');
+            imageLabel.textContent = 'Image URL:';
+            form.appendChild(imageLabel);
+
+            const imageInput = document.createElement('input');
+            imageInput.setAttribute('type', 'url');
+            imageInput.setAttribute('value', cardImage);
+            form.appendChild(imageInput);
+
+            const titleLabel = document.createElement('label');
+            titleLabel.textContent = 'Title:';
+            form.appendChild(titleLabel);
+
+            const titleInput = document.createElement('input');
+            titleInput.setAttribute('type', 'text');
+            titleInput.setAttribute('value', cardTitle);
+            form.appendChild(titleInput);
+
+            const label = document.createElement('label');
+            label.textContent = 'Edit card content:';
+            form.appendChild(label);
+
+            const textarea = document.createElement('textarea');
+            textarea.value = cardContent;
+            form.appendChild(textarea);
+
+            const priceLabel = document.createElement('label');
+            priceLabel.textContent = 'Price:';
+            form.appendChild(priceLabel);
+
+            const priceInput = document.createElement('input');
+            priceInput.setAttribute('type', 'text');
+            priceInput.setAttribute('value', cardPrice);
+            form.appendChild(priceInput);
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Save';
+            form.appendChild(saveButton);
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            form.appendChild(closeButton);
+
+            card.appendChild(modal);
+
+            titleInput.focus(); // Give focus to titleInput element
+
+            saveButton.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                const formData = {
+                    image: imageInput.value,
+                    title: titleInput.value,
+                    price: priceInput.value,
+                    content: textarea.value
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:4500/services/male/update/${id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    console.log(data); // log the response from the server
+
+                    card.querySelector('img').setAttribute('src', formData.image);
+                    card.querySelector('h1').textContent = formData.title;
+                    card.querySelector('p').textContent = formData.content;
+                    card.querySelector('h4').textContent = formData.price;
+
+                    modal.remove();
+                } catch (error) {
+                    console.error('There was a problem with the PATCH request:', error);
+                }
+            });
+
+
+
+            closeButton.addEventListener('click', () => {
+                modal.remove();
+            });
+
+        });
+
+
+        del.addEventListener('click', async () => {
+
+            try {
+                const response = await fetch(`http://localhost:4500/services/male/delete/${id}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete service.');
+                }
+                const result = await response.json();
+                alert('Data successfully deleted!');
+                return result;
+            } catch (error) {
+                alert('Error deleting data!');
+                console.error(error);
+            }
+        });
+
         div.append(image, name, des, category, cost, gender, edit, del);
-        maleServices.append(div)
+        document.getElementById("renderMaleservice").append(div)
     })
 
 }
@@ -149,30 +257,162 @@ function renderFemale(data) {
 
         let name = document.createElement("h1")
         name.innerText = item.name;
+        let imageContainer = document.createElement("div");
+        imageContainer.setAttribute("class", "image-container");
         let image = document.createElement("img");
-        img.src = item.image;
+        image.src = item.image;
+
+        imageContainer.appendChild(image);
         let des = document.createElement("p")
         des.innerText = item.description;
         let category = document.createElement("h5")
-        category.innerText = item.price;
+        category.innerText = "Category:" + " " + item.category;
         let gender = document.createElement("p")
-        gender.innerText = item.price;
+        gender.innerText = item.gender;
 
-        let cost = document.createElement("h5")
-        cost.innerText = item.price;
+        let cost = document.createElement("h4")
+        cost.innerText = "Price:" + " " + item.price;
 
         let edit = document.createElement("button")
         edit.innerText = "Edit";
         edit.setAttribute("class", "edit-button")
 
         let del = document.createElement("button")
+        del.setAttribute("class", "delete-button")
         del.innerText = "Delete";
 
-        div.append(image, name, des, category, cost, gender, edit, del);
-        femaleServices.append(div)
+        let id = item._id
+
+        edit.addEventListener('click', function () {
+            const card = edit.parentNode;
+            const cardImage = card.querySelector('img').getAttribute('src');
+            const cardContent = card.querySelector('p').textContent;
+            const cardPrice = item.price;
+            const cardTitle = card.querySelector('h1').textContent;
+
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            const form = document.createElement('form');
+            form.classList.add('edit-form');
+            modal.appendChild(form);
+
+            const imageLabel = document.createElement('label');
+            imageLabel.textContent = 'Image URL:';
+            form.appendChild(imageLabel);
+
+            const imageInput = document.createElement('input');
+            imageInput.setAttribute('type', 'url');
+            imageInput.setAttribute('value', cardImage);
+            form.appendChild(imageInput);
+
+            const titleLabel = document.createElement('label');
+            titleLabel.textContent = 'Title:';
+            form.appendChild(titleLabel);
+
+            const titleInput = document.createElement('input');
+            titleInput.setAttribute('type', 'text');
+            titleInput.setAttribute('value', cardTitle);
+            form.appendChild(titleInput);
+
+            const label = document.createElement('label');
+            label.textContent = 'Edit card content:';
+            form.appendChild(label);
+
+            const textarea = document.createElement('textarea');
+            textarea.value = cardContent;
+            form.appendChild(textarea);
+
+            const priceLabel = document.createElement('label');
+            priceLabel.textContent = 'Price:';
+            form.appendChild(priceLabel);
+
+            const priceInput = document.createElement('input');
+            priceInput.setAttribute('type', 'text');
+            priceInput.setAttribute('value', cardPrice);
+            form.appendChild(priceInput);
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Save';
+            form.appendChild(saveButton);
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            form.appendChild(closeButton);
+
+            card.appendChild(modal);
+
+            titleInput.focus(); // Give focus to titleInput element
+
+            saveButton.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                const formData = {
+                    image: imageInput.value,
+                    title: titleInput.value,
+                    price: priceInput.value,
+                    content: textarea.value
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:4500/services/female/update/${id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    console.log(data); // log the response from the server
+
+                    card.querySelector('img').setAttribute('src', formData.image);
+                    card.querySelector('h1').textContent = formData.title;
+                    card.querySelector('p').textContent = formData.content;
+                    card.querySelector('h4').textContent = formData.price;
+                    
+                    modal.remove();
+                    alert("Service data has been modified successfully")
+                } catch (error) {
+                    console.error('There was a problem with the PATCH request:', error);
+                }
+            });
+
+
+
+            closeButton.addEventListener('click', () => {
+                modal.remove();
+            });
+
+        });
+
+
+        del.addEventListener('click', async () => {
+
+            try {
+                const response = await fetch(`http://localhost:4500/services/female/delete/${id}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete service.');
+                }
+                const result = await response.json();
+                alert('Data successfully deleted!');
+                div.parentNode.removeChild(div);
+                return result;
+            } catch (error) {
+                alert('Error deleting data!');
+                console.error(error);
+            }
+        });
+
+        div.append(imageContainer, name, des, category, cost, gender, edit, del);
+        document.getElementById("renderFemaleservice").append(div)
     })
-
-
 }
 
 function renderStylists(data) {
@@ -201,139 +441,140 @@ function renderStylists(data) {
         del.innerText = "Delete";
 
         div.append(image, name, email, phone, availability, edit, del);
-        femaleServices.append(div)
+        document.getElementById("renderStylists").append(div)
     })
 
 }
 
 
-const editButtons = document.querySelectorAll('.edit-button');
 
-editButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const card = button.closest('.card');
-        const cardImage = card.querySelector('img').getAttribute('src');
-        const cardContent = card.querySelector('p').textContent;
-        const cardPrice = card.querySelector('h4').textContent;
-        const cardTitle = card.querySelector('h1').textContent;
+// form logic
+const addMaleForm = document.querySelector('#addmale form');
+const addFemaleForm = document.querySelector('#addfemale form');
+const addStylistsForm = document.querySelector('#addstylists form');
 
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
+addMaleForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(addMaleForm);
+    const obj = {};
+    formData.forEach((value, key) => {
+        obj[key] = value;
+    });
 
-        const form = document.createElement('form');
-        form.classList.add('edit-form');
-        modal.appendChild(form);
+    for (let key in obj) {
+        if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
 
-        const imageLabel = document.createElement('label');
-        imageLabel.textContent = 'Image URL:';
-        form.appendChild(imageLabel);
+            alert("Enter all the fields")
+            return;
 
-        const imageInput = document.createElement('input');
-        imageInput.setAttribute('type', 'url');
-        imageInput.setAttribute('value', cardImage);
-        form.appendChild(imageInput);
+        }
+    }
 
-        const titleLabel = document.createElement('label');
-        titleLabel.textContent = 'Title:';
-        form.appendChild(titleLabel);
+    console.log(obj);
 
-        const titleInput = document.createElement('input');
-        titleInput.setAttribute('type', 'text');
-        titleInput.setAttribute('value', cardTitle);
-        form.appendChild(titleInput);
+    const response = await fetch('http://localhost:4500/services/male/addMaleService', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    });
 
-        const label = document.createElement('label');
-        label.textContent = 'Edit card content:';
-        form.appendChild(label);
+    const result = await response.json();
+    console.log(result);
 
-        const textarea = document.createElement('textarea');
-        textarea.value = cardContent;
-        form.appendChild(textarea);
+    alert("Service added successfully");
+    addMaleForm.reset();
+});
 
-
-        const priceLabel = document.createElement('label');
-        priceLabel.textContent = 'Price:';
-        form.appendChild(priceLabel);
-
-        const priceInput = document.createElement('input');
-        priceInput.setAttribute('type', 'text');
-        priceInput.setAttribute('value', cardPrice);
-        form.appendChild(priceInput);
-
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Save';
-        form.appendChild(saveButton);
-
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'Close';
-        modal.appendChild(closeButton);
-
-        card.appendChild(modal);
-
-        titleInput.focus(); // Give focus to titleInput element
-
-        saveButton.addEventListener('click', async (event) => {
-            event.preventDefault();
-
-            const formData = {
-                image: imageInput.value,
-                title: titleInput.value,
-                price: priceInput.value,
-                content: textarea.value
-            };
-
-            Swal.fire({
-                title: 'Are you sure?',
-                // text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Edit it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // send the PATCH request
-                    fetch(`${url}/${gender}/update/:${id}`, {   // here url should be dynamic based on gender
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log(data); // log the response from the server
-                            Swal.fire(
-                                'Modified!',
-                                'Service has been modified.',
-                                'success'
-                            );
-                            card.querySelector('img').setAttribute('src', formData.image);
-                            card.querySelector('h1').textContent = formData.title
-                            card.querySelector('h3').textContent = formData.content
-                            card.querySelector('h5').textContent = formData.price;
-                        })
-                        .catch(error => {
-                            console.error('There was a problem with the PATCH request:', error);
-                            Swal.fire(
-                                'Error!',
-                                'There was a problem with the PATCH request.',
-                                'error'
-                            );
-                        });
-                }
-            });
+addFemaleForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
 
-            modal.remove();
-        });
-        closeButton.addEventListener('click', () => {
-            modal.remove();
-        });
+    const formData = new FormData(addFemaleForm);
+    const obj = {};
+    //console.log(formData)
+    formData.forEach((value, key) => {
+        obj[key] = value;
+    });
+
+    for (let key in obj) {
+        if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
+
+            alert("Enter all the fields")
+            return;
+
+        }
+    }
+    console.log(obj);
+
+    const response = await fetch('http://localhost:4500/services/female/addFemaleService', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    alert("Service added successfully");
+    addFemaleForm.reset();
+});
+
+addStylistsForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(addStylistsForm);
+    const obj = {};
+    //console.log(formData)
+    formData.forEach((value, key) => {
+        obj[key] = value;
+    });
+
+    for (let key in obj) {
+        if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
+
+            alert("Enter all the fields")
+            return;
+
+        }
+    }
+    console.log(obj);
+
+    const response = await fetch('http://localhost:4500/services/styler/addStylistService', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    alert("Stylists added successfully");
+    addStylistsForm.reset();
+});
+
+
+
+// back to top button
+var button = document.getElementById("back-to-top-button");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 200) {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+    }
+});
+
+button.addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 });
+
