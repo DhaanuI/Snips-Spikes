@@ -2,6 +2,7 @@
 const { MaleModel } = require("../model/MaleServiceModel");
 
 
+
 // --------->>>> GET <<<<<---------
 const MaleGetData = async (req, res) => {
     try {
@@ -14,6 +15,8 @@ const MaleGetData = async (req, res) => {
     }
 }
 
+
+
 // --------->>>> POST <<<<<---------
 const MalePostData = async (req, res) => {
     const payload = req.body;
@@ -25,7 +28,7 @@ const MalePostData = async (req, res) => {
         });
     } catch (error) {
         res.status(404).send({
-            Message: "Bad request 404",
+            Message:error.message,
         });
     }
 }
