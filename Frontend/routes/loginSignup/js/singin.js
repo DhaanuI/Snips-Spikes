@@ -41,7 +41,7 @@ import hideLoading from "../components/hideLoading.components.js";
 //         console.log(error.message);
 //     }
 // })
-
+ 
 
 const from = document.getElementById('login-form');
 from.addEventListener('submit', (e) => {
@@ -50,7 +50,7 @@ from.addEventListener('submit', (e) => {
     let password = from.your_pass.value;
     login({ email, password })
     loading()
-    console.log(email, password);
+    // console.log(email, password);
 })
 
 
@@ -105,7 +105,7 @@ const login = async (user) => {
                          
                      })
                      localStorage.setItem('userdata', JSON.stringify(data))
-                     window.location.href = "../../../index.html" 
+                     window.location.href = "../../index.html" 
                 }
                 else{
                     Swal.fire(`Invalid OTP: ${OTP}`)

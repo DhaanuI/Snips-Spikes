@@ -21,7 +21,6 @@ const Toast = Swal.mixin({
     title: 'welcome to register page'
   })
 
-  
 const singupfrom = document.getElementById('register-form');
 singupfrom.addEventListener('submit', (e) => {
     e.preventDefault();

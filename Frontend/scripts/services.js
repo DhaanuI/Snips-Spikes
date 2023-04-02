@@ -115,8 +115,8 @@ async function renderData(product_data) {
     console.log(bookapointment);
     for (let btn of bookapointment) {
       btn.addEventListener("click", (event) => {
+        
         let product_id = event.target.id;
-       
         getServiceDat(product_id)
        
        
@@ -133,6 +133,7 @@ async function renderData(product_data) {
       let data = await fetch(`http://localhost:8080/services/female/${id}`)
       data = await data.json()
       sessionStorage.setItem("service_data",JSON.stringify(data));
+      window.location.href = "../html/styler.html"
     } catch (error) {
       console.log(error);
     }
