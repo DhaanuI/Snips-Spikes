@@ -63,3 +63,77 @@ navTrigger.addEventListener("click", function () {
 
 let footer = document.getElementById("footer-main");
 footer.innerHTML = Footer();
+
+const card_div = document.querySelector(".car-div"); 
+
+async function getData (){
+  try {
+    let data = await fetch("http://localhost:8080/services/female/")
+    data = await data.json();
+    renderData(data);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+getData()
+
+
+
+
+function getCard(data) {
+  let formatedData = data.map((ele) => {
+    return `
+    <div id="${ele._id}" class="card-body-service">
+      <div class="images">
+        <img src=${ele.image} alt="">
+      </div>
+      <div class="description" >
+        <p class="heading">${ele.name.slice(0,20)}<p>
+        <p>${ele.description.slice(0,50)}...</p>
+      
+        <div  class="button"> <p class = "price">${ele.price}</p> <p id="${ele._id}"  class = "bookservice">Book Service</p></div>
+
+      </div>
+    </div>
+        `;
+  });
+  return formatedData.join("");
+}
+
+
+async function renderData(product_data) {
+  console.log(product_data);
+    let datadisplay = document.querySelector(".cards-div");
+    datadisplay.innerHTML = getCard(product_data);
+  
+    // bookapointment button
+  
+    let bookapointment = document.querySelectorAll(".button");
+    console.log(bookapointment);
+    for (let btn of bookapointment) {
+      btn.addEventListener("click", (event) => {
+        let product_id = event.target.id;
+       
+        getServiceDat(product_id)
+       
+       
+      });
+    }
+    
+    // // edit 
+
+  
+  }
+
+  async function getServiceDat(id) {
+    try {
+      let data = await fetch(`http://localhost:8080/services/female/${id}`)
+      data = await data.json()
+      sessionStorage.setItem("service_data",JSON.stringify(data));
+    } catch (error) {
+      console.log(error);
+    }
+  } 
