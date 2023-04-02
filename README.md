@@ -122,6 +122,7 @@
         POST -   /services/female/addFemaleService
         PATCH -  /services/female/update/:id
         DELETE - /services/female/delete/:id
+        Get single products - http://localhost:8080/services/female/
 
 
 <br>
