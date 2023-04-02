@@ -111,18 +111,18 @@
 
 - Male Services
                 
-        GET -    /services/male 
-        POST -   /services/male/addMaleService
-        PATCH -  /services/male/update/:id
-        DELETE - /services/male/delete/:id
+        GET    -   /services/male 
+        POST   -   /services/male/addMaleService
+        PATCH  -   /services/male/update/:id
+        DELETE -   /services/male/delete/:id
 
 - Female Services
 
-        GET -    /services/female 
-        POST -   /services/female/addFemaleService
-        PATCH -  /services/female/update/:id
-        DELETE - /services/female/delete/:id
-        Get single products - http://localhost:8080/services/female/
+        GET    -   /services/female 
+        GET    -   /services/female/female/:id 
+        POST   -   /services/female/addFemaleService
+        PATCH  -   /services/female/update/:id
+        DELETE -   /services/female/delete/:id
 
 
 <br>
@@ -132,10 +132,10 @@
 
 - Stylers 
                 
-        GET -    /stylist/styler 
-        POST -   /stylist/styler/addStylistService
-        PATCH -  /stylist/styler/update/:id
-        DELETE - /stylist/styler/delete/:id
+        GET    -   /stylist/styler 
+        POST   -   /stylist/styler/addStylistService
+        PATCH  -   /stylist/styler/update/:id
+        DELETE -   /stylist/styler/delete/:id
 
 # Additional 
 - we can give home services
