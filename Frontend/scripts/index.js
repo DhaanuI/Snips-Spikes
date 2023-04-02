@@ -9,9 +9,9 @@ window.onload = () => {
   document.getElementById("nav-logo").src = "./images/logo.png"
   document.getElementById("logo-href").href = "index.html"
   document.getElementById("bookhref").href = "./html/gender.html"
-  document.getElementById("viewhref").href = "../index.html"
+  document.getElementById("viewhref").href = "./html/appointment.html"
   document.getElementById("contacthref").href = "../index.html"
-  document.getElementById("loginhref").href = "../index.html"
+  document.getElementById("loginhref").href = "./routes/loginSignup/login.html"
 };
 
 

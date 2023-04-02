@@ -15,6 +15,19 @@ const MaleGetData = async (req, res) => {
     }
 }
 
+const getMaleSingleData = async (req, res) => {
+    const ID = req.params.id;
+    const payload = req.body
+    try {
+        const data = await MaleModel.findById({ _id: ID })
+        res.status(202).send({data});
+    }
+    catch (error) {
+        res.status(404).send({
+            Message: "Bad request 404",
+        });
+    }
+}
 
 
 // --------->>>> POST <<<<<---------
@@ -66,4 +79,4 @@ const MaleDeleteData = async (req, res) => {
     }
 }
 
-module.exports = {  MaleGetData, MalePostData, MalePatchData, MaleDeleteData }
+module.exports = {  MaleGetData, getMaleSingleData,MalePostData, MalePatchData, MaleDeleteData }

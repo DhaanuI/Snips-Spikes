@@ -47,11 +47,13 @@ const FemalePatchData = async (req, res) => {
         });
     }
 }
-const getFemaleSingleData = async (req, res) => {
+
+// --->>>> GET <<<<<---  ||  --->>>> GetSingle Service <<<<<---
+const GetFemaleSingleData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body
     try {
-        const data = await FemaleModel.findByIdAndUpdate({ _id: ID }, payload)
+        const data = await FemaleModel.findById({ _id: ID })
         res.status(202).send({data});
     }
     catch (error) {
@@ -77,5 +79,5 @@ const FemaleDeleteData = async (req, res) => {
     }
 }
 
-module.exports = { FemaleGetData ,getFemaleSingleData, FemalePostData , FemalePatchData, FemaleDeleteData }
+module.exports = { FemaleGetData , GetFemaleSingleData , FemalePostData , FemalePatchData, FemaleDeleteData }
 
