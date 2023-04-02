@@ -26,7 +26,7 @@ const server = http.createServer(app);
 // --------------->>>>>>>> Default End Point <<<<<<<<-------------------
 
 
-app.get("/", (req, res) => res.send("Snips & Spikes API"));
+app.get("/", (req, res) => res.send(`<h1 style="text-align:Center;color:purple">Welcome in Snips & Spikes API</h1>`));
 
 
 // --------------->>>>>>>> Middlewares <<<<<<<<-------------------
@@ -56,9 +56,9 @@ app.use("/services", FemaleRouter);
 app.use("/stylist", StylistRouter)
 
 app.use("/appointments",appointmentRouter);
-app.use(authenticate);                 //  will validate login status
-app.use("/newtoken", GntRouter);
-app.use("/logout", LogoutRouter);
+
+app.use("/newtoken", authenticate,GntRouter);
+app.use("/logout",authenticate,LogoutRouter);
 
 
 // --------------->>>>>>>> Server Running <<<<<<<<-------------------
