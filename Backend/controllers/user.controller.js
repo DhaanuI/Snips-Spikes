@@ -49,7 +49,8 @@ exports.login = async (req, res) => {
             if (result) {
                 // send otp
                 const otp = Math.round((Math.random() * 9999))
-                sendEmail({email: email,subject:"Login OTP",body:` OTP is ${otp}` })
+                console.log(otp)
+                // sendEmail({email: email,subject:"Login OTP",body:` OTP is ${otp}` })
                 
                 // generate tokens 
                 const Normal_Token = jwt.sign({ userId: UserData._id }, process.env.Normal_Token_key, { expiresIn: "7d" })
