@@ -28,6 +28,8 @@ async function callMale() {
         document.getElementById('renderStylists').style.display = 'none';
         document.getElementById('women').style.display = 'none';
         document.getElementById('men').style.display = 'block';
+        document.getElementById('style').style.display = 'none';
+        document.getElementById('men').style.textAlign = "center"
 
         maleServices.classList.toggle("active");
 
@@ -54,6 +56,8 @@ async function callFemale() {
         document.getElementById('women').style.display = 'block';
         document.getElementById('men').style.display = 'none';
         document.getElementById('women').style.textAlign = "center"
+        document.getElementById('style').style.display = 'none';
+
         maleServices.classList.remove("active");
 
         femaleServices.classList.toggle("active");
@@ -69,7 +73,7 @@ async function callFemale() {
 
 async function callStylists() {
     try {
-        let response = await fetch("http://localhost:4500/stylists/styler")
+        let response = await fetch("http://localhost:4500/stylist/styler")
         let data = await response.json()
 
         document.getElementById('renderMaleservice').style.display = 'none';
@@ -77,6 +81,10 @@ async function callStylists() {
         document.getElementById('renderStylists').style.display = 'grid';
         maleServices.classList.remove("active");
         femaleServices.classList.remove("active");
+        document.getElementById('women').style.display = 'none';
+        document.getElementById('men').style.display = 'none';
+        document.getElementById('style').style.display = 'block';
+        document.getElementById('style').style.textAlign = "center"
 
         stylists.classList.toggle("active");
         console.log(data)
@@ -374,7 +382,7 @@ function renderFemale(data) {
                     card.querySelector('h1').textContent = formData.title;
                     card.querySelector('p').textContent = formData.content;
                     card.querySelector('h4').textContent = formData.price;
-                    
+
                     modal.remove();
                     alert("Service data has been modified successfully")
                 } catch (error) {
@@ -418,29 +426,163 @@ function renderFemale(data) {
 function renderStylists(data) {
     data.forEach((item) => {
         let div = document.createElement("div")
+        div.setAttribute("class", "card")
 
         let name = document.createElement("h1")
         name.innerText = item.name;
         let email = document.createElement("p")
         email.innerText = item.email;
+
+        let imageContainer = document.createElement("div");
+        imageContainer.setAttribute("class", "image-container");
         let image = document.createElement("img");
-        img.src = item.img;
-        let phone = document.createElement("p")
-        phone.innerText = item.phone;
-        let availability = document.createElement("div")
-        item.availabilitySlots.forEach((i) => {
-            let time = document.createElement("p")
-            time.innerText = item.i;
-            availability.append(time);
-        })
+        image.src = item.image;
+        imageContainer.append(image)
+
+
+        let salary = document.createElement("h5")
+        salary.innerText = "Salary :" + item.salary;
 
         let edit = document.createElement("button")
         edit.innerText = "Edit";
+        edit.setAttribute("class", "edit-button")
 
         let del = document.createElement("button")
+        del.setAttribute("class", "delete-button")
         del.innerText = "Delete";
 
-        div.append(image, name, email, phone, availability, edit, del);
+        let id = item._id
+
+        edit.addEventListener('click', function () {
+            const card = edit.parentNode;
+            const cardImage = card.querySelector('img').getAttribute('src');
+            const cardSalary = card.querySelector('h5').textContent;
+            const cardEmail = card.querySelector('p').textContent;
+            const cardTitle = card.querySelector('h1').textContent;
+
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            const form = document.createElement('form');
+            form.classList.add('edit-form');
+            modal.appendChild(form);
+
+            const imageLabel = document.createElement('label');
+            imageLabel.textContent = 'Image URL:';
+            form.appendChild(imageLabel);
+
+            const imageInput = document.createElement('input');
+            imageInput.setAttribute('type', 'url');
+            imageInput.setAttribute('value', cardImage);
+            form.appendChild(imageInput);
+
+            const titleLabel = document.createElement('label');
+            titleLabel.textContent = 'Name:';
+            form.appendChild(titleLabel);
+
+            const titleInput = document.createElement('input');
+            titleInput.setAttribute('type', 'text');
+            titleInput.setAttribute('value', cardTitle);
+            form.appendChild(titleInput);
+
+            const emailLabel = document.createElement('label');
+            emailLabel.textContent = 'Email:';
+            form.appendChild(emailLabel);
+
+            const emailInput = document.createElement('input');
+            emailInput.setAttribute('type', 'text');
+            emailInput.setAttribute('value', cardEmail);
+            form.appendChild(emailInput);
+
+            const salaryLabel = document.createElement('label');
+            salaryLabel.textContent = 'Salary:';
+            form.appendChild(salaryLabel);
+
+            const salaryInput = document.createElement('input');
+            salaryInput.setAttribute('type', 'text');
+            salaryInput.setAttribute('value', cardSalary);
+            form.appendChild(salaryInput);
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Save';
+            form.appendChild(saveButton);
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            form.appendChild(closeButton);
+
+            card.appendChild(modal);
+
+            titleInput.focus(); // Give focus to titleInput element
+
+            saveButton.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                const formData = {
+                    image: imageInput.value,
+                    title: titleInput.value,
+                    salary: salaryInput.value,
+                    email: emailInput.value
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:4500/stylist/styler/update/${id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    console.log(data); // log the response from the server
+
+                    card.querySelector('img').setAttribute('src', formData.image);
+                    card.querySelector('h1').textContent = formData.title;
+                    card.querySelector('h5').textContent = formData.salary;
+                    card.querySelector('p').textContent = formData.email;
+
+                    modal.remove();
+                    alert("Stylists data has been modified successfully")
+                } catch (error) {
+                    console.error('There was a problem with the PATCH request:', error);
+                }
+            });
+
+
+
+            closeButton.addEventListener('click', () => {
+                modal.remove();
+            });
+
+        });
+
+
+        del.addEventListener('click', async () => {
+
+            try {
+                const response = await fetch(`http://localhost:4500/stylist/styler/delete/${id}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete service.');
+                }
+                const result = await response.json();
+                alert('Data successfully deleted!');
+                div.parentNode.removeChild(div);
+                return result;
+            } catch (error) {
+                alert('Error deleting data!');
+                console.error(error);
+            }
+        });
+
+
+        div.append(imageContainer, name, email, salary, edit, del);
         document.getElementById("renderStylists").append(div)
     })
 
@@ -543,7 +685,7 @@ addStylistsForm.addEventListener('submit', async (e) => {
     }
     console.log(obj);
 
-    const response = await fetch('http://localhost:4500/services/styler/addStylistService', {
+    const response = await fetch('http://localhost:4500/stylist/styler/addStylistService', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
