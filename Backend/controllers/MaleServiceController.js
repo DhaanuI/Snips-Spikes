@@ -15,6 +15,7 @@ const MaleGetData = async (req, res) => {
     }
 }
 
+// --->>>> GET <<<<<---  ||  --->>>> GetSingle Service <<<<<---
 const getMaleSingleData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body

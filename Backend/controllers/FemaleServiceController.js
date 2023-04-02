@@ -53,7 +53,7 @@ const GetFemaleSingleData = async (req, res) => {
     const ID = req.params.id;
     const payload = req.body
     try {
-        const data = await FemaleModel.findByIdAndUpdate({ _id: ID }, payload)
+        const data = await FemaleModel.findById({ _id: ID })
         res.status(202).send({
             data
         });
