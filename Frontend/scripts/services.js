@@ -137,3 +137,13 @@ async function renderData(product_data) {
       console.log(error);
     }
   } 
+
+  // async function getStylers(id) {
+  //   try {
+  //     let data = await fetch(`http://localhost:8080/stylist/styler/${id}`)
+  //     data = await data.json()
+  //     sessionStorage.setItem("service_data",JSON.stringify(data));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // } 
