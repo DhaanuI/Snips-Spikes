@@ -55,10 +55,6 @@ const GetFemaleSingleData = async (req, res) => {
     try {
         const data = await FemaleModel.findById({ _id: ID })
         res.status(202).send({data});
-        const data = await FemaleModel.findByIdAndUpdate({ _id: ID }, payload)
-        res.status(202).send({
-            data
-        });
     }
     catch (error) {
         res.status(404).send({
