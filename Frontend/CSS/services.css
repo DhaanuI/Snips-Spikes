@@ -14,7 +14,7 @@
 	font-size: 1.3rem;
 }
 .description {
-	
+	border-radius: 0 0 10px 10px;
 	padding: 20px;
 	background-color: #0000003f;
 	
@@ -104,7 +104,6 @@
 }
 
 .cards-div{
-	border: 1px solid red;
 
 	width: 80%;
 	margin: 50px auto;
@@ -135,7 +134,9 @@
 	
 }
 .card-body-service img{
-	width: 100%;
+	width:350px;
+	height:350px;
+	border-radius: 10px 10px 0px  0px;
 	
 }
 
