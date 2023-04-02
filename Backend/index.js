@@ -34,7 +34,11 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
- 
+
+// --------------->>>>>>>> Secret key for Express sessions <<<<<<<<-------------------
+
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
 
 // --------------->>>>>>>> Oauth <<<<<<<<-------------------
 
@@ -42,14 +46,14 @@ app.use(express.json());
 app.use("/", googlelogin);
 
 
-
 // --------------->>>>>>>> Routers <<<<<<<<-------------------
 app.use(LogsData);
 app.use("/user", userRouter);
 app.use("/admin", AdminRouter)
-app.use("/services",MaleRouter); 
-app.use("/services",FemaleRouter);
-app.use("/stylist",StylistRouter)
+app.use("/services", MaleRouter);
+app.use("/services", FemaleRouter);
+app.use("/stylist", StylistRouter)
+
 app.use(authenticate);                 //  will validate login status
 app.use("/newtoken", GntRouter);
 app.use("/logout", LogoutRouter);
@@ -57,7 +61,7 @@ app.use("/logout", LogoutRouter);
 
 // --------------->>>>>>>> Server Running <<<<<<<<-------------------
 
-app.listen(process.env.port, async () => { 
+app.listen(process.env.port, async () => {
   try {
     dbconnetion;
     console.log(`Connected to Database`);

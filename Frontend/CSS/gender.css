@@ -1,27 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
-html,body{
-    font-family: "Poppins", sans-serif;
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #carouselExampleFade {
+  width: 100%;
+  height: 100vh;
   z-index: -1;
   user-select: none;
 }
+.carousel-inner > div > img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ------------------------------- navbar css ------------------------------- */
 #nav-logo {
   margin-top: -6px;
 }
-
 #container {
   max-width: 100%;
 }
-#footer-main>#footer{
-    margin-top: -100px;
+#footer-main > #footer {
+  margin-top: -100px;
 }
-
+@media only screen and (max-width: 768px) {
+  #container {
+    max-width: 100%;
+    height: 64px;
+  }
+  #mainListDiv {
+    /* border: 2px solid cadetblue; */
+    /* width: 100vw; */
+    border: 0;
+  }
+  #mainListDiv #navlinks {
+    width: 100vw;
+    /* height: 87.2vh; */
+    /* border: 2px solid white; */
+  }
+  #navTrigger{
+    margin-top: 40px;
+  }
+}
+/* ------------------------------- navbar css ------------------------------- */
 #main {
   background-color: rgba(0, 0, 0, 0.564);
-  width: 30%;
+  width: 450px;
   top: 47%;
   left: 50%;
   display: flex;
@@ -31,23 +61,23 @@ html,body{
   border: none;
   border-radius: 0;
 }
-#main >span{
-    width: auto;
-    text-align: center;
-    padding: 5px;
-    background-color: #000000b9;
+#main > span {
+  width: auto;
+  text-align: center;
+  padding: 5px;
+  background-color: #000000b9;
 }
-#main >span> img {
+#main > span > img {
   margin: 20px;
   width: 30%;
 }
-.card-body>p{
+.card-body > p {
   text-align: center;
   color: rgba(255, 255, 255, 0.714);
   font-size: 2rem;
 }
-.card-body{
-    width: 100%;
+.card-body {
+  width: 100%;
 }
 .options {
   text-align: center;
@@ -73,4 +103,47 @@ html,body{
   color: rgba(255, 255, 255, 0.714);
   font-size: 1.5rem;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 871px) {
+  #main {
+    width: 350px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+  }
+  #main > div > p {
+    font-size: 1.5rem;
+  }
+  .options a i {
+    font-size: 3rem;
+  }
+  .options a {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  #main {
+    width: 250px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+  }
+  #main > div > p {
+    font-size: 1rem;
+  }
+  .options a i {
+    font-size: 2.5rem;
+  }
+  .options a {
+    font-size: 0.8rem;
+  }
+}
+
+#insta{
+  fill: white;
+  color: white;
+  width: 25px;
+  /* padding: 10px; */
 }

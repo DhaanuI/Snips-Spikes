@@ -20,3 +20,57 @@ body {
     padding-bottom: 20px;
     }
     
+#appointment_grid{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.appointment_card{
+    background-image: url('../images/appointment_card_backgrounds/appointment_card_background07.jpg');
+    background-size: cover;  
+    padding: 20px;
+    text-align: center;
+    border: 5px solid gray;
+}
+.service_name{
+    font-size: 22px;
+    padding-bottom: 10px;
+}
+.service_des{
+    padding-bottom: 10px;
+}
+.appointment_styler,.appointment_date,.appointment_time{
+    padding-bottom: 10px;
+    font-size: 18px;
+}
+.cancel_btn{
+    width:200px;
+    height: 30px;
+    border:2px solid gray;
+    background-color: gray;
+    color:white;
+}
+.cancel_btn:hover{
+    cursor: pointer;
+    background-color: rgb(216, 216, 216);
+    color: gray;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 650px) and (max-width:900px) {
+    #appointment_grid{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width:649px) {
+    #appointment_grid{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: auto;
+    }
+}
