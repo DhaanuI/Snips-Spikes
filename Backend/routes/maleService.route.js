@@ -1,7 +1,7 @@
 const express = require('express');
 
 // --------------->>>>>>>> Male Service Router <<<<<<<<-------------------
-const { MaleGetData, MalePostData, MalePatchData, MaleDeleteData } = require('../controllers/MaleServiceController');
+const { MaleGetData, MalePostData,getMaleSingleData, MalePatchData, MaleDeleteData } = require('../controllers/MaleServiceController');
 
 const MaleRouter = express.Router();
 
@@ -9,6 +9,8 @@ const MaleRouter = express.Router();
 // --------->>>> GET <<<<<---------
 MaleRouter.get('/male', MaleGetData);
 
+// ---------Get single data 
+MaleRouter.get('/male/:id', getMaleSingleData);
 
 // --------->>>> POST <<<<<--------- 
 MaleRouter.post('/male/addMaleService', MalePostData);
