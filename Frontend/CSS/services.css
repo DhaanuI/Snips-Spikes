@@ -2,68 +2,37 @@
 	box-sizing: border-box;
 } */
 
-.xx{
-    width: 100%;
-    height: 100vh;
-    background-image: url(../images/gender1.png);
+.services-main-div {
+	background-image: url("../images/gender2.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	
 }
-
-.wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: Montserrat;
-	/* background: #262626; */
-	width: 100%;
+.heading{
+	font-size: 1.3rem;
 }
-
-.outer {
-	position: relative;
-	background: #fff;
-	height: 350px;
-	width: 550px;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-}
-
-.wrapper img {
-	position: absolute;
-	top: 0px;
-	right: -20px;
-	z-index: 0;
-	animation-delay: 0.5s;
-}
-
-.content {
-	animation-delay: 0.3s;
-	position: absolute;
-	left: 20px;
-	z-index: 3
+.description {
+	
+	padding: 20px;
+	background-color: #0000003f;
 	
 }
 
-h1 {
-	color: #111;
+.description h1, p{
+	color: rgb(255, 255, 255);
+}
+.bookservice .price{
+	font-size: 2.2rem;
+	color: rgb(0, 0, 0);
 }
 
-p {
-	width: 280px;
-	font-size: 13px;
-	line-height: 1.4;
-	color: #aaa;
-	margin: 20px 0;
-	
-}
 
-.bg {
-	display: inline-block;
-	color: #fff;
-	background: cornflowerblue;
-	padding: 5px 10px;
-	border-radius: 50px;
-	font-size: .7em;
-}
+
+
+
+
 .button {
 	width: fit-content;
 	height: fit-content;
@@ -73,12 +42,12 @@ p {
 	
 }
 
-.button a {
+.button p {
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
-	font-size: 11px;
-	color: #111;
+	font-size: 13px;
+	color: #ffffff;
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid #aaa;
@@ -87,13 +56,13 @@ p {
 	
 }
 
-.button a:after{
+.button p:after{
 	content: "";
 	position: absolute;
 	top: 0;
 	right: -10px;
 	width: 0%;
-	background: #111;
+	background: #ff6868;
 	height: 100%;
 	z-index: -1;
 	transition: width 0.3s ease-in-out;
@@ -101,25 +70,25 @@ p {
 	transform-origin: right;
 }
 
-.button a:hover:after {
+.button p:hover:after {
 	width: 150%;
 	left: -10px;
 	transform-origin: left;
 	
 }
 
-.button a:hover {
+.button p:hover {
 	color: #fff;
 	transition: all 0.5s ease;
 }
 
 
-.button a:nth-of-type(1) {
+.button p:nth-of-type(1) {
 	border-radius: 50px 0 0 50px;
 	border-right: none;
 }
 
-.button a:nth-of-type(2) {
+.button p:nth-of-type(2) {
 	border-radius: 0px 50px 50px 0;
 }
 
@@ -133,3 +102,40 @@ p {
 	bottom: 0;
 	right: 0;
 }
+
+.cards-div{
+	border: 1px solid red;
+
+	width: 80%;
+	margin: 50px auto;
+	display: grid;
+	gap: 20px 40px; 
+	grid-template-columns: repeat(4,1fr);
+
+}
+
+
+
+.card-body-service{
+	width: 100%;
+	margin: auto;
+	border-radius: 5px;
+	
+}
+
+.images{
+	
+	filter: grayscale(100%);
+	transition: all 0.4s ease-in ease-in-out
+	
+}
+
+.card-body-service :hover{
+	filter: grayscale(0%)
+	
+}
+.card-body-service img{
+	width: 100%;
+	
+}
+
