@@ -6,12 +6,12 @@ import Footer from "../components/Footer.js";
 
 
 window.onload = () => {
-  document.getElementById("nav-logo").src = "../images/logo.png"
-  document.getElementById("logo-href").href = "./index.html"
-  document.getElementById("bookhref").href = "../html/gender.html"
-  document.getElementById("viewhref").href = "../index.html"
-  document.getElementById("contacthref").href = "../index.html"
-  document.getElementById("loginhref").href = "../index.html"
+  document.getElementById("nav-logo").src = "../images/logo.png";
+  document.getElementById("logo-href").href = "../index.html";
+  document.getElementById("bookhref").href = "gender.html";
+  document.getElementById("viewhref").href = "../html/appointment.html";
+  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
 };
 
 
@@ -68,7 +68,7 @@ const card_div = document.querySelector(".car-div");
 
 async function getData (){
   try {
-    let data = await fetch("http://localhost:8080/services/female/")
+    let data = await fetch("http://localhost:5500/services/female/")
     data = await data.json();
     renderData(data);
     console.log(data);
@@ -130,7 +130,7 @@ async function renderData(product_data) {
 
   async function getServiceDat(id) {
     try {
-      let data = await fetch(`http://localhost:8080/services/female/${id}`)
+      let data = await fetch(`http://localhost:5500/services/female/${id}`)
       data = await data.json()
       sessionStorage.setItem("service_data",JSON.stringify(data));
     } catch (error) {
