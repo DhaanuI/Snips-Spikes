@@ -49,6 +49,7 @@
 }
 .nav div.logo a img {
   background-color: #000000e9;
+  border-radius: 50%;
 }
 
 .nav div.logo a:hover {
