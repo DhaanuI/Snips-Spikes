@@ -12,6 +12,7 @@ time_btn.addEventListener("submit",(event)=>{
     obj["service_name"]=service_data.data.name;
     obj["service_des"]=service_data.data.description;
     fetAllStylerFn(obj);
+    alert("date and time are selected, Now please choose your styler");
 })
 
 
