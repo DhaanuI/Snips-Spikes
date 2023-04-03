@@ -8,8 +8,12 @@
 ## Project Name : 
    > Snips & Spikes
 
-## Frontend deployed link - https://snipsandspikes.netlify.app/
-## Backend deployed using Cyclic - https://nice-pink-antelope-gear.cyclic.app/
+<br>
+
+## Deployed Link :
+
+   - Frontend - https://snipsandspikes.netlify.app/
+   - Backend  - https://nice-pink-antelope-gear.cyclic.app/
 
 
 <br>
