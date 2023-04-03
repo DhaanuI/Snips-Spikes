@@ -45,7 +45,7 @@ const AdminDataPost = async (Credentials) =>{
 
     const data = await res.json();
 
-    if(res.status==202){ 
+    if(res.status==200){ 
         (UserNames.value = ""), 
         (Passwords.value = ""),
 
