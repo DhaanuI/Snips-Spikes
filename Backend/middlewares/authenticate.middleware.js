@@ -1,6 +1,7 @@
-require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+
+require("dotenv").config();
 
 const authenticate = (req, res, next) => {
   try {
@@ -15,7 +16,7 @@ const authenticate = (req, res, next) => {
     if (blacklistedToken.includes(Normal_Token)) {
       res.status(401).json({ message: "please login again" });
     } else {
-      jwt.verify(Normal_Token, process.env.Normal_Token_key, (err, decoded) => {
+      jwt.verify(Normal_Token, process.env.NORMALKEY, (err, decoded) => {
         if (err) res.status(err).json({ message: err.message });
         else {
           next();
@@ -27,4 +28,4 @@ const authenticate = (req, res, next) => {
   }
 };
 
-module.exports = { authenticate };
+module.exports = { authenticate }

@@ -1,11 +1,13 @@
+const jwt = require ("jsonwebtoken");
+const bcrypt = require ("bcrypt");
+
 require("dotenv").config();
-const { UserModel } = require("../model/user.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+
+const { UserModel } = require ("../model/user.model");
 const { sendEmail } = require("../nodemailer/sendingEmails");
 
 
-exports.signup = async (req, res) => {
+const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const isPresent = await UserModel.find({ email });
@@ -32,7 +34,7 @@ exports.signup = async (req, res) => {
     }
 }
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const UserData = await UserModel.findOne({ email });
@@ -40,6 +42,7 @@ exports.login = async (req, res) => {
         if (!UserData) {
             res.status(404).json({ message: "user not found" });
         }
+
         // hash password form UserData(db.users)
         const hashPassword = UserData?.password;
         
@@ -53,8 +56,8 @@ exports.login = async (req, res) => {
                 sendEmail({email: email,subject:"Login OTP",body:` OTP is ${otp}` })
                 
                 // generate tokens 
-                const Normal_Token = jwt.sign({ userId: UserData._id }, process.env.Normal_Token_key, { expiresIn: "7d" })
-                const Refresh_Token = jwt.sign({ userId: UserData._id }, process.env.Refresh_Token_key, { expiresIn: "7d" })
+                const Normal_Token = jwt.sign({ userId: UserData._id }, process.env.NORMALKEY, { expiresIn: "7d" })
+                const Refresh_Token = jwt.sign({ userId: UserData._id }, process.env.REFRESHKEY, { expiresIn: "7d" })
 
                 // send token in cookies
                 res.cookie("Normal_Token", Normal_Token, { httpOnly: true })
@@ -73,9 +76,9 @@ exports.login = async (req, res) => {
  
 }
 
-exports.getalluser = async (req, res) => {
+const getalluser = async (req, res) => {
     try {
-        if (req.body.access_key === process.env.access_key ) {
+        if (req.body.access_key === process.env.ACCESSKEY ) {
 
             const UserData = await UserModel.find();
             res.status(200).json({ UserData });
@@ -90,10 +93,11 @@ exports.getalluser = async (req, res) => {
         
     }
 }
-exports.getUser = async (req, res) => {
+
+const getUser = async (req, res) => {
         const _id = req.params.id;
         try {
-            if (req.body.access_key === process.env.access_key ) {
+            if (req.body.access_key === process.env.ACCESSKEY ) {
                 const UserData = await UserModel.findOne({_id});
                 res.status(200).json({ UserData });
             }
@@ -106,23 +110,6 @@ exports.getUser = async (req, res) => {
             res.status(400).json({ message: error.message });
             
         }
-    }
+}
 
-
-
-
-
-
-// function he(){
-
-//     bcrypt.compare("password", "$2b$05$Q0lP7ge0mc.WGKInJqYXz.bIvU67MkeG/zmLgXwo6e3nBgtWW3iJu", (err, result) => {
-//         if (result) {
-//             console.log(result);
-//         }
-//         else {
-//             console.log("nhi");
-//         }
-//     })
-// }
-
-// he()
+module.exports = {signup ,login ,getalluser ,getUser}
