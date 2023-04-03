@@ -12,8 +12,8 @@ let Footer = () =>{
           </div>
           <div class="social-media">
             <img id="insta" src="https://www.mygreentrends.in/wp-content/themes/greentrends/images/instagram.svg" alt="">
-            <img src="https://www.mygreentrends.in/wp-content/themes/greentrends/images/twitter.svg" alt="">
-            <img src="https://www.mygreentrends.in/wp-content/themes/greentrends/images/facebook.svg" alt="">
+            <img id="twitter" src="https://www.mygreentrends.in/wp-content/themes/greentrends/images/twitter.svg" alt="">
+            <img id="fb" src="https://www.mygreentrends.in/wp-content/themes/greentrends/images/facebook.svg" alt="">
           </div>
         </div>
       </div>

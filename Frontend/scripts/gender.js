@@ -68,3 +68,23 @@ footer.innerHTML = Footer();
 // let insta = document.getElementById("insta");
 
 // console.log(insta.src)
+
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+
+let loginstat = document.getElementById("loginhref");
+let data = JSON.parse(localStorage.getItem("userdata"));
+if(data){
+  if (data.message == "Login successfully") {
+    loginstat.innerText = "Logout";
+    if (loginstat.innerText == "Logout") {
+      loginstat.addEventListener("click", () => {
+        localStorage.clear();
+        loginstat.innerText = "Login";
+      });
+    }
+  } else {
+    loginstat.innerText = "Login";
+  }  
+}

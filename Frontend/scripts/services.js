@@ -68,7 +68,7 @@ const card_div = document.querySelector(".car-div");
 
 async function getData (){
   try {
-    let data = await fetch("http://localhost:8080/services/female/")
+    let data = await fetch("https://nice-pink-antelope-gear.cyclic.app/services/female/")
     data = await data.json();
     renderData(data);
     console.log(data);
@@ -130,7 +130,7 @@ async function renderData(product_data) {
 
   async function getServiceDat(id) {
     try {
-      let data = await fetch(`http://localhost:8080/services/female/${id}`)
+      let data = await fetch(`https://nice-pink-antelope-gear.cyclic.app/services/female/${id}`)
       data = await data.json()
       sessionStorage.setItem("service_data",JSON.stringify(data));
       window.location.href = "../html/styler.html"
@@ -138,3 +138,23 @@ async function renderData(product_data) {
       console.log(error);
     }
   } 
+
+  /* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+
+let loginstat = document.getElementById("loginhref");
+let data = JSON.parse(localStorage.getItem("userdata"));
+if(data){
+  if (data.message == "Login successfully") {
+    loginstat.innerText = "Logout";
+    if (loginstat.innerText == "Logout") {
+      loginstat.addEventListener("click", () => {
+        localStorage.clear();
+        loginstat.innerText = "Login";
+      });
+    }
+  } else {
+    loginstat.innerText = "Login";
+  }  
+}

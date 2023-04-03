@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:8080/"
+const baseurl = "https://nice-pink-antelope-gear.cyclic.app/"
 import loading from "../components/loading.components.js";
 import hideLoading from "../components/hideLoading.components.js";
 
@@ -50,7 +50,7 @@ from.addEventListener('submit', (e) => {
     let password = from.your_pass.value;
     login({ email, password })
     loading()
-    // console.log(email, password);
+    console.log(email, password);
 })
 
 

@@ -1,6 +1,6 @@
 // ------------------- API's ----------------------
 
-const BaseUrl = 'http://localhost:8080';
+const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
 const Default = `${BaseUrl}/admin`
 const PostDataCheck = `${Default}/check`
 

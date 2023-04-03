@@ -1,142 +1,138 @@
 /* * {
 	box-sizing: border-box;
 } */
-
-.services-main-div {
-	background-image: url("../images/gender2.png");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/gender2.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.heading{
-	font-size: 1.3rem;
+#NAVBAR {
+  border: 1px solid transparent;
+}
+.services-main-div {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+.heading {
+  font-size: 1.3rem;
 }
 .description {
-	border-radius: 0 0 10px 10px;
-	padding: 20px;
-	background-color: #0000003f;
-	
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  background-color: #0000003f;
 }
 
-.description h1, p{
-	color: rgb(255, 255, 255);
+.description h1,
+p {
+  color: rgb(255, 255, 255);
 }
-.bookservice .price{
-	font-size: 2.2rem;
-	color: rgb(0, 0, 0);
+.bookservice .price {
+  font-size: 2.2rem;
+  color: rgb(0, 0, 0);
 }
-
-
-
-
-
 
 .button {
-	width: fit-content;
-	height: fit-content;
-	margin-top: 10px;
-	
-	
-	
+  width: fit-content;
+  height: fit-content;
+  margin-top: 10px;
 }
 
 .button p {
-	display: inline-block;
-	overflow: hidden;
-	position: relative;
-	font-size: 13px;
-	color: #ffffff;
-	text-decoration: none;
-	padding: 10px 15px;
-	border: 1px solid #aaa;
-	font-weight: bold;
-	
-	
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  font-size: 13px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 1px solid #aaa;
+  font-weight: bold;
 }
 
-.button p:after{
-	content: "";
-	position: absolute;
-	top: 0;
-	right: -10px;
-	width: 0%;
-	background: #ff6868;
-	height: 100%;
-	z-index: -1;
-	transition: width 0.3s ease-in-out;
-	transform: skew(-25deg);
-	transform-origin: right;
+.button p:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 0%;
+  background: #ff6868;
+  height: 100%;
+  z-index: -1;
+  transition: width 0.3s ease-in-out;
+  transform: skew(-25deg);
+  transform-origin: right;
 }
 
 .button p:hover:after {
-	width: 150%;
-	left: -10px;
-	transform-origin: left;
-	
+  width: 150%;
+  left: -10px;
+  transform-origin: left;
 }
 
 .button p:hover {
-	color: #fff;
-	transition: all 0.5s ease;
+  color: #fff;
+  transition: all 0.5s ease;
 }
 
-
 .button p:nth-of-type(1) {
-	border-radius: 50px 0 0 50px;
-	border-right: none;
+  border-radius: 50px 0 0 50px;
+  border-right: none;
 }
 
 .button p:nth-of-type(2) {
-	border-radius: 0px 50px 50px 0;
+  border-radius: 0px 50px 50px 0;
 }
 
 .cart-icon {
-	padding-right: 8px;
-	
+  padding-right: 8px;
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-.cards-div{
-
-	width: 80%;
-	margin: 50px auto;
-	display: grid;
-	gap: 20px 40px; 
-	grid-template-columns: repeat(4,1fr);
-
+.cards-div {
+  margin: auto;
+  width: 90%;
+  margin: 50px auto;
+  display: grid;
+  gap: 20px 40px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-
-
-.card-body-service{
-	width: 100%;
-	margin: auto;
-	border-radius: 5px;
-	
+.card-body-service {
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
 }
 
-.images{
-	
-	filter: grayscale(100%);
-	transition: all 0.4s ease-in ease-in-out
-	
+.images {
+  filter: grayscale(100%);
+  transition: all 0.4s ease-in ease-in-out;
 }
 
-.card-body-service :hover{
-	filter: grayscale(0%)
-	
+.card-body-service :hover {
+  filter: grayscale(0%);
 }
-.card-body-service img{
-	width:350px;
-	height:350px;
-	border-radius: 10px 10px 0px  0px;
-	
+.card-body-service img {
+  height: 300px;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+#footer-main > #footer {
+  margin-top: 0px;
 }
 
+#insta {
+  width: 35px;
+}
+.social-media > img {
+  width: 35px;
+}
