@@ -8,7 +8,7 @@ const appointmentSchema=mongoose.Schema({
     time:String,
     service_name:String,
     service_des:String,
-    styler_name:String
+    styler_name:{type:String,default:'Jishnu'}
 })
 
 const Appointmentmodel=mongoose.model('appointment',appointmentSchema);
