@@ -7,7 +7,8 @@ const appointmentSchema=mongoose.Schema({
     date:String,
     time:String,
     service_name:String,
-    service_des:String
+    service_des:String,
+    styler_name:String
 })
 
 const Appointmentmodel=mongoose.model('appointment',appointmentSchema);
