@@ -7,7 +7,7 @@ const { MaleModel } = require("../model/male.model");
 const MaleGetData = async (req, res) => {
     try {
         const data = await MaleModel.find()
-        res.status(202).send(data);
+        res.status(200).send(data);
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -20,7 +20,7 @@ const getMaleSingleData = async (req, res) => {
     const ID = req.params.id;
     try {
         const data = await MaleModel.findById({ _id: ID })
-        res.status(202).send({data});
+        res.status(200).send({data});
     }
     catch (error) {
         res.status(404).send({
@@ -36,7 +36,7 @@ const MalePostData = async (req, res) => {
     try {
         const data = new MaleModel(payload);
         await data.save();
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data saved successfully",
         });
     } catch (error) {
@@ -52,7 +52,7 @@ const MalePatchData = async (req, res) => {
     const payload = req.body
     try {
         await MaleModel.findByIdAndUpdate({ _id: ID }, payload)
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data successfully modified",
         });
     }
@@ -68,7 +68,7 @@ const MaleDeleteData = async (req, res) => {
     const ID = req.params.id;
     try {
         await MaleModel.findByIdAndDelete({ _id: ID })
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data successfully deleted",
         });
     }

@@ -6,7 +6,7 @@ const { StylistModel } = require("../model/stylist.model");
 const StylistGetData = async (req, res) => {
     try {
         const data = await StylistModel.find()
-        res.status(202).send(data);
+        res.status(200).send(data);
     } catch (error) {
         res.status(404).send({
             Message: "Bad request 404",
@@ -20,7 +20,7 @@ const StylistPostData = async (req, res) => {
     try {
         const data = new StylistModel(payload);
         await data.save();
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data saved successfully",
         });
     } catch (error) {
@@ -37,7 +37,7 @@ const StylistPatchData = async (req, res) => {
     console.log(ID,payload)
     try {
         await StylistModel.findByIdAndUpdate({ _id: ID }, payload)
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data successfully modified",
         });
     }
@@ -53,7 +53,7 @@ const StylistDeleteData = async (req, res) => {
     const ID = req.params.id;
     try {
         await StylistModel.findByIdAndDelete({ _id: ID })
-        res.status(202).send({
+        res.status(200).send({
             Message: "Data successfully deleted",
         });
     }

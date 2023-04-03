@@ -6,7 +6,7 @@ const AdminData = async (req, res) => {
     const { UserName, Password } = req.body;
 
     if (UserName == process.env.USER && Password == process.env.PASS) {
-      res.status(202).send({
+      res.status(200).send({
         Message: "Welcome Admin",
         Location: "../html/adminDashboard.html"
       });
