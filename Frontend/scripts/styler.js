@@ -61,6 +61,7 @@ let renderStylerFunction=(allData,obj)=>{
             if(obj){
                 obj["stylerid"]=stylerid;
                 obj["styler_name"]=styler_name;
+                
                 console.log(obj);
                 availablilityCheckerFunction(obj);
             }else{
