@@ -48,7 +48,7 @@ let renderStylerFunction=(allData,obj)=>{
                     src=${item.image}
                     alt=${item.name+item._id}>
                 <div class="styler_name">${item.name}</div>
-                <button class="appointment_btn" data-id=${item._id}>Book Appointment</button>
+                <button class="appointment_btn" data-name=${item.name} data-id=${item._id}>Book Appointment</button>
             </div>`;
     })
     displayContainer.innerHTML=stylerArr.join("");
@@ -57,10 +57,10 @@ let renderStylerFunction=(allData,obj)=>{
     for(let appointment_btn of all_appointment_btns){
         appointment_btn.addEventListener("click",(event)=>{
             let stylerid=event.target.dataset.id;
-            
+            let styler_name=event.target.dataset.name;
             if(obj){
                 obj["stylerid"]=stylerid;
-                // obj["styler_name"]
+                obj["styler_name"]=styler_name;
                 console.log(obj);
                 availablilityCheckerFunction(obj);
             }else{

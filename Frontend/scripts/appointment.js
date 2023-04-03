@@ -33,7 +33,7 @@ async function renderAppointmentFunction(data){
         <div class="service_des">
         ${item.service_des}
         </div>
-        <div class="appointment_styler"></div>
+        <div class="appointment_styler">Styler Name : ${item.styler_name}</div>
         <div class="appointment_date">Appointment Date : ${item.date}</div>
         <div class="appointment_time">Appointment Time : ${item.time}</div>
         <button class="cancel_btn" data-id=${item._id}>cancel</button>
