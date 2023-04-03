@@ -1,5 +1,5 @@
 
-const BaseUrl = 'http://localhost:8080';
+const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
 
 document.getElementById('renderMaleservice').style.display = 'none';
 document.getElementById('renderFemaleservice').style.display = 'none';

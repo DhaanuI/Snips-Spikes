@@ -1,5 +1,5 @@
 
-const baseurl = "http://localhost:8080/"
+const baseurl = "https://nice-pink-antelope-gear.cyclic.app/"
 import loading from "../components/loading.components.js";
 import hideLoading from "../components/hideLoading.components.js";
 

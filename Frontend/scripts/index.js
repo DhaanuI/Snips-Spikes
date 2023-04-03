@@ -4,16 +4,14 @@
 import { Navbar } from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 
-
 window.onload = () => {
-  document.getElementById("nav-logo").src = "./images/logo.png"
-  document.getElementById("logo-href").href = "index.html"
-  document.getElementById("bookhref").href = "./html/gender.html"
-  document.getElementById("viewhref").href = "./html/appointment.html"
-  document.getElementById("contacthref").href = "../index.html"
-  document.getElementById("loginhref").href = "./routes/loginSignup/login.html"
+  document.getElementById("nav-logo").src = "./images/logo.png";
+  document.getElementById("logo-href").href = "index.html";
+  document.getElementById("bookhref").href = "./html/gender.html";
+  document.getElementById("viewhref").href = "./html/appointment.html";
+  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("loginhref").href = "./routes/loginSignup/login.html";
 };
-
 
 let nav = document.getElementById("NAVBAR");
 nav.innerHTML = Navbar();
@@ -68,7 +66,6 @@ footer.innerHTML = Footer();
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
 
-
 /* -------------------------------------------------------------------------- */
 /*                             section-two slider                             */
 /* -------------------------------------------------------------------------- */
@@ -110,32 +107,48 @@ $(".slider").mouseleave(() => {
 
 /* --------------------- media query for video Section-1 -------------------- */
 
-let x = window.matchMedia("(max-width:760px)")
-let heroVideo = document.getElementById("herovideo")
-let largeVideo = "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video.mp4"
-let smallVideo = "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video-Mobile.mp4"
+let x = window.matchMedia("(max-width:760px)");
+let heroVideo = document.getElementById("herovideo");
+let largeVideo =
+  "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video.mp4";
+let smallVideo =
+  "https://www.mygreentrends.in/wp-content/uploads/2020/09/Section-1-Video-Mobile.mp4";
 
-function videoChange(){
-  if(x.matches){
-    heroVideo.src = smallVideo
-  }
-  else{
-    heroVideo.src = largeVideo
+function videoChange() {
+  if (x.matches) {
+    heroVideo.src = smallVideo;
+  } else {
+    heroVideo.src = largeVideo;
   }
 }
-videoChange()
+videoChange();
 // window.addEventListener('resize', videoChange);
 
 let timeout;
-window.addEventListener('resize', function() {
+window.addEventListener("resize", function () {
   clearTimeout(timeout);
   timeout = setTimeout(videoChange, 250);
 });
 
 // Remove the event listener when it's no longer needed
-window.removeEventListener('resize', videoChange);
+window.removeEventListener("resize", videoChange);
 
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
 
-
-
-
+let loginstat = document.getElementById("loginhref");
+let data = JSON.parse(localStorage.getItem("userdata"));
+if(data){
+  if (data.message == "Login successfully") {
+    loginstat.innerText = "Logout";
+    if (loginstat.innerText == "Logout") {
+      loginstat.addEventListener("click", () => {
+        localStorage.clear();
+        loginstat.innerText = "Login";
+      });
+    }
+  } else {
+    loginstat.innerText = "Login";
+  }  
+}

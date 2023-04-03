@@ -26,6 +26,9 @@ body {
 #container {
   max-width: 100%;
 }
+.footer-container {
+  padding-top: 20px;
+}
 #footer-main > #footer {
   margin-top: -100px;
 }
@@ -44,7 +47,7 @@ body {
     /* height: 87.2vh; */
     /* border: 2px solid white; */
   }
-  #navTrigger{
+  #navTrigger {
     margin-top: 40px;
   }
 }
@@ -141,9 +144,15 @@ body {
   }
 }
 
-#insta{
+#insta {
   fill: white;
   color: white;
-  width: 25px;
+  width: 35px;
   /* padding: 10px; */
+}
+#twitter {
+  width: 35px;
+}
+#fb {
+  width: 35px;
 }

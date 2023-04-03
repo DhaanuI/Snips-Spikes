@@ -2,13 +2,18 @@
     padding: 0px;
     margin: 0px;
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 body {
     background-image: url('../images/styler_background.jpg');
     background-size: cover;
     color: #18181b;
+}
+
+#NAVBAR{
+    border: 1px solid transparent;
+    margin-top: -1px;
 }
 
 /* body::before {
@@ -21,20 +26,21 @@ body {
     background-color: rgba(0, 0, 0, 0.5); 
   }  */
 
-#navbar{
+/* #navbar{
 width: 100%;
 background-color: rgba(240, 248, 255, 0.267); 
 text-align: center;
 font-size: 25px;
 padding-top: 20px;
 padding-bottom: 20px;
-}
+} */
 
 #style_container{
     width: 80%;
     margin: auto;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 120px;
+    margin-bottom: 140px;
+    padding-bottom: 40px;
     height: auto;
     background-color: rgba(255, 255, 255, 0.644);
 }
@@ -46,12 +52,14 @@ padding-bottom: 20px;
 }
 
 #styler_grid{
-    width:100%;
+    width: 95%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: auto;
     gap: 20px;
-    padding:20px;
+    margin: auto;
+    /* padding-left:20px;
+    padding-right: 20px; */
     text-align: center;
 }
 
@@ -69,13 +77,13 @@ padding-bottom: 20px;
     width: 200px;
     height: 30px;
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.822);
     color: white;
 }
 
 #time_picker{
     text-align: center;
-    width:92%;
+    width:95%;
     background-image: url('../images/time_background.jpg');
     background-size:cover; 
     margin: auto;
@@ -93,7 +101,7 @@ padding-bottom: 20px;
 }
 #time_btn{
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.818);
     color: white;
 }
 
