@@ -1,5 +1,5 @@
 // --------------->>>>>>>> Male Service Model Location <<<<<<<<-------------------
-const { MaleModel } = require("../model/MaleServiceModel");
+const { MaleModel } = require("../model/male.model");
 
 
 
@@ -18,7 +18,6 @@ const MaleGetData = async (req, res) => {
 // --->>>> GET <<<<<---  ||  --->>>> GetSingle Service <<<<<---
 const getMaleSingleData = async (req, res) => {
     const ID = req.params.id;
-    const payload = req.body
     try {
         const data = await MaleModel.findById({ _id: ID })
         res.status(202).send({data});

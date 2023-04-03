@@ -1,7 +1,7 @@
 const express = require('express');
 
 // --------------->>>>>>>> Female Service Router <<<<<<<<-------------------
-const {  FemaleGetData, GetFemaleSingleData, FemalePostData, FemalePatchData, FemaleDeleteData } = require('../controllers/FemaleServiceController');
+const {  FemaleGetData, GetFemaleSingleData, FemalePostData, FemalePatchData, FemaleDeleteData } = require('../controllers/female.controller');
 
 const FemaleRouter = express.Router();
 
