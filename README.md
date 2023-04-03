@@ -8,6 +8,10 @@
 ## Project Name : 
    > Snips & Spikes
 
+## Frontend deployed link - https://snipsandspikes.netlify.app/
+## Backend deployed using Cyclic - https://nice-pink-antelope-gear.cyclic.app/
+
+
 <br>
 
 ## Warning :  useCamelCase  
@@ -58,30 +62,21 @@
 - user 
      - name
      - email
-     - image
      - password
-     - gender 
-     - appointments = [];
 
 - stylist 
      - name 
      - email 
      - salary
-     - image 
-     - available : true/false / default : true;
-     - occupied_timeSlot : sloteId 
-
+     - image
 
 - services 
-
     - service_name 
     - service_image
     - service_price
     - service_description
     - service_category 
     - service_by_gender
-
-
 
 - Slots 
      - id
@@ -93,10 +88,14 @@
 
 
 - appointments 
-    - id 
-    - stylistId
+    - stylerid
     - userID
     - serviceId
+    - date,
+    - time,
+    - service_name,
+    - service_des,
+    - styler_name
 
 
 ## 
