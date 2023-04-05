@@ -4,16 +4,15 @@
 import { Navbar } from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 
-
 window.onload = () => {
   document.getElementById("nav-logo").src = "../images/logo.png";
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
-  document.getElementById("viewhref").href = "../html/appointment.html";
+  document.getElementById("viewhref").href = "appointment.html";
   document.getElementById("contacthref").href = "../index.html";
-  document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
+  //   document.getElementById("loginhref").href =
+  //     "";
 };
-
 
 let nav = document.getElementById("NAVBAR");
 nav.innerHTML = Navbar();
@@ -60,15 +59,70 @@ navTrigger.addEventListener("click", function () {
 });
 
 /* --------------------------------- Footer --------------------------------- */
-
 let footer = document.getElementById("footer-main");
 footer.innerHTML = Footer();
 
-const card_div = document.querySelector(".car-div"); 
+/* -------------------------------------------------------------------------- */
+/*                     copy this to get navbar and footer                     */
+/* -------------------------------------------------------------------------- */
 
-async function getData (){
+// let insta = document.getElementById("insta");
+
+// console.log(insta.src)
+
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+
+let loginstat = document.getElementById("loginhref");
+let data = JSON.parse(localStorage.getItem("userdata")) || null;
+if (data) {
+  if (data.message == "Login successfully") {
+    loginstat.innerText = "Logout";
+    if (loginstat.innerText == "Logout") {
+      loginstat.addEventListener("click", () => {
+        Swal.fire({
+          title: "Are you sure?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Logout!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("userdata");
+            loginstat.innerText = "Login";
+            Swal.fire("Logout Successfull!").then((res) => {
+              if (res) {
+                window.location.href = "../index.html";
+              }
+            });
+          }
+        });
+      });
+    }
+  } else {
+    loginstat.innerText = "Login";
+  }
+}
+
+// provide login page an href
+if(loginstat && loginstat.innerText == "Login"){
+  loginstat.href = "../routes/loginSignup/login.html"
+}
+
+
+const card_div = document.querySelector(".car-div");
+
+async function getData() {
   try {
-    let data = await fetch("https://nice-pink-antelope-gear.cyclic.app/services/female/")
+    let data = await fetch(
+      "https://nice-pink-antelope-gear.cyclic.app/services/female/"
+    );
     data = await data.json();
     renderData(data);
     console.log(data);
@@ -77,11 +131,7 @@ async function getData (){
   }
 }
 
-
-getData()
-
-
-
+getData();
 
 function getCard(data) {
   let formatedData = data.map((ele) => {
@@ -91,10 +141,12 @@ function getCard(data) {
         <img src=${ele.image} alt="">
       </div>
       <div class="description" >
-        <p class="heading">${ele.name.slice(0,20)}<p>
-        <p>${ele.description.slice(0,50)}...</p>
+        <p class="heading">${ele.name.slice(0, 20)}<p>
+        <p>${ele.description.slice(0, 50)}...</p>
       
-        <div  class="button"> <p class = "price">${ele.price}</p> <p id="${ele._id}"  class = "bookservice">Book Service</p></div>
+        <div  class="button"> <p class = "price">${ele.price}</p> <p id="${
+      ele._id
+    }"  class = "bookservice">Book Service</p></div>
 
       </div>
     </div>
@@ -103,58 +155,34 @@ function getCard(data) {
   return formatedData.join("");
 }
 
-
 async function renderData(product_data) {
   console.log(product_data);
-    let datadisplay = document.querySelector(".cards-div");
-    datadisplay.innerHTML = getCard(product_data);
-  
-    // bookapointment button
-  
-    let bookapointment = document.querySelectorAll(".button");
-    console.log(bookapointment);
-    for (let btn of bookapointment) {
-      btn.addEventListener("click", (event) => {
-        
-        let product_id = event.target.id;
-        getServiceDat(product_id)
-       
-       
-      });
-    }
-    
-    // // edit 
+  let datadisplay = document.querySelector(".cards-div");
+  datadisplay.innerHTML = getCard(product_data);
 
-  
+  // bookapointment button
+
+  let bookapointment = document.querySelectorAll(".button");
+  console.log(bookapointment);
+  for (let btn of bookapointment) {
+    btn.addEventListener("click", (event) => {
+      let product_id = event.target.id;
+      getServiceDat(product_id);
+    });
   }
 
-  async function getServiceDat(id) {
-    try {
-      let data = await fetch(`https://nice-pink-antelope-gear.cyclic.app/services/female/${id}`)
-      data = await data.json()
-      sessionStorage.setItem("service_data",JSON.stringify(data));
-      window.location.href = "../html/styler.html"
-    } catch (error) {
-      console.log(error);
-    }
-  } 
+  // // edit
+}
 
-  /* -------------------------------------------------------------------------- */
-/*           clearing the localStorage and changing Login to Logout           */
-/* -------------------------------------------------------------------------- */
-
-let loginstat = document.getElementById("loginhref");
-let data = JSON.parse(localStorage.getItem("userdata"));
-if(data){
-  if (data.message == "Login successfully") {
-    loginstat.innerText = "Logout";
-    if (loginstat.innerText == "Logout") {
-      loginstat.addEventListener("click", () => {
-        localStorage.clear();
-        loginstat.innerText = "Login";
-      });
-    }
-  } else {
-    loginstat.innerText = "Login";
-  }  
+async function getServiceDat(id) {
+  try {
+    let data = await fetch(
+      `https://nice-pink-antelope-gear.cyclic.app/services/female/${id}`
+    );
+    data = await data.json();
+    sessionStorage.setItem("service_data", JSON.stringify(data));
+    window.location.href = "../html/styler.html";
+  } catch (error) {
+    console.log(error);
+  }
 }
