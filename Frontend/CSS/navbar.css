@@ -32,7 +32,8 @@
   float: left;
   width: auto;
   height: 100%;
-  padding-left: 3rem;
+  /* padding-left: 3rem; */
+  margin-left: 5%;
 }
 #mainListDiv {
   padding-right: 2rem;
@@ -50,6 +51,8 @@
 .nav div.logo a img {
   background-color: #000000e9;
   border-radius: 50%;
+  height: 65px;
+  width: 65px;
 }
 
 .nav div.logo a:hover {
@@ -116,9 +119,9 @@
   .navTrigger {
     display: block;
   }
-  .nav div.logo {
+  /* .nav div.logo {
     margin-left: 15px;
-  }
+  } */
   .nav div.main_list {
     width: 100%;
     height: 0;

@@ -8,9 +8,10 @@ window.onload = () => {
   document.getElementById("nav-logo").src = "../images/logo.png";
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
-  document.getElementById("viewhref").href = "../html/appointment.html";
+  document.getElementById("viewhref").href = "appointment.html";
   document.getElementById("contacthref").href = "../index.html";
-  document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
+  //   document.getElementById("loginhref").href =
+  //     "";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -64,6 +65,54 @@ footer.innerHTML = Footer();
 /* -------------------------------------------------------------------------- */
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
+
+// let insta = document.getElementById("insta");
+
+// console.log(insta.src)
+
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */
+let loginstat = document.getElementById("loginhref");
+let data = JSON.parse(localStorage.getItem("userdata")) || null;
+if (data) {
+  if (data.message == "Login successfully") {
+    loginstat.innerText = "Logout";
+    if (loginstat.innerText == "Logout") {
+      loginstat.addEventListener("click", () => {
+        Swal.fire({
+          title: "Are you sure?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Logout!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("userdata");
+            loginstat.innerText = "Login";
+            Swal.fire("Logout Successfull!").then((res)=>{
+                if(res){
+                    window.location.href = "../index.html";
+                }
+            })
+          }
+        });
+      });
+    }
+  } else {
+    loginstat.innerText = "Login";
+  }
+}
+
+// provide login page an href
+if(loginstat && loginstat.innerText == "Login"){
+  loginstat.href = "../routes/loginSignup/login.html"
+}
+
 
 /* -------------------------------- fetching -------------------------------- */
 
@@ -275,22 +324,4 @@ async function getServiceDat(id) {
 }
 
 
-/* -------------------------------------------------------------------------- */
-/*           clearing the localStorage and changing Login to Logout           */
-/* -------------------------------------------------------------------------- */
 
-let loginstat = document.getElementById("loginhref");
-let data = JSON.parse(localStorage.getItem("userdata"));
-if(data){
-  if (data.message == "Login successfully") {
-    loginstat.innerText = "Logout";
-    if (loginstat.innerText == "Logout") {
-      loginstat.addEventListener("click", () => {
-        localStorage.clear();
-        loginstat.innerText = "Login";
-      });
-    }
-  } else {
-    loginstat.innerText = "Login";
-  }  
-}

@@ -8,9 +8,10 @@ window.onload = () => {
   document.getElementById("nav-logo").src = "../images/logo.png";
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
-  document.getElementById("viewhref").href = "../html/appointment.html";
+  document.getElementById("viewhref").href = "appointment.html";
   document.getElementById("contacthref").href = "../index.html";
-  document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
+  //   document.getElementById("loginhref").href =
+  //     "";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -74,17 +75,38 @@ footer.innerHTML = Footer();
 /* -------------------------------------------------------------------------- */
 
 let loginstat = document.getElementById("loginhref");
-let data = JSON.parse(localStorage.getItem("userdata"));
-if(data){
+let data = JSON.parse(localStorage.getItem("userdata")) || null;
+if (data) {
   if (data.message == "Login successfully") {
     loginstat.innerText = "Logout";
     if (loginstat.innerText == "Logout") {
       loginstat.addEventListener("click", () => {
-        localStorage.clear();
-        loginstat.innerText = "Login";
+        Swal.fire({
+          title: "Are you sure?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Logout!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("userdata");
+            loginstat.innerText = "Login";
+            Swal.fire("Logout Successfull!").then((res)=>{
+                if(res){
+                    window.location.href = "../index.html";
+                }
+            })
+          }
+        });
       });
     }
   } else {
     loginstat.innerText = "Login";
-  }  
+  }
+}
+
+// provide login page an href
+if(loginstat && loginstat.innerText == "Login"){
+  loginstat.href = "../routes/loginSignup/login.html"
 }
