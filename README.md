@@ -160,3 +160,10 @@
 
 ![snips spikes drawio (1)](https://user-images.githubusercontent.com/87657007/228304975-dc21afa6-a2bb-407a-bcd0-fbd1d1baa52c.png)
 
+# screenshots
+
+![Screenshot (572)](https://user-images.githubusercontent.com/87657007/230887457-e7d94561-9b0e-4a47-9a83-cae79ae561b1.png)
+![Screenshot (574)](https://user-images.githubusercontent.com/87657007/230887473-4ad81427-a907-408a-a6ba-53846b06e6ba.png)
+![Screenshot (575)](https://user-images.githubusercontent.com/87657007/230887479-1c74c055-4256-4abf-a12f-f2e04b765c25.png)
+![Screenshot (576)](https://user-images.githubusercontent.com/87657007/230887490-b548760e-f5d9-4a1b-838a-f30f595b6928.png)
+![Screenshot (577)](https://user-images.githubusercontent.com/87657007/230887506-96930296-def0-48ba-b321-d1e412059d37.png)
