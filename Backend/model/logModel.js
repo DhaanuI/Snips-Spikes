@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const LogSchema = mongoose.Schema({
-    DateAndTime: String,
+    DateandTime: String,
     Method : String,
     URL : String,
     IP: String,
