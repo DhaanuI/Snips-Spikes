@@ -3,10 +3,14 @@
 </p>
 
 ## Project Code :  
-   > military-waste-5460
+   ```
+    military-waste-5460
+   ```
 
 ## Project Name : 
-   > Snips & Spikes
+   ```
+   Snips & Spikes
+   ```
 
 <br>
 
