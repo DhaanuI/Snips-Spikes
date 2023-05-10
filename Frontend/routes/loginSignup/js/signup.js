@@ -1,5 +1,9 @@
+// ----------------->>>> API and their EndPoints <<<<---------------------
 
-const baseurl = "https://nice-pink-antelope-gear.cyclic.app/"
+const BaseUrl = "https://nice-pink-antelope-gear.cyclic.app";
+const DefaultUrl = `${BaseUrl}/user`;
+const RegisterUrl = `${DefaultUrl}/register`
+
 import loading from "../components/loading.components.js";
 import hideLoading from "../components/hideLoading.components.js";
 
@@ -30,14 +34,12 @@ singupfrom.addEventListener('submit', (e) => {
     const user = { name, email, password }
     loading()
     register(user)
-
-    console.log(user);
 })
 
 const register = async (user) => {
     try {
 
-        const res = await fetch(`${baseurl}user/register`, {
+        const res = await fetch(RegisterUrl, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

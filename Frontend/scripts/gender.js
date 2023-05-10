@@ -10,8 +10,6 @@ window.onload = () => {
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
   document.getElementById("contacthref").href = "../index.html";
-  //   document.getElementById("loginhref").href =
-  //     "";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -73,7 +71,6 @@ footer.innerHTML = Footer();
 /* -------------------------------------------------------------------------- */
 /*           clearing the localStorage and changing Login to Logout           */
 /* -------------------------------------------------------------------------- */
-
 let loginstat = document.getElementById("loginhref");
 let data = JSON.parse(localStorage.getItem("userdata")) || null;
 if (data) {
@@ -92,11 +89,11 @@ if (data) {
           if (result.isConfirmed) {
             localStorage.removeItem("userdata");
             loginstat.innerText = "Login";
-            Swal.fire("Logout Successfull!").then((res)=>{
-                if(res){
-                    window.location.href = "../index.html";
-                }
-            })
+            Swal.fire("Logout Successfull!").then((res) => {
+              if (res) {
+                window.location.href = "../index.html";
+              }
+            });
           }
         });
       });
@@ -107,6 +104,6 @@ if (data) {
 }
 
 // provide login page an href
-if(loginstat && loginstat.innerText == "Login"){
-  loginstat.href = "../routes/loginSignup/login.html"
+if (loginstat && loginstat.innerText == "Login") {
+  loginstat.href = "../routes/loginSignup/login.html";
 }

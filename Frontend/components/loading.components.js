@@ -8,17 +8,4 @@ function loading (){
   </div>
   `
 }
-export default loading
-
-
-
-
-
-
-//                  let popHandler = document.querySelector(".pop-handler");  
-
-
-//                  <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>         
-
-
-//                  <div class="pop-handler"></div>
+export default loading;

@@ -4,6 +4,8 @@ html {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 body {
@@ -505,6 +507,15 @@ body {
     /* background-size: cover; */
     background-position: center;
   }
+}
+
+@media only screen and (max-width: 871px) {
+  #footer{
+    margin-top: -90px;
+  }
+}
+@media only screen and (max-width: 738px){
+  
 }
 
 #footer-main {

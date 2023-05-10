@@ -1,4 +1,3 @@
-
 import hideLoading from "../components/hideLoading.components.js";
 import loading from "../components/loading.components.js";
 
@@ -16,36 +15,8 @@ let swiper = new Swiper(".mySwiper", {
   });
 
 
-const userdata = JSON.parse(localStorage.getItem('userdata')) 
-console.log(userdata);
+const userdata = JSON.parse(localStorage.getItem('userdata'));
 
-// auto laoding animations
-// setTimeout(()=>{
-//   if(userdata) {
-  
-//     let hello = document.getElementById('hellouser')
-//     hello.innerText = "Hey "+userdata.name;
-//     loading()
-//   }else{
-//     hideLoading()
-//     window.location.href = "./routes/loginSignup/login.html"
-//     loading()
-//   }
-// },8000)
-
-// autologin redirect
-// setTimeout(()=>{
-//   if(userdata) {
-  
-//     let hello = document.getElementById('hellouser')
-//     hello.innerText = "Hey "+userdata.name;
-//     hideLoading()
-//   }else{
-//     loading()
-//     window.location.href = "./routes/loginSignup/login.html"
-//     loading()
-//   }
-// },10000)
 
 if(userdata) {
   

@@ -1,14 +1,33 @@
+// ----------------->>>> API and their EndPoints <<<<---------------------
+
+const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
+const DefaultUrl = `${BaseUrl}/appointments`;
+const GetAppointment = `${DefaultUrl}/appointment`;
+const DeleteAppointment = `${DefaultUrl}/appointment/delete`;
+
+
 let userdata = JSON.parse(localStorage.getItem("userdata"));
 if (userdata) {
   window.onload = fetAllAppointmentFn(userdata.userid);
 } else {
-  alert("please login first");
+  Swal.fire({
+    title: 'Login First',
+    width:"30%",
+    background:"white",
+    color:"red",
+    confirmButton:true
+  }).then((value)=>{
+    if(value.isConfirmed) {
+      window.location.href = "../index.html"
+    }
+ })  
 }
+
 
 async function fetAllAppointmentFn(userid) {
   try {
     let req = await fetch(
-      "https://nice-pink-antelope-gear.cyclic.app/appointments/appointment",
+      GetAppointment,
       {
         method: "GET",
         headers: {
@@ -21,11 +40,24 @@ async function fetAllAppointmentFn(userid) {
       let newData = allData.filter((item) => item.userid === userid);
       renderAppointmentFunction(newData);
     } else {
-      alert("Unable to Load the Data");
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Bad Request 404`,
+        width:"25%",
+      })
+
     }
   } catch (error) {
-    console.log(error.message);
-    alert("Unable to Load the Data");
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `Bad Request 404`,
+      width:"25%",
+    })
+
   }
 }
 
@@ -57,7 +89,7 @@ async function renderAppointmentFunction(data) {
 async function deleteAppointmentFunction(id) {
   try {
     let delete_req = await fetch(
-      `https://nice-pink-antelope-gear.cyclic.app/appointments/appointment/delete/${id}`,
+      `${DeleteAppointment}/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -66,14 +98,30 @@ async function deleteAppointmentFunction(id) {
       }
     );
     if (delete_req.ok) {
-      alert("Appointment is successfully canceled");
+    
+      Swal.fire({
+        title: "Appointment is successfully cancelled",
+        width: "25%",
+        background: "white",
+        color: "red",
+      });
+
       fetAllAppointmentFn(userdata.userid);
     } else {
-      alert("Unable to cancel the appointment!");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Bad Request 404`,
+        width:"25%",
+      });
     }
   } catch (error) {
-    console.log(error.message);
-    alert("Unable to cancel the appointment!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `Bad Request 404`,
+      width:"25%",
+    });
   }
 }
 
@@ -105,7 +153,6 @@ window.addEventListener("scroll", function () {
   var navBar = document.querySelector(".nav");
   if (document.documentElement.scrollTop > 50) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -118,7 +165,6 @@ const observer = new IntersectionObserver((entries) => {
   const isVisible = entries[0].isIntersecting;
   if (!isVisible) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -145,9 +191,7 @@ footer.innerHTML = Footer();
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
 
-// let insta = document.getElementById("insta");
 
-// console.log(insta.src)
 
 /* -------------------------------------------------------------------------- */
 /*           clearing the localStorage and changing Login to Logout           */
@@ -171,11 +215,11 @@ if (data) {
           if (result.isConfirmed) {
             localStorage.removeItem("userdata");
             loginstat.innerText = "Login";
-            Swal.fire("Logout Successfull!").then((res)=>{
-                if(res){
-                    window.location.href = "../index.html";
-                }
-            })
+            Swal.fire("Logout Successfull!").then((res) => {
+              if (res) {
+                window.location.href = "../index.html";
+              }
+            });
           }
         });
       });
@@ -186,7 +230,6 @@ if (data) {
 }
 
 // provide login page an href
-if(loginstat && loginstat.innerText == "Login"){
-  loginstat.href = "../routes/loginSignup/login.html"
+if (loginstat && loginstat.innerText == "Login") {
+  loginstat.href = "../routes/loginSignup/login.html";
 }
-

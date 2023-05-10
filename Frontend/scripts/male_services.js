@@ -10,8 +10,7 @@ window.onload = () => {
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
   document.getElementById("contacthref").href = "../index.html";
-  //   document.getElementById("loginhref").href =
-  //     "";
+  // document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -26,7 +25,6 @@ window.addEventListener("scroll", function () {
   var navBar = document.querySelector(".nav");
   if (document.documentElement.scrollTop > 50) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -39,7 +37,6 @@ const observer = new IntersectionObserver((entries) => {
   const isVisible = entries[0].isIntersecting;
   if (!isVisible) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -66,9 +63,7 @@ footer.innerHTML = Footer();
 /*                     copy this to get navbar and footer                     */
 /* -------------------------------------------------------------------------- */
 
-// let insta = document.getElementById("insta");
 
-// console.log(insta.src)
 
 /* -------------------------------------------------------------------------- */
 /*           clearing the localStorage and changing Login to Logout           */
@@ -94,11 +89,11 @@ if (data) {
           if (result.isConfirmed) {
             localStorage.removeItem("userdata");
             loginstat.innerText = "Login";
-            Swal.fire("Logout Successfull!").then((res)=>{
-                if(res){
-                    window.location.href = "../index.html";
-                }
-            })
+            Swal.fire("Logout Successfull!").then((res) => {
+              if (res) {
+                window.location.href = "../index.html";
+              }
+            });
           }
         });
       });
@@ -109,10 +104,9 @@ if (data) {
 }
 
 // provide login page an href
-if(loginstat && loginstat.innerText == "Login"){
-  loginstat.href = "../routes/loginSignup/login.html"
+if (loginstat && loginstat.innerText == "Login") {
+  loginstat.href = "../routes/loginSignup/login.html";
 }
-
 
 /* -------------------------------- fetching -------------------------------- */
 
@@ -120,10 +114,11 @@ const card_div = document.querySelector(".card-service-page");
 
 async function getData() {
   try {
-    let data = await fetch("https://nice-pink-antelope-gear.cyclic.app/services/male/");
+    let data = await fetch(
+      "https://nice-pink-antelope-gear.cyclic.app/services/male/"
+    );
     data = await data.json();
     renderData(data);
-    console.log(data);
   } catch (error) {
     console.log(error.message);
   }
@@ -294,19 +289,17 @@ function getCard(data) {
 }
 
 async function renderData(product_data) {
-  console.log(product_data);
   let datadisplay = document.querySelector(".general-container-service-page");
   datadisplay.innerHTML = getCard(product_data);
 
   // bookapointment button
 
   let bookapointment = document.querySelectorAll(".idlcass");
-  console.log(bookapointment);
   for (let btn of bookapointment) {
     btn.addEventListener("click", (event) => {
-      // console.log(event.target)
       let product_id = event.target.id;
       getServiceDat(product_id);
+      window.location.href = "../html/styler.html";
     });
   }
 
@@ -315,7 +308,9 @@ async function renderData(product_data) {
 
 async function getServiceDat(id) {
   try {
-    let data = await fetch(`https://nice-pink-antelope-gear.cyclic.app/services/male/${id}`);
+    let data = await fetch(
+      `https://nice-pink-antelope-gear.cyclic.app/services/male/${id}`
+    );
     data = await data.json();
     sessionStorage.setItem("service_data", JSON.stringify(data));
   } catch (error) {
@@ -323,5 +318,6 @@ async function getServiceDat(id) {
   }
 }
 
-
-
+/* -------------------------------------------------------------------------- */
+/*           clearing the localStorage and changing Login to Logout           */
+/* -------------------------------------------------------------------------- */

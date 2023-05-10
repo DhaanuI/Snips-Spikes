@@ -117,7 +117,7 @@ const card_div = document.querySelector(".car-div");
 async function getData() {
   try {
     let data = await fetch(
-      "https://nice-pink-antelope-gear.cyclic.app/services/female/"
+      "https://hairsalonbackend-production-1188.up.railway.app/services/female/"
     );
     data = await data.json();
     renderData(data);
@@ -170,7 +170,7 @@ async function renderData(product_data) {
 async function getServiceDat(id) {
   try {
     let data = await fetch(
-      `https://nice-pink-antelope-gear.cyclic.app/services/female/${id}`
+      `https://hairsalonbackend-production-1188.up.railway.app/services/female/${id}`
     );
     data = await data.json();
     sessionStorage.setItem("service_data", JSON.stringify(data));

@@ -4,6 +4,7 @@ const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
 const Default = `${BaseUrl}/admin`
 const PostDataCheck = `${Default}/check`
 
+
 // ------------------- Login Part ----------------------
 
 const SubmitButton = document.querySelector(".submit");

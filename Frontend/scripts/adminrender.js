@@ -1,5 +1,10 @@
+// ----------------->>>> API and their EndPoints <<<<---------------------
 
 const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
+const DefaultUrl = `${BaseUrl}/services`;
+const MaleUrl = `${DefaultUrl}/male`;
+const FemaleUrl = `${DefaultUrl}/female`;
+
 
 document.getElementById('renderMaleservice').style.display = 'none';
 document.getElementById('renderFemaleservice').style.display = 'none';
@@ -16,11 +21,11 @@ let stylists = document.getElementById("stylists");
 stylists.addEventListener("click", callStylists);
 
 
-// fetching logics are here
+// ----------------->>>> Fetching Logics are Here <<<<---------------------
 async function callMale() {
 
     try {
-        let response = await fetch(`${BaseUrl}/services/male`)
+        let response = await fetch(MaleUrl)
         let data = await response.json()
 
         document.getElementById('renderMaleservice').style.display = 'grid';
@@ -36,11 +41,16 @@ async function callMale() {
         femaleServices.classList.remove("active");
         stylists.classList.remove("active");
 
-        console.log(data)
         renderMale(data);
     }
     catch (error) {
-        console.log(error)
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Bad Request 404 : ${error.message}`,
+            width:"25%",
+        })
 
     }
 
@@ -48,7 +58,7 @@ async function callMale() {
 
 async function callFemale() {
     try {
-        let response = await fetch(`${BaseUrl}/services/female`)
+        let response = await fetch(FemaleUrl)
         let data = await response.json()
         document.getElementById('renderMaleservice').style.display = 'none';
         document.getElementById('renderFemaleservice').style.display = 'grid';
@@ -63,11 +73,15 @@ async function callFemale() {
         femaleServices.classList.toggle("active");
 
         stylists.classList.remove("active");
-        console.log(data)
         renderFemale(data);
     }
     catch (error) {
-        console.log(error)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Bad Request 404 : ${error.message}`,
+            width:"25%",
+        })
     }
 }
 
@@ -87,17 +101,21 @@ async function callStylists() {
         document.getElementById('style').style.textAlign = "center"
 
         stylists.classList.toggle("active");
-        console.log(data)
         renderStylists(data);
 
     }
     catch (error) {
-        console.log(error)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Bad Request 404 : ${error.message}`,
+            width:"25%",
+        })
     }
 }
 
 
-//data rendering is done here
+// ----------------->>>> Data Rendering <<<<---------------------
 function renderMale(data) {
     data.forEach((item) => {
         let div = document.createElement("div")
@@ -199,7 +217,7 @@ function renderMale(data) {
                 };
 
                 try {
-                    const response = await fetch(`${BaseUrl}/services/male/update/${id}`, {
+                    const response = await fetch(`${MaleUrl}/update/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -212,7 +230,6 @@ function renderMale(data) {
                     }
 
                     const data = await response.json();
-                    console.log(data); // log the response from the server
 
                     card.querySelector('img').setAttribute('src', formData.image);
                     card.querySelector('h1').textContent = formData.title;
@@ -221,7 +238,12 @@ function renderMale(data) {
 
                     modal.remove();
 
-                    alert("Service data has been modified successfully")
+                    Swal.fire({
+                        title: "Service data has been modified successfully",
+                        width: "25%",
+                        background: "white",
+                        color: "blue",
+                      });
                 } catch (error) {
                     console.error('There was a problem with the PATCH request:', error);
                 }
@@ -239,19 +261,32 @@ function renderMale(data) {
         del.addEventListener('click', async () => {
 
             try {
-                const response = await fetch(`${BaseUrl}/services/male/delete/${id}`, {
+                const response = await fetch(`${MaleUrl}/delete/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {
                     throw new Error('Failed to delete service.');
                 }
                 const result = await response.json();
-                alert('Data successfully deleted!');
+
+                Swal.fire({
+                    title: "Data successfully deleted!",
+                    width: "25%",
+                    background: "white",
+                    color: "blue",
+                  });
+
                 div.parentNode.removeChild(div);
                 return result;
             } catch (error) {
-                alert('Error deleting data!');
-                console.error(error);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Bad Request 404',
+                    width:"25%",
+                })
+
             }
         });
 
@@ -366,7 +401,7 @@ function renderFemale(data) {
                 };
 
                 try {
-                    const response = await fetch(`${BaseUrl}/services/female/update/${id}`, {
+                    const response = await fetch(`${FemaleUrl}/update/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -379,7 +414,6 @@ function renderFemale(data) {
                     }
 
                     const data = await response.json();
-                    console.log(data); // log the response from the server
 
                     card.querySelector('img').setAttribute('src', formData.image);
                     card.querySelector('h1').textContent = formData.title;
@@ -387,7 +421,14 @@ function renderFemale(data) {
                     card.querySelector('h4').textContent = formData.price;
 
                     modal.remove();
-                    alert("Service data has been modified successfully")
+
+                    Swal.fire({
+                        title: "Service data has been modified successfully",
+                        width: "25%",
+                        background: "white",
+                        color: "blue",
+                      });
+                    
                 } catch (error) {
                     console.error('There was a problem with the PATCH request:', error);
                 }
@@ -405,19 +446,30 @@ function renderFemale(data) {
         del.addEventListener('click', async () => {
 
             try {
-                const response = await fetch(`${BaseUrl}/services/female/delete/${id}`, {
+                const response = await fetch(`${FemaleUrl}/delete/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {
                     throw new Error('Failed to delete service.');
                 }
                 const result = await response.json();
-                alert('Data successfully deleted!');
+
+                Swal.fire({
+                    title: "Data successfully deleted!",
+                    width: "25%",
+                    background: "white",
+                    color: "blue",
+                  });
+
                 div.parentNode.removeChild(div);
                 return result;
             } catch (error) {
-                alert('Error deleting data!');
-                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Bad Request 404',
+                    width:"25%",
+                })
             }
         });
 
@@ -542,7 +594,6 @@ function renderStylists(data) {
                     }
 
                     const data = await response.json();
-                    console.log(data); // log the response from the server
 
                     card.querySelector('img').setAttribute('src', formData.image);
                     card.querySelector('h1').textContent = formData.title;
@@ -550,7 +601,14 @@ function renderStylists(data) {
                     card.querySelector('p').textContent = formData.email;
 
                     modal.remove();
-                    alert("Stylists data has been modified successfully")
+
+                    Swal.fire({
+                        title: "Stylists data has been modified successfully",
+                        width: "25%",
+                        background: "white",
+                        color: "blue",
+                      });
+
                 } catch (error) {
                     console.error('There was a problem with the PATCH request:', error);
                 }
@@ -575,12 +633,25 @@ function renderStylists(data) {
                     throw new Error('Failed to delete service.');
                 }
                 const result = await response.json();
-                alert('Data successfully deleted!');
+
+                Swal.fire({
+                    title: "Data successfully deleted!",
+                    width: "25%",
+                    background: "white",
+                    color: "blue",
+                  });
+
                 div.parentNode.removeChild(div);
                 return result;
             } catch (error) {
-                alert('Error deleting data!');
-                console.error(error);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Bad Request 404',
+                    width:"25%",
+                })
+
             }
         });
 
@@ -593,7 +664,7 @@ function renderStylists(data) {
 
 
 
-// form logic
+// ----------------->>>> Form Logic <<<<---------------------
 const addMaleForm = document.querySelector('#addmale form');
 const addFemaleForm = document.querySelector('#addfemale form');
 const addStylistsForm = document.querySelector('#addstylists form');
@@ -609,15 +680,18 @@ addMaleForm.addEventListener('submit', async (e) => {
     for (let key in obj) {
         if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
 
-            alert("Enter all the fields")
-            return;
+            return Swal.fire({
+                title: "Enter all the fields",
+                width: "25%",
+                background: "white",
+                color: "blue",
+              });
 
         }
     }
 
-    console.log(obj);
 
-    const response = await fetch(`${BaseUrl}/services/male/addMaleService`, {
+    const response = await fetch(`${MaleUrl}/addMaleService`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -626,9 +700,14 @@ addMaleForm.addEventListener('submit', async (e) => {
     });
 
     const result = await response.json();
-    console.log(result);
 
-    alert("Service added successfully");
+    Swal.fire({
+        title: "Service added successfully",
+        width: "25%",
+        background: "white",
+        color: "blue",
+      });
+
     addMaleForm.reset();
 });
 
@@ -638,7 +717,7 @@ addFemaleForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(addFemaleForm);
     const obj = {};
-    //console.log(formData)
+
     formData.forEach((value, key) => {
         obj[key] = value;
     });
@@ -646,14 +725,16 @@ addFemaleForm.addEventListener('submit', async (e) => {
     for (let key in obj) {
         if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
 
-            alert("Enter all the fields")
-            return;
-
+            return Swal.fire({
+                        title: "Enter all the fields",
+                        width: "25%",
+                        background: "white",
+                        color: "blue",
+                   });
         }
     }
-    console.log(obj);
 
-    const response = await fetch(`${BaseUrl}/services/female/addFemaleService`, {
+    const response = await fetch(`${FemaleUrl}/addFemaleService`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -662,9 +743,14 @@ addFemaleForm.addEventListener('submit', async (e) => {
     });
 
     const result = await response.json();
-    console.log(result);
 
-    alert("Service added successfully");
+    Swal.fire({
+        title: "Service added successfully",
+        width: "25%",
+        background: "white",
+        color: "blue",
+   });
+
     addFemaleForm.reset();
 });
 
@@ -673,7 +759,7 @@ addStylistsForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(addStylistsForm);
     const obj = {};
-    //console.log(formData)
+
     formData.forEach((value, key) => {
         obj[key] = value;
     });
@@ -681,12 +767,15 @@ addStylistsForm.addEventListener('submit', async (e) => {
     for (let key in obj) {
         if (obj[key] == "" || obj[key] == undefined || obj[key] == null) {
 
-            alert("Enter all the fields")
-            return;
+            return Swal.fire({
+                title: "Enter all the fields",
+                width: "25%",
+                background: "white",
+                color: "blue",
+           });
 
         }
     }
-    console.log(obj);
 
     const response = await fetch(`${BaseUrl}/stylist/styler/addStylistService`, {
         method: 'POST',
@@ -697,15 +786,19 @@ addStylistsForm.addEventListener('submit', async (e) => {
     });
 
     const result = await response.json();
-    console.log(result);
 
-    alert("Stylists added successfully");
+    Swal.fire({
+        title: "Stylists added successfully",
+        width: "25%",
+        background: "white",
+        color: "blue",
+   });
     addStylistsForm.reset();
 });
 
 
 
-// back to top button
+// ----------------->>>> Back to top button <<<<---------------------
 var button = document.getElementById("back-to-top-button");
 
 window.addEventListener("scroll", function () {
