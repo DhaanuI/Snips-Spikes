@@ -9,7 +9,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "index.html";
   document.getElementById("bookhref").href = "./html/gender.html";
   document.getElementById("viewhref").href = "./html/appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./html/feedbackForm.html";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -154,11 +154,11 @@ if (data) {
           if (result.isConfirmed) {
             localStorage.removeItem("userdata");
             loginstat.innerText = "Login";
-            Swal.fire("Logout Successfull!").then((res)=>{
-                if(res){
-                    window.location.href = "index.html";
-                }
-            })
+            Swal.fire("Logout Successfull!").then((res) => {
+              if (res) {
+                window.location.href = "index.html";
+              }
+            });
           }
         });
       });
@@ -169,6 +169,6 @@ if (data) {
 }
 
 // provide login page an href
-if(loginstat && loginstat.innerText == "Login"){
-  loginstat.href = "./routes/loginSignup/login.html"
+if (loginstat && loginstat.innerText == "Login") {
+  loginstat.href = "./routes/loginSignup/login.html";
 }

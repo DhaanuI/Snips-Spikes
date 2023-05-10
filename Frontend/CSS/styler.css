@@ -1,21 +1,49 @@
 * {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Poppins', sans-serif;
-    /* box-sizing: border-box; */
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  /* box-sizing: border-box; */
 }
 
 body {
-    background-image: url('../images/styler_background.jpg');
-    background-size: cover;
-    color: #18181b;
+  background-image: url("../images/styler_background.jpg");
+  background-size: cover;
+  color: #18181b;
 }
-
-#NAVBAR{
-    border: 1px solid transparent;
-    margin-top: -1px;
+#footer {
+  padding-top: 60px;
 }
-
+#NAVBAR {
+  border: 1px solid transparent;
+  margin-top: -1px;
+}
+#time_picker > #date {
+  border: none;
+  padding-left: 19px;
+  width: 28%;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 800;
+}
+#time_picker > select {
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  padding-right: 18px;
+  font-weight: 800;
+  padding-left: 17px;
+  height: auto;
+  cursor: pointer;
+}
+#time_btn{
+    transition: all 0.3s ease-in-out;
+}
+#time_btn:hover{
+    scale: 1.1;
+}
 /* body::before {
     content: '';
     position: absolute;
@@ -35,87 +63,96 @@ padding-top: 20px;
 padding-bottom: 20px;
 } */
 
-#style_container{
-    width: 80%;
-    margin: auto;
-    margin-top: 120px;
-    margin-bottom: 140px;
-    padding-bottom: 40px;
-    height: auto;
-    background-color: rgba(255, 255, 255, 0.644);
+#style_container {
+  width: 80%;
+  margin: auto;
+  margin-top: 120px;
+  margin-bottom: 140px;
+  padding-bottom: 40px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.644);
 }
 
-.styler_header{
-    width:100%;
-    text-align: center;padding: 20px 0px;
-    font-size: 28px;
+.styler_header {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0px;
+  font-size: 28px;
 }
 
-#styler_grid{
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: auto;
-    gap: 20px;
-    margin: auto;
-    /* padding-left:20px;
+#styler_grid {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  margin: auto;
+  /* padding-left:20px;
     padding-right: 20px; */
-    text-align: center;
+  text-align: center;
 }
 
-.styler_card{
-    background-color: aliceblue;
-    padding:15px;
+.styler_card {
+  background-color: aliceblue;
+  padding: 15px;
 }
-.styler_name{
-    padding: 5px 0px;
+.styler_name {
+  padding: 5px 0px;
 }
-.styler_img{
-    height:76%;
+.styler_img {
+  height: 76%;
 }
-.styler_card button{
-    width: 200px;
-    height: 30px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.822);
-    color: white;
-}
-
-#time_picker{
-    text-align: center;
-    width:95%;
-    background-image: url('../images/time_background.jpg');
-    background-size:cover; 
-    margin: auto;
-    padding-top:25px;
-    padding-bottom: 10px;
+.styler_card button {
+  width: 200px;
+  height: 30px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.822);
+  color: white;
+  transition: all 0.3s ease-in-out;
 }
 
-.inputz{
-    width:30%;
-    height: 30px;
-    margin-bottom: 15px;
-}
-#time_picker i{
-    font-size: 20px;
-}
-#time_btn{
-    border: none;
-    background-color: rgba(0, 0, 0, 0.818);
-    color: white;
+#time_picker {
+  text-align: center;
+  width: 95%;
+  background-image: url("../images/time_background.jpg");
+  background-size: cover;
+  margin: auto;
+  padding-top: 25px;
+  padding-bottom: 10px;
 }
 
-
-@media screen and (min-width: 650px) and (max-width:900px) {
-    #styler_grid{
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: auto;
-    }
+.inputz {
+  width: 30%;
+  height: 30px;
+  margin-bottom: 15px;
+}
+.appointment_btn:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+#time_picker i {
+  font-size: 20px;
+}
+#time_btn {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.818);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  height: auto;
+  font-size: 1rem;
 }
 
-@media screen and (min-width: 300px) and (max-width:649px) {
-    #styler_grid{
-        grid-template-columns: repeat(1,1fr);
-        grid-template-rows: auto;
-    }
+@media screen and (min-width: 650px) and (max-width: 900px) {
+  #styler_grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 649px) {
+  #styler_grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+  }
 }

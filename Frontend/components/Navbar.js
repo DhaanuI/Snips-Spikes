@@ -4,7 +4,7 @@ let Navbar = () => {
     <div class="container" id="container">
       <div class="logo">
         <a id="logo-href" href="#"
-          ><img  id="nav-logo"  src="#" alt=""
+          ><img id="nav-logo"  src="#" alt=""
         /></a>
       </div>
       <div id="mainListDiv" class="main_list">
