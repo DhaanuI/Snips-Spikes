@@ -9,7 +9,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./feedbackForm.html";
   // document.getElementById("loginhref").href =
   //   "../routes/loginSignup/login.html";
 };
@@ -117,7 +117,7 @@ const card_div = document.querySelector(".car-div");
 async function getData() {
   try {
     let data = await fetch(
-      "https://nice-pink-antelope-gear.cyclic.app/services/female/"
+      "https://hair-salon-backend.onrender.com/services/female/"
     );
     data = await data.json();
     renderData(data);
@@ -170,7 +170,7 @@ async function renderData(product_data) {
 async function getServiceDat(id) {
   try {
     let data = await fetch(
-      `https://nice-pink-antelope-gear.cyclic.app/services/female/${id}`
+      `https://hair-salon-backend.onrender.com/services/female/${id}`
     );
     data = await data.json();
     sessionStorage.setItem("service_data", JSON.stringify(data));

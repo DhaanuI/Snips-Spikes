@@ -5,8 +5,6 @@ time_btn.addEventListener("submit", (event) => {
   let userdata = JSON.parse(localStorage.getItem("userdata"));
   let service_data = JSON.parse(sessionStorage.getItem("service_data"));
 
-  console.log(userdata)
-
   if(userdata==null){
     return Swal.fire({
       title: 'Login First',
@@ -37,7 +35,7 @@ time_btn.addEventListener("submit", (event) => {
 let fetAllStylerFn = async (obj) => {
   try {
     let req = await fetch(
-      "https://nice-pink-antelope-gear.cyclic.app/stylist/styler",
+      "https://hair-salon-backend.onrender.com/stylist/styler",
       {
         method: "GET",
         headers: {
@@ -49,11 +47,20 @@ let fetAllStylerFn = async (obj) => {
       let allData = await req.json();
       renderStylerFunction(allData, obj);
     } else {
-      alert("Unable to Load the Data");
+      Swal.fire({
+        title: 'Unable to Load the Data',
+        width:"25%",
+        background:"#243b55",
+        color:"red"
+      })
     }
   } catch (error) {
-    console.log(error.message);
-    alert("Unable to Load the Data");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Bad Request 404',
+      width:"25%",
+    })
   }
 };
 
@@ -86,7 +93,12 @@ let renderStylerFunction = (allData, obj) => {
 
         availablilityCheckerFunction(obj);
       } else {
-        alert("please select date and time");
+        Swal.fire({
+          title: 'Please select Date and Time',
+          width:"25%",
+          background:"#243b55",
+          color:"red"
+        })
       }
     });
   }
@@ -95,7 +107,7 @@ let renderStylerFunction = (allData, obj) => {
 
 
 let availablilityCheckerFunction = (obj) => {
-  fetch("https://nice-pink-antelope-gear.cyclic.app/appointments/appointment", {
+  fetch("https://hair-salon-backend.onrender.com/appointments/appointment", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -117,29 +129,48 @@ let availablilityCheckerFunction = (obj) => {
             });
 
             if (newData.length != 0) {
-              alert("This slot is not available, Please choose another slot!");
+              Swal.fire({
+                title: 'This slot is not available, Please choose another slot !',
+                width:"26%",
+                background:"#243b55",
+                color:"red"
+              })
             } else {
               //sendMailFunction(obj);
               createAppointmentFunction(obj);
             }
           })
           .catch(() => {
-            alert("Unable to Load the Appointment Data");
+            Swal.fire({
+              title: 'Unable to Load the Appointment Data',
+              width:"26%",
+              background:"#243b55",
+              color:"red"
+            })
           });
       } else {
-        alert("Unable to Load the Appointment Data");
+        Swal.fire({
+          title: 'Unable to Load the Appointment Data',
+          width:"26%",
+          background:"#243b55",
+          color:"red"
+        })
       }
     })
     .catch((error) => {
-      console.log(error.message);
-      alert("Unable to Load the Appointment Data");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Bad Request 404',
+        width:"25%",
+      })
     });
 };
 
 async function createAppointmentFunction(obj) {
   try {
     let add_req = await fetch(
-      `https://nice-pink-antelope-gear.cyclic.app/appointments/appointment/add`,
+      `https://hair-salon-backend.onrender.com/appointments/appointment/add`,
       {
         method: "POST",
         headers: {
@@ -151,11 +182,20 @@ async function createAppointmentFunction(obj) {
     if (add_req.ok) {
       window.location.href = "./appointment.html";
     } else {
-      alert("unable to add new appointment!");
+      Swal.fire({
+        title: 'Unable to add new appointment !',
+        width:"25%",
+        background:"#243b55",
+        color:"red"
+      })
     }
   } catch (error) {
-    console.log(error.message);
-    alert("unable to add new appointment!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Bad Request 404',
+      width:"25%",
+    })
   }
 }
 
@@ -170,7 +210,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./feedbackForm.html";
   // document.getElementById("loginhref").href =
   //   "../routes/loginSignup/login.html";
 };

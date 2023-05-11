@@ -9,7 +9,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./feedbackForm.html";
   // document.getElementById("loginhref").href = "../routes/loginSignup/login.html";
 };
 
@@ -115,7 +115,7 @@ const card_div = document.querySelector(".card-service-page");
 async function getData() {
   try {
     let data = await fetch(
-      "https://nice-pink-antelope-gear.cyclic.app/services/male/"
+      "https://hair-salon-backend.onrender.com/services/male/"
     );
     data = await data.json();
     renderData(data);
@@ -299,7 +299,6 @@ async function renderData(product_data) {
     btn.addEventListener("click", (event) => {
       let product_id = event.target.id;
       getServiceDat(product_id);
-      window.location.href = "../html/styler.html";
     });
   }
 
@@ -309,10 +308,11 @@ async function renderData(product_data) {
 async function getServiceDat(id) {
   try {
     let data = await fetch(
-      `https://nice-pink-antelope-gear.cyclic.app/services/male/${id}`
+      `https://hair-salon-backend.onrender.com/services/male/${id}`
     );
     data = await data.json();
     sessionStorage.setItem("service_data", JSON.stringify(data));
+    window.location.href = "../html/styler.html";
   } catch (error) {
     console.log(error);
   }

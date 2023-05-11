@@ -9,7 +9,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./feedbackForm.html";
 };
 
 let nav = document.getElementById("NAVBAR");
@@ -24,7 +24,6 @@ window.addEventListener("scroll", function () {
   var navBar = document.querySelector(".nav");
   if (document.documentElement.scrollTop > 50) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -37,7 +36,6 @@ const observer = new IntersectionObserver((entries) => {
   const isVisible = entries[0].isIntersecting;
   if (!isVisible) {
     navBar.classList.add("affix");
-    console.log("Working");
   } else {
     navBar.classList.remove("affix");
   }
@@ -60,13 +58,6 @@ navTrigger.addEventListener("click", function () {
 let footer = document.getElementById("footer-main");
 footer.innerHTML = Footer();
 
-/* -------------------------------------------------------------------------- */
-/*                     copy this to get navbar and footer                     */
-/* -------------------------------------------------------------------------- */
-
-// let insta = document.getElementById("insta");
-
-// console.log(insta.src)
 
 /* -------------------------------------------------------------------------- */
 /*           clearing the localStorage and changing Login to Logout           */
