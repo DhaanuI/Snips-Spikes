@@ -1,6 +1,6 @@
 // ----------------->>>> API and their EndPoints <<<<---------------------
 
-const BaseUrl = "https://nice-pink-antelope-gear.cyclic.app";
+const BaseUrl = "https://hair-salon-backend.onrender.com";
 const DefaultUrl = `${BaseUrl}/user`;
 const RegisterUrl = `${DefaultUrl}/register`
 

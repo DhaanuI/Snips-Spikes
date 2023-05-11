@@ -1,6 +1,6 @@
 // ------------------- API's ----------------------
 
-const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
+const BaseUrl = 'https://hair-salon-backend.onrender.com';
 const Default = `${BaseUrl}/admin`
 const PostDataCheck = `${Default}/check`
 

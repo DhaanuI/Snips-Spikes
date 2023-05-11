@@ -1,6 +1,6 @@
 // ----------------->>>> API and their EndPoints <<<<---------------------
 
-const BaseUrl = 'https://nice-pink-antelope-gear.cyclic.app';
+const BaseUrl = 'https://hair-salon-backend.onrender.com';
 const DefaultUrl = `${BaseUrl}/appointments`;
 const GetAppointment = `${DefaultUrl}/appointment`;
 const DeleteAppointment = `${DefaultUrl}/appointment/delete`;
@@ -136,7 +136,7 @@ window.onload = () => {
   document.getElementById("logo-href").href = "../index.html";
   document.getElementById("bookhref").href = "gender.html";
   document.getElementById("viewhref").href = "appointment.html";
-  document.getElementById("contacthref").href = "../index.html";
+  document.getElementById("contacthref").href = "./feedbackForm.html";
   //   document.getElementById("loginhref").href =
   //     "";
 };
