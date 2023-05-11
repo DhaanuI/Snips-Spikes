@@ -17,7 +17,7 @@
 ## Deployed Link :
 
    - Frontend - https://snipsandspikes.netlify.app/
-   - Backend  - https://nice-pink-antelope-gear.cyclic.app/
+   - Backend  - https://hair-salon-backend.onrender.com
 
 
 <br>
