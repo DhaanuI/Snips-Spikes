@@ -1,6 +1,6 @@
 const { Appointmentmodel } = require("../model/appointment.model");
 
-const {sendEmail} = require("../nodemailer/sendingEmails");
+const { sendEmail } = require("../nodemailer/sendingEmails");
 
 // --------->>>> GET <<<<<---------
 const AppointmentGetData = async (req,res) =>{

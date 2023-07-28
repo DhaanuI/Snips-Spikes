@@ -1,7 +1,7 @@
 const express = require('express');
 
 
-// --------------->>>>>>>> Stylist Router <<<<<<<<-------------------
+// --------------->>>>>>>> Stylist Controller <<<<<<<<-------------------
 const { StylistGetData , StylistPostData , StylistPatchData , StylistDeleteData} = require('../controllers/stylist.controller');
 
 const StylistRouter = express.Router();

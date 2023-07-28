@@ -1,28 +1,30 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const { blackListModel } = require("../model/blacklist.model");
 
 require("dotenv").config();
 
-const authenticate = (req, res, next) => {
+const authenticate = async (req, res, next) => {
   try {
-    const Normal_Token = req.cookies.Normal_Token || "";
+      const Normal_Token = req.cookies.Normal_Token || "";
 
-    // blacklisted usign reddis
 
-    const blacklistedToken = JSON.parse(
-      fs.readFileSync("./blacklist.json", "utf-8")
-    );
+    // Check if the token is blacklisted
+    const blacklistedToken = await blackListModel.findOne({
+      tokenList: Normal_Token,
+    });
 
-    if (blacklistedToken.includes(Normal_Token)) {
-      res.status(401).json({ message: "please login again" });
-    } else {
-      jwt.verify(Normal_Token, process.env.NORMALKEY, (err, decoded) => {
-        if (err) res.status(err).json({ message: err.message });
-        else {
-          next();
-        }
-      });
+    if (blacklistedToken) {
+      return res.status(401).json({ message: "Please login again" });
     }
+    
+    jwt.verify(Normal_Token, process.env.NORMALKEY, (err, decoded) => {
+          if (err) res.status(err).json({ message: err.message });
+          else {
+            next();
+          }
+    });
+
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

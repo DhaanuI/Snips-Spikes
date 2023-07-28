@@ -17,6 +17,7 @@ const { FemaleRouter } = require("./routes/femaleService.route");
 const { StylistRouter } = require("./routes/stylist.router");
 const { AppointmentRouter } = require("./routes/appointment.router");
 const { LogoutRouter } = require("./routes/logout.route");
+const { FeedbackRouter } = require("./routes/feedbackForm.route");
 
 
 // --------------->>>>>>>> Middlewares <<<<<<<<-------------------
@@ -40,6 +41,7 @@ app.use("/services", MaleRouter);
 app.use("/services", FemaleRouter);
 app.use("/stylist", StylistRouter);
 app.use("/appointments", AppointmentRouter);
+app.use("/feedback" , FeedbackRouter)
 
 app.use(authenticate);
 app.use("/newtoken", GntRouter);
